@@ -17,7 +17,7 @@
 <c:forEach items="${facolta.corsi}" var="cor">
 <tr>
 	<td>${cor.corso }</th>
-	<td><a href="#">Rimuovi</a></th>
+	<td><a href="/Campus/CorsiFacoltaDelete?facolta=${facolta.id}&corso=${cor.id}">Rimuovi</a></th>
 </tr>
 </c:forEach>
 

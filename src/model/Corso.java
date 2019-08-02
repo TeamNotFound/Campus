@@ -76,6 +76,10 @@ public class Corso {
 	public void addFacolta(Facolta f){
 		facolta.add(f);
 	}
+	
+	public void removeFacolta(Facolta f) {
+		facolta.remove(f);
+	}
 
 	@Override
 	public int hashCode() {

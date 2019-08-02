@@ -88,6 +88,10 @@ public class Facolta {
 	public void addCorso(Corso c){
 		corsi.add(c);
 	}
+	
+	public void removeCorso(Corso c){
+		corsi.remove(c);
+	}
 
 	@Override
 	public String toString() {
