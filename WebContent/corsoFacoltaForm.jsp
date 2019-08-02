@@ -42,19 +42,31 @@
 <input type="submit">
 </form>
 
-<c:forEach items="${facolta}" var="f">
 <table>
 <tr>
-<th>${f.facolta}</th>
+	<th>Facolta</th>
+	<th>Elimina</th>
 </tr>
-
-	<c:forEach items="${f.corsi}" var="c">
-	<tr>
-		<td>${c.corso}</td>
-	</tr>
-	</c:forEach>
-	</table>
+<c:forEach items="${facolta}" var="fac">
+<tr>
+	<td><a href="Facolta/${fac.id}">${fac.facolta}</a></td>
+	<td><a href="Facolta/delete/${fac.id}">Rimuovi</a></td>
+</tr>
 </c:forEach>
+</table>
+
+<table>
+<tr>
+	<th>Corsi</th>
+	<th>Elimina</th>
+</tr>
+<c:forEach items="${corsi}" var="cor">
+<tr>
+	<td>${cor.corso}</td>
+	<td><a href="Facolta/delete/${cor.id}">Rimuovi</a></td>
+</tr>
+</c:forEach>
+</table>
 
 </body>
 </html>

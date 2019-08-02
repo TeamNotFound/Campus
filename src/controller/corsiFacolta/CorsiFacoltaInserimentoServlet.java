@@ -1,4 +1,4 @@
-package controller;
+package controller.corsiFacolta;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -36,7 +36,7 @@ public class CorsiFacoltaInserimentoServlet extends HttpServlet {
 		FacoltaInterface fDao = new FacoltaDao();
     	CorsoInterface cDao = new CorsoDao();
     	
-    	request.setAttribute("facolta", fDao.getAllWithCorsi());
+    	request.setAttribute("facolta", fDao.getAll());
     	request.setAttribute("corsi", cDao.getAll());
     	
     	request.getRequestDispatcher("corsoFacoltaForm.jsp").forward(request, response);
@@ -57,7 +57,7 @@ public class CorsiFacoltaInserimentoServlet extends HttpServlet {
     	
     	fDao.update(f);
     	
-    	response.sendRedirect("CorsiFacolta");
+    	response.sendRedirect("Facolta/"+f.getId());
 	}
 
 }

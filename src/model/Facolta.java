@@ -1,7 +1,6 @@
 package model;
 
 import java.util.Set;
-import java.util.TreeSet;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -31,8 +30,8 @@ public class Facolta {
 	@ManyToMany(fetch=FetchType.LAZY)
     @JoinTable(
         name = "corsi_facolta", 
-        joinColumns = { @JoinColumn(name = "corso_id") }, 
-        inverseJoinColumns = { @JoinColumn(name = "facolta_id") }
+        joinColumns = { @JoinColumn(name = "facolta_id") }, 
+        inverseJoinColumns = { @JoinColumn(name = "corso_id") }
     )
 	private Set<Corso> corsi;
 
