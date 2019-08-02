@@ -37,6 +37,27 @@ public class CorsoDao implements CorsoInterface {
 			session.beginTransaction();
 			
 			corso = (Corso) session.get(Corso.class, id);
+			
+			session.getTransaction().commit();
+			
+			return corso;
+		} catch (Exception e) {
+			System.out.println("Error in getAll()");
+			return null;
+		} finally {
+			session.close();
+		}
+	}
+	
+	@Override
+	public Corso getByIdWithFacolta(int id) {
+		Session session = HibernateUtil.getSessionFactory().openSession();
+		Corso corso;
+
+		try{
+			session.beginTransaction();
+			
+			corso = (Corso) session.get(Corso.class, id);
 			Hibernate.initialize(corso.getFacolta());
 			
 			session.getTransaction().commit();
@@ -48,12 +69,37 @@ public class CorsoDao implements CorsoInterface {
 		} finally {
 			session.close();
 		}
-
 	}
 
 	@SuppressWarnings("unchecked")
 	@Override
 	public ArrayList<Corso> getAll() {
+		Session session = HibernateUtil.getSessionFactory().openSession();
+		ArrayList<Corso> corsi;
+		
+		try{
+			session.beginTransaction();
+			
+			corsi = (ArrayList<Corso>) session
+					.createQuery("from Corso")
+					.list();
+			
+			session.getTransaction().commit();
+			
+			return corsi;
+		} catch (Exception e) {
+			
+			System.out.println("Error in getAll()");
+			e.printStackTrace();
+			return null;
+		} finally {
+			session.close();
+		}
+	}
+	
+	@SuppressWarnings("unchecked")
+	@Override
+	public ArrayList<Corso> getAllWithFacolta() {
 		Session session = HibernateUtil.getSessionFactory().openSession();
 		ArrayList<Corso> corsi;
 		
@@ -95,9 +141,20 @@ public class CorsoDao implements CorsoInterface {
 	}
 
 	@Override
-	public void remove(Corso element) {
-		// TODO Auto-generated method stub
-		
+	public void remove(Corso c) {
+		Session session = HibernateUtil.getSessionFactory().openSession();
+
+		try{
+			session.beginTransaction();
+
+			session.delete(c);
+
+			session.getTransaction().commit();
+		} catch (Exception e) {
+			session.getTransaction().rollback();
+		} finally{
+			session.close();
+		}
 	}
 
 }

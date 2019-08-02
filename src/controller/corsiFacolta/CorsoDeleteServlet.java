@@ -8,43 +8,37 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import dao.implementations.CorsoDao;
-import dao.implementations.FacoltaDao;
 import dao.interfaces.CorsoInterface;
-import dao.interfaces.FacoltaInterface;
 import model.Corso;
-import model.Facolta;
 
 /**
- * Servlet implementation class CorsiFacoltaDeleteServlet
+ * Servlet implementation class CorsoDeletServlet
  */
-@WebServlet("/CorsiFacoltaDelete")
-public class CorsiFacoltaDeleteServlet extends HttpServlet {
+@WebServlet("/Corso/delete/*")
+public class CorsoDeleteServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public CorsiFacoltaDeleteServlet() {
+    public CorsoDeleteServlet() {
         super();
-    
+        // TODO Auto-generated constructor stub
     }
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		FacoltaInterface fDao = new FacoltaDao();
-		CorsoInterface cDao = new CorsoDao();
-
-		Facolta f = fDao.getByIdWithCorsi(Integer.parseInt(request.getParameter("facolta")));
-		Corso c = cDao.getByIdWithFacolta(Integer.parseInt(request.getParameter("corso")));
+		CorsoInterface dao = new CorsoDao();
+		
+		int id = Integer.parseInt(request.getPathInfo().substring(1));
+		
+		Corso c = dao.getById(id);
 					
-		f.removeCorso(c);
-		c.removeFacolta(f);
+		dao.remove(c);
 		
-		fDao.update(f);
-		
-		response.sendRedirect("Facolta/"+f.getId());
+		response.sendRedirect("/Campus/CorsiFacolta");
 	}
 
 	/**

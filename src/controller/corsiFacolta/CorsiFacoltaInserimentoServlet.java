@@ -42,15 +42,16 @@ public class CorsiFacoltaInserimentoServlet extends HttpServlet {
     	request.getRequestDispatcher("corsoFacoltaForm.jsp").forward(request, response);
 	}
 
-	// Recupero sia la facolta (con la lista corsi inizializzata) che il corso tramite id
-	// poi si aggiungono a vicenda ed infine effettuo l'update di uno qualsiasi dei due
+	// Recupero sia la facolta che il corso tramite id con liste inizializzate (così da poter usare i metodi
+	// addCorso e addFacolta). Dopo essersi aggiunti a vicenda ne aggiorno uno (basta appunto aggiornarne uno)
+	
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		FacoltaDao fDao = new FacoltaDao();
-    	CorsoDao cDao = new CorsoDao();
+		FacoltaInterface fDao = new FacoltaDao();
+    	CorsoInterface cDao = new CorsoDao();
     	    	
     	Facolta f = fDao.getByIdWithCorsi(Integer.parseInt(request.getParameter("facolta")));
-    	Corso c = cDao.getById(Integer.parseInt(request.getParameter("corso")));
+    	Corso c = cDao.getByIdWithFacolta(Integer.parseInt(request.getParameter("corso")));
     	
     	f.addCorso(c);
     	c.addFacolta(f);
