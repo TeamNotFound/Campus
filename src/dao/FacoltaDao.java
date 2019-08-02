@@ -1,0 +1,98 @@
+package dao;
+
+import java.util.ArrayList;
+
+import org.hibernate.Hibernate;
+import org.hibernate.Session;
+
+import model.Facolta;
+import util.HibernateUtil;
+
+public class FacoltaDao implements CRUDInterface<Facolta> {
+	
+	public void inserimento(Facolta f){
+		Session session = HibernateUtil.getSessionFactory().openSession();
+
+		try{
+			session.beginTransaction();
+
+			session.save(f);
+
+			session.getTransaction().commit();
+		} catch (Exception e) {
+			session.getTransaction().rollback();
+		} finally{
+			session.close();
+		}
+	}
+	
+	
+	@SuppressWarnings("unchecked")
+	public ArrayList<Facolta> getAll(){
+		Session session = HibernateUtil.getSessionFactory().openSession();
+		ArrayList<Facolta> facolta;
+		
+		try{
+			session.beginTransaction();
+			
+			facolta = (ArrayList<Facolta>) session
+					.createQuery("select distinct f from Facolta f left join fetch f.corsi corsi")
+					.list();
+			
+			session.getTransaction().commit();
+
+			return facolta;
+		} catch (Exception e) {
+			System.out.println("Error in getAll()");
+			e.printStackTrace();
+			return null;
+		} finally {
+			session.close();
+		}
+	}
+	
+	
+	public Facolta getById(int id){
+		Session session = HibernateUtil.getSessionFactory().openSession();
+		Facolta facolta;
+		
+		try{
+			session.beginTransaction();
+			
+			facolta = (Facolta) session.get(Facolta.class, id);
+			Hibernate.initialize(facolta.getCorsi());
+			
+			session.getTransaction().commit();
+
+			return facolta;
+		} catch (Exception e) {
+			System.out.println("Error in getAll()");
+			e.printStackTrace();
+			return null;
+		} finally {
+			session.close();
+		}
+	}
+
+
+	@Override
+	public void update(Facolta f) {
+		System.out.println("Start inserimento");
+		Session session = HibernateUtil.getSessionFactory().openSession();
+		System.out.println("Created Session");
+
+		try{
+			session.beginTransaction();
+
+			session.update(f);
+
+			session.getTransaction().commit();
+		} catch (Exception e) {
+			session.getTransaction().rollback();
+		} finally{
+			session.close();
+		}		
+	}
+	
+	
+}

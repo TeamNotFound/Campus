@@ -1,0 +1,31 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<link href="<%=request.getContextPath()%>/styles/header.css" 
+		rel="stylesheet" type="text/css">
+</head>
+<body>
+<div class="header">
+	<ul>
+		<li class="left-side"><a href="#">Home</a></li>
+		<li class="left-side"><a href="CorsiFacolta">Corsi e Facoltà</a></li>
+
+	
+		<c:choose>
+		<c:when test="${user == null}">
+			<li class="right-side"><a href="Login">Login</a></li>
+			<li class="right-side"><a href="Studente">Registra Studente</a></li>
+		</c:when>
+		<c:otherwise>
+			<li class="right-side"><a href="#">Log Out</a></li>
+		</c:otherwise>
+		</c:choose>
+	</ul>
+</div>
+<div class="header-distance">
+</div>
+</body>
+</html>
