@@ -63,7 +63,7 @@
 <c:forEach items="${corsi}" var="cor">
 <tr>
 	<td>${cor.corso}</td>
-	<td><a href="Facolta/delete/${cor.id}">Rimuovi</a></td>
+	<td><a href="Corso/delete/${cor.id}">Rimuovi</a></td>
 </tr>
 </c:forEach>
 </table>
