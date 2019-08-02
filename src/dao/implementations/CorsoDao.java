@@ -1,14 +1,15 @@
-package dao;
+package dao.implementations;
 
 import java.util.ArrayList;
 
 import org.hibernate.Hibernate;
 import org.hibernate.Session;
 
+import dao.interfaces.CorsoInterface;
 import model.Corso;
 import util.HibernateUtil;
 
-public class CorsoDao implements CRUDInterface<Corso> {
+public class CorsoDao implements CorsoInterface {
 
 	@Override
 	public void inserimento(Corso c) {
@@ -91,6 +92,12 @@ public class CorsoDao implements CRUDInterface<Corso> {
 		} finally{
 			session.close();
 		}		
+	}
+
+	@Override
+	public void remove(Corso element) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

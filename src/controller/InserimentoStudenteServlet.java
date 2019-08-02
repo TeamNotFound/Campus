@@ -7,8 +7,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import dao.FacoltaDao;
-import dao.StudenteDao;
+import dao.implementations.FacoltaDao;
+import dao.implementations.StudenteDao;
 import model.Account;
 import model.Facolta;
 import model.Studente;

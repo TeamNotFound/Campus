@@ -1,14 +1,15 @@
-package dao;
+package dao.implementations;
 
 import java.util.ArrayList;
 
 import org.hibernate.Query;
 import org.hibernate.Session;
 
+import dao.interfaces.AccountInterface;
 import model.Account;
 import util.HibernateUtil;
 
-public class AccountDao implements CRUDInterface<Account> {
+public class AccountDao implements AccountInterface {
 
 	@Override
 	public void inserimento(Account a) {
@@ -75,6 +76,10 @@ public class AccountDao implements CRUDInterface<Account> {
 		
 	}
 
-	
+	@Override
+	public void remove(Account element) {
+		// TODO Auto-generated method stub
+		
+	}
 
 }
