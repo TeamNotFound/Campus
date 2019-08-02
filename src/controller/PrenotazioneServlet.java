@@ -12,10 +12,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import dao.AccountDao;
-import dao.CorsoDao;
-import dao.FacoltaDao;
-import dao.PrenotazioneDao;
+import dao.implementations.AccountDao;
+import dao.implementations.CorsoDao;
+import dao.implementations.FacoltaDao;
+import dao.implementations.PrenotazioneDao;
 import model.Account;
 import model.Corso;
 import model.Prenotazione;

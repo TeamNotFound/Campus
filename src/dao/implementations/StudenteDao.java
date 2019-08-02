@@ -1,13 +1,14 @@
-package dao;
+package dao.implementations;
 
 import java.util.ArrayList;
 
 import org.hibernate.Session;
 
+import dao.interfaces.StudenteInterface;
 import model.Studente;
 import util.HibernateUtil;
 
-public class StudenteDao implements CRUDInterface<Studente> {
+public class StudenteDao implements StudenteInterface {
 
 	public void inserimento(Studente s){
 		Session session = HibernateUtil.getSessionFactory().openSession();
@@ -85,5 +86,10 @@ public class StudenteDao implements CRUDInterface<Studente> {
 		} finally{
 			session.close();
 		}		
+	}
+
+	@Override
+	public void remove(Studente element) {
+		
 	}
 }

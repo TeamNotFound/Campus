@@ -1,14 +1,15 @@
-package dao;
+package dao.implementations;
 
 import java.util.ArrayList;
 
 import org.hibernate.Hibernate;
 import org.hibernate.Session;
 
+import dao.interfaces.FacoltaInterface;
 import model.Facolta;
 import util.HibernateUtil;
 
-public class FacoltaDao implements CRUDInterface<Facolta> {
+public class FacoltaDao implements FacoltaInterface{
 	
 	public void inserimento(Facolta f){
 		Session session = HibernateUtil.getSessionFactory().openSession();
@@ -51,7 +52,7 @@ public class FacoltaDao implements CRUDInterface<Facolta> {
 		}
 	}
 	
-	
+	@Override
 	public Facolta getById(int id){
 		Session session = HibernateUtil.getSessionFactory().openSession();
 		Facolta facolta;
@@ -92,6 +93,13 @@ public class FacoltaDao implements CRUDInterface<Facolta> {
 		} finally{
 			session.close();
 		}		
+	}
+
+
+	@Override
+	public void remove(Facolta element) {
+		// TODO Auto-generated method stub
+		
 	}
 	
 	

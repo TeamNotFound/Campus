@@ -7,8 +7,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import dao.CorsoDao;
-import dao.FacoltaDao;
+import dao.implementations.CorsoDao;
+import dao.implementations.FacoltaDao;
 import model.Corso;
 import model.Facolta;
 
@@ -35,7 +35,7 @@ public class CorsiFacoltaInserimentoServlet extends HttpServlet {
 		FacoltaDao fDao = new FacoltaDao();
     	CorsoDao cDao = new CorsoDao();
     	
-    	System.out.println("Nomi delle facoltà: ");
+    	System.out.println("Nomi delle facoltï¿½: ");
     	for(Facolta f:fDao.getAll()){
     		System.out.println(f.getFacolta());
     	}
