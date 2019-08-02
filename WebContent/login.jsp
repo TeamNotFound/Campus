@@ -11,7 +11,7 @@
 <body>
 <c:choose>
 <c:when test="${username != null}">
-	Benvenuto ${username}!
+	Welcome! ${username}!
 </c:when>
 <c:otherwise>
 <form action="Login" method="post">
