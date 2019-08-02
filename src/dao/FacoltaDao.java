@@ -58,9 +58,11 @@ public class FacoltaDao implements CRUDInterface<Facolta> {
 		
 		try{
 			session.beginTransaction();
-			
+						
 			facolta = (Facolta) session.get(Facolta.class, id);
 			Hibernate.initialize(facolta.getCorsi());
+			
+			System.out.println(facolta.getCorsi().toArray()[0]);
 			
 			session.getTransaction().commit();
 
@@ -77,9 +79,7 @@ public class FacoltaDao implements CRUDInterface<Facolta> {
 
 	@Override
 	public void update(Facolta f) {
-		System.out.println("Start inserimento");
 		Session session = HibernateUtil.getSessionFactory().openSession();
-		System.out.println("Created Session");
 
 		try{
 			session.beginTransaction();

@@ -3,7 +3,6 @@ package controller;
 import java.io.IOException;
 import java.time.Instant;
 import java.util.Date;
-import java.util.List;
 import java.util.Set;
 
 import javax.servlet.ServletException;
@@ -15,10 +14,10 @@ import javax.servlet.http.HttpSession;
 
 import dao.AccountDao;
 import dao.CorsoDao;
+import dao.FacoltaDao;
 import dao.PrenotazioneDao;
 import model.Account;
 import model.Corso;
-import model.PrenoPK;
 import model.Prenotazione;
 import model.Studente;
 
@@ -48,11 +47,12 @@ public class PrenotazioneServlet extends HttpServlet {
 			response.sendRedirect("Login");
 			return;
 		}
-		
+				
 		AccountDao dao = new AccountDao();
+		FacoltaDao fDao = new FacoltaDao();
 		
 		Account a = dao.getByUsername(username);
-		Set<Corso> corsi = a.getStudente().getFacolta().getCorsi();
+		Set<Corso> corsi = fDao.getById(a.getStudente().getFacolta().getId()).getCorsi();
 		
 		request.setAttribute("studente", a.getStudente());
 		request.setAttribute("corsi", corsi);
@@ -69,7 +69,6 @@ public class PrenotazioneServlet extends HttpServlet {
 		AccountDao aDao = new AccountDao();
 		
 		Prenotazione p = new Prenotazione();
-		PrenoPK pk = new PrenoPK();
 		
 		Corso c = cDao.getById(Integer.parseInt(request.getParameter("corso")));
 		Studente s = aDao.getByUsername((String)request.getSession().getAttribute("username")).getStudente();

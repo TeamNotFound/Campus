@@ -1,11 +1,9 @@
 package dao;
 
 import java.util.ArrayList;
-import java.util.Set;
 
 import org.hibernate.Session;
 
-import model.Account;
 import model.Prenotazione;
 import util.HibernateUtil;
 
