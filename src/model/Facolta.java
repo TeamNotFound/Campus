@@ -1,6 +1,7 @@
 package model;
 
 import java.util.Set;
+import java.util.TreeSet;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -44,7 +45,6 @@ public class Facolta {
 
 	public Facolta() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	public int getId() {

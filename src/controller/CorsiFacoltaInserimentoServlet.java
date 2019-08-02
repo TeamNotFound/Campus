@@ -9,6 +9,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import dao.implementations.CorsoDao;
 import dao.implementations.FacoltaDao;
+import dao.interfaces.CorsoInterface;
+import dao.interfaces.FacoltaInterface;
 import model.Corso;
 import model.Facolta;
 
@@ -28,32 +30,26 @@ public class CorsiFacoltaInserimentoServlet extends HttpServlet {
         // TODO Auto-generated constructor stub
     }
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
+	// Recupero tutte le facolta (con i corsi a loro annessi) e i corsi per mostrare le diverse form
+    
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		FacoltaDao fDao = new FacoltaDao();
-    	CorsoDao cDao = new CorsoDao();
+		FacoltaInterface fDao = new FacoltaDao();
+    	CorsoInterface cDao = new CorsoDao();
     	
-    	System.out.println("Nomi delle facolt�: ");
-    	for(Facolta f:fDao.getAll()){
-    		System.out.println(f.getFacolta());
-    	}
-    	
-    	request.setAttribute("facolta", fDao.getAll());
+    	request.setAttribute("facolta", fDao.getAllWithCorsi());
     	request.setAttribute("corsi", cDao.getAll());
     	
     	request.getRequestDispatcher("corsoFacoltaForm.jsp").forward(request, response);
 	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
+	// Recupero sia la facolta (con la lista corsi inizializzata) che il corso tramite id
+	// poi si aggiungono a vicenda ed infine effettuo l'update di uno qualsiasi dei due
+	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		FacoltaDao fDao = new FacoltaDao();
     	CorsoDao cDao = new CorsoDao();
     	    	
-    	Facolta f = fDao.getById(Integer.parseInt(request.getParameter("facolta")));
+    	Facolta f = fDao.getByIdWithCorsi(Integer.parseInt(request.getParameter("facolta")));
     	Corso c = cDao.getById(Integer.parseInt(request.getParameter("corso")));
     	
     	f.addCorso(c);

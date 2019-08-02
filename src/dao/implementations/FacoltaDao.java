@@ -10,7 +10,10 @@ import model.Facolta;
 import util.HibernateUtil;
 
 public class FacoltaDao implements FacoltaInterface{
+
 	
+	// Metodo di inserimento per la facoltà, in hibernate tutti i metodi di inserimento 
+	// saranno analoghi a questo
 	public void inserimento(Facolta f){
 		Session session = HibernateUtil.getSessionFactory().openSession();
 
@@ -27,9 +30,42 @@ public class FacoltaDao implements FacoltaInterface{
 		}
 	}
 	
+	// Metodo che restituisce tutti i record di facoltà dal database
+	// Dato che il Fetch-type tra facoltà e corsi è configurato a "LAZY"
+	// con la query quì sotto non verranno recuperati i corsi (più efficiente)
 	
 	@SuppressWarnings("unchecked")
+	@Override
 	public ArrayList<Facolta> getAll(){
+		Session session = HibernateUtil.getSessionFactory().openSession();
+		ArrayList<Facolta> facolta;
+		
+		try{
+			session.beginTransaction();
+			
+			facolta = (ArrayList<Facolta>) session
+					.createQuery("from Facolta")
+					.list();
+			
+			session.getTransaction().commit();
+
+			return facolta;
+		} catch (Exception e) {
+			System.out.println("Error in getAll()");
+			e.printStackTrace();
+			return null;
+		} finally {
+			session.close();
+		}
+	}
+	
+	// Metodo che restituisce tutti i record di facoltà dal database.
+	// Con questa query, anche se il fetch-type è di tipo LAZY
+	// caricheremo comunque i corsi con le facoltà (meno efficiente ma a volta necessario)
+	
+	@SuppressWarnings("unchecked")
+	@Override
+	public ArrayList<Facolta> getAllWithCorsi() {
 		Session session = HibernateUtil.getSessionFactory().openSession();
 		ArrayList<Facolta> facolta;
 		
@@ -52,6 +88,10 @@ public class FacoltaDao implements FacoltaInterface{
 		}
 	}
 	
+	// Metodo che restituisce un singolo record di facoltà dal database
+	// Dato che il Fetch-type tra facoltà e corsi è configurato a "LAZY"
+	// con la query quì sotto non verranno recuperati i corsi (più efficiente)
+	
 	@Override
 	public Facolta getById(int id){
 		Session session = HibernateUtil.getSessionFactory().openSession();
@@ -61,10 +101,7 @@ public class FacoltaDao implements FacoltaInterface{
 			session.beginTransaction();
 						
 			facolta = (Facolta) session.get(Facolta.class, id);
-			Hibernate.initialize(facolta.getCorsi());
-			
-			System.out.println(facolta.getCorsi().toArray()[0]);
-			
+						
 			session.getTransaction().commit();
 
 			return facolta;
@@ -76,7 +113,36 @@ public class FacoltaDao implements FacoltaInterface{
 			session.close();
 		}
 	}
+	
+	// Metodo che restituisce un singolo record di facoltà dal database.
+	// Con "Hibernate.initialize()", anche se il fetch-type è di tipo LAZY
+	// caricheremo comunque i corsi con le facoltà (meno efficiente ma a volta necessario)
+	
+	@Override
+	public Facolta getByIdWithCorsi(int id) {
+		Session session = HibernateUtil.getSessionFactory().openSession();
+		Facolta facolta;
+		
+		try{
+			session.beginTransaction();
+						
+			facolta = (Facolta) session.get(Facolta.class, id);
+			Hibernate.initialize(facolta.getCorsi());
+						
+			session.getTransaction().commit();
 
+			return facolta;
+		} catch (Exception e) {
+			System.out.println("Error in getAll()");
+			e.printStackTrace();
+			return null;
+		} finally {
+			session.close();
+		}
+	}
+	
+	// Metodo di update per la facoltà, in hibernate tutti i metodi di update 
+	// saranno analoghi a questo
 
 	@Override
 	public void update(Facolta f) {
@@ -95,12 +161,24 @@ public class FacoltaDao implements FacoltaInterface{
 		}		
 	}
 
+	// Metodo di remove per la facoltà, in hibernate tutti i metodi di remove 
+	// saranno analoghi a questo
 
 	@Override
-	public void remove(Facolta element) {
-		// TODO Auto-generated method stub
-		
+	public void remove(Facolta f) {
+		Session session = HibernateUtil.getSessionFactory().openSession();
+
+		try{
+			session.beginTransaction();
+
+			session.delete(f);
+
+			session.getTransaction().commit();
+		} catch (Exception e) {
+			session.getTransaction().rollback();
+		} finally{
+			session.close();
+		}			
 	}
-	
 	
 }

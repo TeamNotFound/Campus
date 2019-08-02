@@ -1,6 +1,7 @@
 package model;
 
 import java.util.Set;
+import java.util.TreeSet;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -34,6 +35,12 @@ public class Corso {
         inverseJoinColumns = { @JoinColumn(name = "corso_id") }
     )
 	private Set<Facolta> facolta;
+	
+	
+
+	public Corso() {
+		super();
+	}
 
 	public int getId() {
 		return id;
