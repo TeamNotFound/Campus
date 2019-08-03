@@ -15,7 +15,7 @@ import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="studenti")
+@Table(name="utenti")
 public class Utente {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)

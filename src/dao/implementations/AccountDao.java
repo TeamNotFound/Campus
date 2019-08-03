@@ -31,6 +31,7 @@ public class AccountDao implements AccountInterface {
 			return account;
 		} catch (Exception e) {
 			System.out.println("Error in getAll()");
+			e.printStackTrace();
 			return null;
 		} finally {
 			session.close();

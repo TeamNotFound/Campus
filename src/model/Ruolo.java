@@ -28,6 +28,30 @@ public class Ruolo {
 		super();
 	}
 
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public String getRuolo() {
+		return ruolo;
+	}
+
+	public void setRuolo(String ruolo) {
+		this.ruolo = ruolo;
+	}
+
+	public Set<Utente> getIscritti() {
+		return iscritti;
+	}
+
+	public void setIscritti(Set<Utente> iscritti) {
+		this.iscritti = iscritti;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
