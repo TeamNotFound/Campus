@@ -25,13 +25,10 @@ public class CorsoInserimentoServlet extends HttpServlet {
         // TODO Auto-generated constructor stub
     }
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
+    
+    
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		CorsoDao dao = new CorsoDao();
-		request.setAttribute("corsi", dao.getAll());
-		request.getRequestDispatcher("corsoForm.jsp").forward(request, response);
+		response.sendRedirect("CorsiFacolta");
 	}
 
 	/**
