@@ -26,9 +26,11 @@ public class CorsoDeleteServlet extends HttpServlet {
         // TODO Auto-generated constructor stub
     }
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
+	// Elimino il corso utilizzando come variabile la "Path Variable", anche nota nei servlet come path info
+    // Per usare le path info, nel tag @WebServlet() in cima alla classe bisogna aggiungere un asterisco
+    // Così, quando l'indirizzo scritto nell'url sarà /Corso/delete/2 la path info sarà /2
+    // Da notare che l'asterisco può andare solo alla fine dell'indirizzo perchè i servlet son limitati
+    
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		CorsoInterface dao = new CorsoDao();
 		

@@ -28,14 +28,15 @@ public class FacoltaVisualizzaServlet extends HttpServlet {
         // TODO Auto-generated constructor stub
     }
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
+	// Carico dal database la facolta con id uguale alla pathInfo (Per dubbi vedere i commenti in CorsoDeleteServlet 
+    // o FacoltaDeleteServlet.
+    // La carico con i suoi corsi annessi così da poterli visualizzare 
+    // Carico inoltre tutti i corsi così da popolare la form che associera i corsi alla Facolta
+    
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		FacoltaInterface dao = new FacoltaDao();
 		CorsoInterface cDao = new CorsoDao();
 		
-		System.out.println(request.getPathInfo());
 		int id = Integer.parseInt(request.getPathInfo().substring(1));
 		
 		Facolta f = dao.getByIdWithCorsi(id);

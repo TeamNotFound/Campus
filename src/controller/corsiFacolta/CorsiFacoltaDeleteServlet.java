@@ -29,9 +29,8 @@ public class CorsiFacoltaDeleteServlet extends HttpServlet {
     
     }
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
+	// Elimino l'associazione corso-facolta tramite il metodo update (In modo analogo alla sua creazione)
+    
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		FacoltaInterface fDao = new FacoltaDao();
 		CorsoInterface cDao = new CorsoDao();
