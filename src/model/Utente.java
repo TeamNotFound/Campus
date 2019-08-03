@@ -16,7 +16,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="studenti")
-public class Studente {
+public class Utente {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private int id;
@@ -31,6 +31,10 @@ public class Studente {
 	private Date data_nascita;
 	
 	@ManyToOne
+	@JoinColumn(name = "ruolo_id")
+	private Ruolo ruolo;
+	
+	@ManyToOne
 	@JoinColumn(name="facolta_id", nullable=false, updatable=false)
 	private Facolta facolta;
 	
@@ -38,7 +42,7 @@ public class Studente {
 	@PrimaryKeyJoinColumn
 	private Account account;
 
-	public Studente(int id, String nome, String cognome, Date data_nascita, Facolta facolta) {
+	public Utente(int id, String nome, String cognome, Date data_nascita, Facolta facolta) {
 		super();
 		this.id = id;
 		this.nome = nome;
@@ -47,7 +51,7 @@ public class Studente {
 		this.facolta = facolta;
 	}
 
-	public Studente() {
+	public Utente() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
@@ -104,7 +108,13 @@ public class Studente {
 		}
 	}
 
-	
+	public Ruolo getRuolo() {
+		return ruolo;
+	}
+
+	public void setRuolo(Ruolo ruolo) {
+		this.ruolo = ruolo;
+	}
 
 	@Override
 	public String toString() {

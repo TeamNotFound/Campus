@@ -21,17 +21,17 @@ public class Prenotazione {
 	
 	@ManyToOne
 	@MapsId("studente_id")
-	private Studente studente;
+	private Utente studente;
 	
 	@ManyToOne
 	@MapsId("corso_id")
 	private Corso corso;
 
-	public Studente getStudente() {
+	public Utente getStudente() {
 		return studente;
 	}
 
-	public void setStudente(Studente studente) {
+	public void setStudente(Utente studente) {
 		this.studente = studente;
 	}
 

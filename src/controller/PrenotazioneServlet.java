@@ -19,7 +19,7 @@ import dao.implementations.PrenotazioneDao;
 import model.Account;
 import model.Corso;
 import model.Prenotazione;
-import model.Studente;
+import model.Utente;
 
 /**
  * Servlet implementation class PrenotazioneServlet
@@ -71,7 +71,7 @@ public class PrenotazioneServlet extends HttpServlet {
 		Prenotazione p = new Prenotazione();
 		
 		Corso c = cDao.getById(Integer.parseInt(request.getParameter("corso")));
-		Studente s = aDao.getByUsername((String)request.getSession().getAttribute("username")).getStudente();
+		Utente s = aDao.getByUsername((String)request.getSession().getAttribute("username")).getStudente();
 		
 		p.setCorso(c);
 		p.setStudente(s);

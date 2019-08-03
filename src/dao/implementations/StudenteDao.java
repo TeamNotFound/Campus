@@ -5,12 +5,12 @@ import java.util.ArrayList;
 import org.hibernate.Session;
 
 import dao.interfaces.StudenteInterface;
-import model.Studente;
+import model.Utente;
 import util.HibernateUtil;
 
 public class StudenteDao implements StudenteInterface {
 
-	public void inserimento(Studente s){
+	public void inserimento(Utente s){
 		Session session = HibernateUtil.getSessionFactory().openSession();
 
 		try{
@@ -29,14 +29,14 @@ public class StudenteDao implements StudenteInterface {
 	}
 
 	@Override
-	public Studente getById(int id) {
+	public Utente getById(int id) {
 		Session session = HibernateUtil.getSessionFactory().openSession();
-		Studente studente;
+		Utente studente;
 		
 		try{
 			session.beginTransaction();
 
-			studente = (Studente) session.get(Studente.class, id);
+			studente = (Utente) session.get(Utente.class, id);
 
 			session.getTransaction().commit();
 
@@ -51,14 +51,14 @@ public class StudenteDao implements StudenteInterface {
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public ArrayList<Studente> getAll() {
+	public ArrayList<Utente> getAll() {
 		Session session = HibernateUtil.getSessionFactory().openSession();
-		ArrayList<Studente> studenti;
+		ArrayList<Utente> studenti;
 		
 		try{
 			session.beginTransaction();
 
-			studenti = (ArrayList<Studente>) session.createQuery("from Studente").list();
+			studenti = (ArrayList<Utente>) session.createQuery("from Studente").list();
 			
 			session.getTransaction().commit();
 
@@ -72,7 +72,7 @@ public class StudenteDao implements StudenteInterface {
 	}
 
 	@Override
-	public void update(Studente s) {
+	public void update(Utente s) {
 		Session session = HibernateUtil.getSessionFactory().openSession();
 
 		try{
@@ -89,7 +89,7 @@ public class StudenteDao implements StudenteInterface {
 	}
 
 	@Override
-	public void remove(Studente element) {
+	public void remove(Utente element) {
 		
 	}
 }

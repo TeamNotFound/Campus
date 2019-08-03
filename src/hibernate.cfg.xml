@@ -21,6 +21,7 @@
 		<mapping class="model.Prenotazione"/>
 		<mapping class="model.Account"/>
 		<mapping class="model.Corso"/>
+		<mapping class="model.Ruolo"/>
 		
 	</session-factory>
 </hibernate-configuration>

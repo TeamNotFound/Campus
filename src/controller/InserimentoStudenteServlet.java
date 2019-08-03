@@ -11,7 +11,7 @@ import dao.implementations.FacoltaDao;
 import dao.implementations.StudenteDao;
 import model.Account;
 import model.Facolta;
-import model.Studente;
+import model.Utente;
 
 /**
  * Servlet implementation class InserimentoStudenteServlet
@@ -45,7 +45,7 @@ public class InserimentoStudenteServlet extends HttpServlet {
 		FacoltaDao facDao = new FacoltaDao();
 		StudenteDao stuDao = new StudenteDao();
 		
-		Studente s = new Studente();
+		Utente s = new Utente();
 		s.setNome(request.getParameter("nome"));
 		s.setCognome(request.getParameter("cognome"));
 		
