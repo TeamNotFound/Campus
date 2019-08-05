@@ -1,4 +1,4 @@
-package controller;
+package controller.corsiFacolta;
 
 
 import java.io.IOException;
@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import dao.FacoltaDao;
+import dao.implementations.FacoltaDao;
 import model.Facolta;
 
 /**
@@ -30,14 +30,11 @@ public class FacoltaInserimentoServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		FacoltaDao dao = new FacoltaDao();
-		request.setAttribute("facolta", dao.getAll());
-		request.getRequestDispatcher("facoltaForm.jsp").forward(request, response);
+		response.sendRedirect("CorsiFacolta");
 	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
+	// L'inserimento è semplice quindi non lo spiego!
+	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		FacoltaDao dao = new FacoltaDao();
 		Facolta f = new Facolta();

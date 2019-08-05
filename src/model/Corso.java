@@ -30,10 +30,16 @@ public class Corso {
 	@ManyToMany(fetch=FetchType.LAZY)
     @JoinTable(
         name = "corsi_facolta", 
-        joinColumns = { @JoinColumn(name = "facolta_id") }, 
-        inverseJoinColumns = { @JoinColumn(name = "corso_id") }
+        joinColumns = { @JoinColumn(name = "corso_id") }, 
+        inverseJoinColumns = { @JoinColumn(name = "facolta_id") }
     )
 	private Set<Facolta> facolta;
+	
+	
+
+	public Corso() {
+		super();
+	}
 
 	public int getId() {
 		return id;
@@ -69,6 +75,10 @@ public class Corso {
 	
 	public void addFacolta(Facolta f){
 		facolta.add(f);
+	}
+	
+	public void removeFacolta(Facolta f) {
+		facolta.remove(f);
 	}
 
 	@Override

@@ -25,17 +25,17 @@ public class Facolta {
 	private String facolta;
 	
 	@OneToMany(mappedBy="facolta", fetch=FetchType.EAGER)
-	private Set<Studente> studenti;
+	private Set<Utente> studenti;
 	
 	@ManyToMany(fetch=FetchType.LAZY)
     @JoinTable(
         name = "corsi_facolta", 
-        joinColumns = { @JoinColumn(name = "corso_id") }, 
-        inverseJoinColumns = { @JoinColumn(name = "facolta_id") }
+        joinColumns = { @JoinColumn(name = "facolta_id") }, 
+        inverseJoinColumns = { @JoinColumn(name = "corso_id") }
     )
 	private Set<Corso> corsi;
 
-	public Facolta(int id, String facolta, Set<Studente> studenti) {
+	public Facolta(int id, String facolta, Set<Utente> studenti) {
 		super();
 		this.id = id;
 		this.facolta = facolta;
@@ -44,7 +44,6 @@ public class Facolta {
 
 	public Facolta() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	public int getId() {
@@ -63,11 +62,11 @@ public class Facolta {
 		this.facolta = facolta;
 	}
 
-	public Set<Studente> getStudenti() {
+	public Set<Utente> getStudenti() {
 		return studenti;
 	}
 
-	public void setStudenti(Set<Studente> studenti) {
+	public void setStudenti(Set<Utente> studenti) {
 		this.studenti = studenti;
 	}
 
@@ -79,7 +78,7 @@ public class Facolta {
 		this.corsi = corsi;
 	}
 	
-	public void addStudente(Studente s){
+	public void addStudente(Utente s){
 		if(s.getFacolta() == null){
 			s.setFacolta(this);
 		}
@@ -88,6 +87,10 @@ public class Facolta {
 	
 	public void addCorso(Corso c){
 		corsi.add(c);
+	}
+	
+	public void removeCorso(Corso c){
+		corsi.remove(c);
 	}
 
 	@Override

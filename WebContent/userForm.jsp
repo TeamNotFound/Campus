@@ -8,25 +8,32 @@
 <title>Insert title here</title>
 </head>
 <body>
-<form action="Studente" method="post">
-<label name="nome">Nome: </label><br>
-<input name="nome" type="text"><br>
+<form action="Utente" method="post">
+<label for="nome">Nome: </label><br>
+<input id="nome" name="nome" type="text"><br>
 
-<label name="cognome">Cognome: </label><br>
-<input name="cognome" type="text"><br>
+<label for="cognome">Cognome: </label><br>
+<input id="cognome" name="cognome" type="text"><br>
 
-<label name="facolta">Facoltà: </label><br>
-<select name="facolta">
+<label for="facolta">Facoltà: </label><br>
+<select id="facolta" name="facolta">
 <c:forEach items="${facolta}" var="fac">
 	<option value="${fac.id}">${fac.facolta}</option>
 </c:forEach>
 </select><br>
 
-<label name="username">Username: </label><br>
-<input name="username" type="text"><br>
+<label for="ruolo" >Ruolo: </label><br>
+<select id="ruolo" name="ruolo">
+<c:forEach items="${ruoli}" var="role">
+	<option value="${role.id}">${role.ruolo}</option>
+</c:forEach>
+</select><br>
 
-<label name="password">Password: </label><br>
-<input name="password" type="text"><br>
+<label for="username">Username: </label><br>
+<input id="username" name="username" type="text"><br>
+
+<label for="password">Password: </label><br>
+<input id="password" name="password" type="text"><br>
 
 <input type="submit">
 </form>

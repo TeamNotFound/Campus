@@ -1,4 +1,4 @@
-package controller;
+package controller.corsiFacolta;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -7,7 +7,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import dao.CorsoDao;
+import dao.implementations.CorsoDao;
 import model.Corso;
 
 /**
@@ -25,13 +25,10 @@ public class CorsoInserimentoServlet extends HttpServlet {
         // TODO Auto-generated constructor stub
     }
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
+    
+    
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		CorsoDao dao = new CorsoDao();
-		request.setAttribute("corsi", dao.getAll());
-		request.getRequestDispatcher("corsoForm.jsp").forward(request, response);
+		response.sendRedirect("CorsiFacolta");
 	}
 
 	/**

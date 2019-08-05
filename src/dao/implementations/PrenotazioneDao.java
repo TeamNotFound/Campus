@@ -1,13 +1,14 @@
-package dao;
+package dao.implementations;
 
 import java.util.ArrayList;
 
 import org.hibernate.Session;
 
+import dao.interfaces.PrenotazioneInterface;
 import model.Prenotazione;
 import util.HibernateUtil;
 
-public class PrenotazioneDao implements CRUDInterface<Prenotazione> {
+public class PrenotazioneDao implements PrenotazioneInterface{
 
 	@Override
 	public void inserimento(Prenotazione p) {
@@ -42,6 +43,12 @@ public class PrenotazioneDao implements CRUDInterface<Prenotazione> {
 
 	@Override
 	public void update(Prenotazione element) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void remove(Prenotazione element) {
 		// TODO Auto-generated method stub
 		
 	}

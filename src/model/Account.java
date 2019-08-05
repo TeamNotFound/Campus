@@ -23,9 +23,9 @@ public class Account {
 	@OneToOne
 	@MapsId
 	@JoinColumn(name="id")
-	private Studente studente;
+	private Utente studente;
 
-	public Account(int id, String username, String password, Studente studente) {
+	public Account(int id, String username, String password, Utente studente) {
 		super();
 		this.id = id;
 		this.username = username;
@@ -62,11 +62,11 @@ public class Account {
 		this.password = password;
 	}
 
-	public Studente getStudente() {
+	public Utente getStudente() {
 		return studente;
 	}
 
-	public void setStudente(Studente studente) {
+	public void setStudente(Utente studente) {
 		this.studente = studente;
 		
 		if(studente.getAccount() == null){

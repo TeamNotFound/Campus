@@ -1,90 +1,84 @@
-package dao;
+package dao.implementations;
 
 import java.util.ArrayList;
 
-import org.hibernate.Hibernate;
 import org.hibernate.Session;
 
-import model.Facolta;
+import dao.interfaces.StudenteInterface;
+import model.Utente;
 import util.HibernateUtil;
 
-public class FacoltaDao implements CRUDInterface<Facolta> {
-	
-	public void inserimento(Facolta f){
+public class StudenteDao implements StudenteInterface {
+
+	public void inserimento(Utente s){
 		Session session = HibernateUtil.getSessionFactory().openSession();
 
 		try{
 			session.beginTransaction();
 
-			session.save(f);
+			System.out.println("User prima salvataggio " + s.getFacolta().getId());
+			session.save(s);
 
 			session.getTransaction().commit();
 		} catch (Exception e) {
+			e.printStackTrace();
 			session.getTransaction().rollback();
 		} finally{
 			session.close();
 		}
 	}
-	
-	
-	@SuppressWarnings("unchecked")
-	public ArrayList<Facolta> getAll(){
-		Session session = HibernateUtil.getSessionFactory().openSession();
-		ArrayList<Facolta> facolta;
-		
-		try{
-			session.beginTransaction();
-			
-			facolta = (ArrayList<Facolta>) session
-					.createQuery("select distinct f from Facolta f left join fetch f.corsi corsi")
-					.list();
-			
-			session.getTransaction().commit();
-
-			return facolta;
-		} catch (Exception e) {
-			System.out.println("Error in getAll()");
-			e.printStackTrace();
-			return null;
-		} finally {
-			session.close();
-		}
-	}
-	
-	
-	public Facolta getById(int id){
-		Session session = HibernateUtil.getSessionFactory().openSession();
-		Facolta facolta;
-		
-		try{
-			session.beginTransaction();
-						
-			facolta = (Facolta) session.get(Facolta.class, id);
-			Hibernate.initialize(facolta.getCorsi());
-			
-			System.out.println(facolta.getCorsi().toArray()[0]);
-			
-			session.getTransaction().commit();
-
-			return facolta;
-		} catch (Exception e) {
-			System.out.println("Error in getAll()");
-			e.printStackTrace();
-			return null;
-		} finally {
-			session.close();
-		}
-	}
-
 
 	@Override
-	public void update(Facolta f) {
+	public Utente getById(int id) {
+		Session session = HibernateUtil.getSessionFactory().openSession();
+		Utente studente;
+		
+		try{
+			session.beginTransaction();
+
+			studente = (Utente) session.get(Utente.class, id);
+
+			session.getTransaction().commit();
+
+			return studente;
+		} catch (Exception e) {
+			System.out.println("Error in getAll()");
+			return null;
+		} finally {
+			session.close();
+		}
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public ArrayList<Utente> getAll() {
+		Session session = HibernateUtil.getSessionFactory().openSession();
+		ArrayList<Utente> studenti;
+		
+		try{
+			session.beginTransaction();
+
+			studenti = (ArrayList<Utente>) session.createQuery("from Studente").list();
+			
+			session.getTransaction().commit();
+
+			return studenti;
+		} catch (Exception e) {
+			System.out.println("Error in getAll()");
+			return null;
+		} finally {
+			session.close();
+		}
+	}
+
+	@Override
+	public void update(Utente s) {
 		Session session = HibernateUtil.getSessionFactory().openSession();
 
 		try{
 			session.beginTransaction();
 
-			session.update(f);
+			session.update(s);
 
 			session.getTransaction().commit();
 		} catch (Exception e) {
@@ -93,6 +87,9 @@ public class FacoltaDao implements CRUDInterface<Facolta> {
 			session.close();
 		}		
 	}
-	
-	
+
+	@Override
+	public void remove(Utente element) {
+		
+	}
 }
