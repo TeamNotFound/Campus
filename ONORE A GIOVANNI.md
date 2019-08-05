@@ -2,4 +2,4 @@
 
 FOLLOW ARCA27_ #LIKEFOR(K)LIKE
 
-Prova connessione GIT 19.8.5
+Prova connessione, pull, commit GIT 19.8.5
