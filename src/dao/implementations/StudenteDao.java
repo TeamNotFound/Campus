@@ -16,7 +16,6 @@ public class StudenteDao implements StudenteInterface {
 		try{
 			session.beginTransaction();
 
-			System.out.println("User prima salvataggio " + s.getFacolta().getId());
 			session.save(s);
 
 			session.getTransaction().commit();

@@ -24,8 +24,7 @@ public class Corso {
 	@Column
 	private String corso;
 	
-	@OneToMany(mappedBy="corso", fetch=FetchType.EAGER)
-	private Set<Prenotazione> prenotazioni;
+	
 	
 	@ManyToMany(fetch=FetchType.LAZY)
     @JoinTable(
@@ -49,13 +48,9 @@ public class Corso {
 		this.id = id;
 	}
 
-	public Set<Prenotazione> getPrenotazioni() {
-		return prenotazioni;
-	}
+	
 
-	public void setPrenotazioni(Set<Prenotazione> prenotazioni) {
-		this.prenotazioni = prenotazioni;
-	}
+	
 
 	public Set<Facolta> getFacolta() {
 		return facolta;
@@ -111,7 +106,7 @@ public class Corso {
 
 	@Override
 	public String toString() {
-		return "Corso [id=" + id + ", prenotazioni=" + prenotazioni + ", facolta=" + facolta + "]";
+		return "Corso [id=" + id + ", prenotazioni="  + ", facolta=" + facolta + "]";
 	}
 	
 	

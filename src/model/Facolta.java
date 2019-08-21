@@ -25,7 +25,7 @@ public class Facolta {
 	private String facolta;
 	
 	@OneToMany(mappedBy="facolta", fetch=FetchType.EAGER)
-	private Set<Utente> studenti;
+	private Set<Studente> studenti;
 	
 	@ManyToMany(fetch=FetchType.LAZY)
     @JoinTable(
@@ -35,7 +35,7 @@ public class Facolta {
     )
 	private Set<Corso> corsi;
 
-	public Facolta(int id, String facolta, Set<Utente> studenti) {
+	public Facolta(int id, String facolta, Set<Studente> studenti) {
 		super();
 		this.id = id;
 		this.facolta = facolta;
@@ -62,11 +62,11 @@ public class Facolta {
 		this.facolta = facolta;
 	}
 
-	public Set<Utente> getStudenti() {
+	public Set<Studente> getStudenti() {
 		return studenti;
 	}
 
-	public void setStudenti(Set<Utente> studenti) {
+	public void setStudenti(Set<Studente> studenti) {
 		this.studenti = studenti;
 	}
 
@@ -78,7 +78,7 @@ public class Facolta {
 		this.corsi = corsi;
 	}
 	
-	public void addStudente(Utente s){
+	public void addStudente(Studente s){
 		if(s.getFacolta() == null){
 			s.setFacolta(this);
 		}
