@@ -9,7 +9,7 @@ import javax.persistence.*;
 public abstract class Utente {
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.TABLE)
 	private int id;
 	
 	@Column
