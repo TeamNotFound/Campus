@@ -7,14 +7,15 @@ import javax.persistence.Embeddable;
 @Embeddable
 public class PrenoPK implements Serializable {
 
+	
 	private static final long serialVersionUID = 1L;
 	protected int studente_id;
-	protected int corso_id;
+	protected int data_appello_id;
 	
-	public PrenoPK(int studente_id, int corso_id) {
+	public PrenoPK(int studente_id, int data_appello_id) {
 		super();
 		this.studente_id = studente_id;
-		this.corso_id = corso_id;
+		this.data_appello_id = data_appello_id;
 	}
 
 	public PrenoPK() {
@@ -30,24 +31,26 @@ public class PrenoPK implements Serializable {
 		this.studente_id = studente_id;
 	}
 
-	public int getCorso_id() {
-		return corso_id;
+	
+
+	public int getData_appello_id() {
+		return data_appello_id;
 	}
 
-	public void setCorso_id(int corso_id) {
-		this.corso_id = corso_id;
+	public void setData_appello_id(int data_appello_id) {
+		this.data_appello_id = data_appello_id;
 	}
 
 	@Override
 	public String toString() {
-		return "PrenoPK [studente_id=" + studente_id + ", corso_id=" + corso_id + "]";
+		return "PrenoPK [studente_id=" + studente_id + ", data_appello_id=" + data_appello_id + "]";
 	}
 
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + corso_id;
+		result = prime * result + data_appello_id;
 		result = prime * result + studente_id;
 		return result;
 	}
@@ -61,7 +64,7 @@ public class PrenoPK implements Serializable {
 		if (getClass() != obj.getClass())
 			return false;
 		PrenoPK other = (PrenoPK) obj;
-		if (corso_id != other.corso_id)
+		if (data_appello_id != other.data_appello_id)
 			return false;
 		if (studente_id != other.studente_id)
 			return false;

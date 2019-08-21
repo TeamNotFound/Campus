@@ -5,8 +5,10 @@ import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.MapsId;
+import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 
 @Entity
@@ -21,26 +23,28 @@ public class Prenotazione {
 	
 	@ManyToOne
 	@MapsId("studente_id")
-	private Utente studente;
+	@JoinColumn(name = "studente_id")
+	private Studente studente;
 	
 	@ManyToOne
-	@MapsId("corso_id")
-	private Corso corso;
+	@MapsId("data_appello_id")
+	@JoinColumn(name = "data_appello_id")
+	private DataAppello dataAppello;
 
-	public Utente getStudente() {
+	public Studente getStudente() {
 		return studente;
 	}
 
-	public void setStudente(Utente studente) {
+	public void setStudente(Studente studente) {
 		this.studente = studente;
 	}
 
-	public Corso getCorso() {
-		return corso;
+	public DataAppello getDataAppello() {
+		return dataAppello;
 	}
 
-	public void setCorso(Corso corso) {
-		this.corso = corso;
+	public void setDataAppello(DataAppello dataAppello) {
+		this.dataAppello = dataAppello;
 	}
 
 	public Prenotazione(PrenoPK pk, Date dataPrenotazione) {

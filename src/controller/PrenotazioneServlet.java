@@ -18,7 +18,9 @@ import dao.implementations.FacoltaDao;
 import dao.implementations.PrenotazioneDao;
 import model.Account;
 import model.Corso;
+import model.DataAppello;
 import model.Prenotazione;
+import model.Studente;
 import model.Utente;
 
 /**
@@ -52,12 +54,16 @@ public class PrenotazioneServlet extends HttpServlet {
 		FacoltaDao fDao = new FacoltaDao();
 		
 		Account a = dao.getByUsername(username);
-		Set<Corso> corsi = fDao.getById(a.getStudente().getFacolta().getId()).getCorsi();
+		if(a.getUtente() instanceof Studente) {
+			
+		Studente s= (Studente) a.getUtente();
+		Set<Corso> corsi = fDao.getById(s.getFacolta().getId()).getCorsi();
 		
-		request.setAttribute("studente", a.getStudente());
+		request.setAttribute("studente", s);
 		request.setAttribute("corsi", corsi);
 		
 		request.getRequestDispatcher("prenotazioniForm.jsp").forward(request, response);
+		}
 	}
 
 	/**
@@ -69,11 +75,12 @@ public class PrenotazioneServlet extends HttpServlet {
 		AccountDao aDao = new AccountDao();
 		
 		Prenotazione p = new Prenotazione();
+
+		DataAppello da= new DataAppello();// da risolvere 
+		Account a= aDao.getByUsername((String) request.getSession().getAttribute("username"));
+		Studente s= (Studente) a.getUtente();
 		
-		Corso c = cDao.getById(Integer.parseInt(request.getParameter("corso")));
-		Utente s = aDao.getByUsername((String)request.getSession().getAttribute("username")).getStudente();
-		
-		p.setCorso(c);
+		p.setDataAppello(da);
 		p.setStudente(s);
 		
 		p.setDataPrenotazione(Date.from(Instant.now()));
