@@ -100,7 +100,8 @@ public class StudenteDao implements StudenteInterface {
 		} catch (Exception e) {
 			session.getTransaction().rollback();
 		} finally{
-			session.close();
-		}	
+			session.close();	
+
+		}
 	}
 }
