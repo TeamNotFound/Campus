@@ -1,5 +1,8 @@
 # Campus
-Campus
-Prova connessione, pull, commit GIT 19.8.5
 
-Prova per Marco Piscopo
+Aggiornamento 23/08/2019:
+
+* Lavoro sulle entities 99%
+* Lavoro sui CRUD 80%
+* Lavoro sui Servlet 40%
+* Lavoro sulle jsp 20%
