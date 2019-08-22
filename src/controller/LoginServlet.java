@@ -10,6 +10,8 @@ import javax.servlet.http.HttpSession;
 
 import dao.implementations.AccountDao;
 import model.Account;
+import model.Professore;
+import model.Studente;
 
 /**
  * Servlet implementation class LoginServlet
@@ -45,7 +47,19 @@ public class LoginServlet extends HttpServlet {
 			
 			HttpSession session = request.getSession(true);
 			
-			session.setAttribute("username", a.getUsername());
+			session.setAttribute("account", a);
+			
+			if(a.getUtente() instanceof Studente){
+				session.setAttribute("studente", true);
+				
+			} else if (a.getUtente() instanceof Professore) {
+				session.setAttribute("studente", false);
+				
+				Professore p = (Professore) a.getUtente();
+				if(p.isRettore()) {
+					session.setAttribute("rettore", true);
+				}
+			}
 		}
 		response.sendRedirect("Login");
 	}
