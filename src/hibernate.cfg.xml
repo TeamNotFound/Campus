@@ -25,5 +25,7 @@
 		<mapping class="model.ProfessoriCorsi"/>
 		<mapping class="model.Professore"/>
 		<mapping class="model.DataAppello"/>
+		<mapping class="model.Esame"/>
+		
 	</session-factory>
 </hibernate-configuration>
