@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import org.hibernate.Session;
 
 import dao.interfaces.ProfessoriCorsi;
-import model.Studente;
+
 import util.HibernateUtil;
 
 public class ProfessoriCorsiDao implements ProfessoriCorsi {
