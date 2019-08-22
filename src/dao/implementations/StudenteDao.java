@@ -88,7 +88,21 @@ public class StudenteDao implements StudenteInterface {
 	}
 
 	@Override
-	public void remove(Utente element) {
+	public void remove(Utente utente) {
+		Session session=HibernateUtil.getSessionFactory().openSession();
 		
+		try {
+			session.beginTransaction();
+			
+			session.delete(utente);
+			
+			session.getTransaction();
+		}catch(Exception e) {
+			e.printStackTrace();
+			System.out.println("Errore remove in studente dao");
+			
+		}finally {
+			
+		}
 	}
 }
