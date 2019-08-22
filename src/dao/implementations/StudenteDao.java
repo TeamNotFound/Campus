@@ -5,12 +5,12 @@ import java.util.ArrayList;
 import org.hibernate.Session;
 
 import dao.interfaces.StudenteInterface;
-import model.Utente;
+import model.Studente;
 import util.HibernateUtil;
 
 public class StudenteDao implements StudenteInterface {
 
-	public void inserimento(Utente s){
+	public void inserimento(Studente s){
 		Session session = HibernateUtil.getSessionFactory().openSession();
 
 		try{
@@ -28,14 +28,14 @@ public class StudenteDao implements StudenteInterface {
 	}
 
 	@Override
-	public Utente getById(int id) {
+	public Studente getById(int id) {
 		Session session = HibernateUtil.getSessionFactory().openSession();
-		Utente studente;
+		Studente studente;
 		
 		try{
 			session.beginTransaction();
 
-			studente = (Utente) session.get(Utente.class, id);
+			studente = (Studente) session.get(Studente.class, id);
 
 			session.getTransaction().commit();
 
@@ -50,14 +50,14 @@ public class StudenteDao implements StudenteInterface {
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public ArrayList<Utente> getAll() {
+	public ArrayList<Studente> getAll() {
 		Session session = HibernateUtil.getSessionFactory().openSession();
-		ArrayList<Utente> studenti;
+		ArrayList<Studente> studenti;
 		
 		try{
 			session.beginTransaction();
 
-			studenti = (ArrayList<Utente>) session.createQuery("from Studente").list();
+			studenti = (ArrayList<Studente>) session.createQuery("from Studente").list();
 			
 			session.getTransaction().commit();
 
@@ -71,7 +71,7 @@ public class StudenteDao implements StudenteInterface {
 	}
 
 	@Override
-	public void update(Utente s) {
+	public void update(Studente s) {
 		Session session = HibernateUtil.getSessionFactory().openSession();
 
 		try{
@@ -88,7 +88,19 @@ public class StudenteDao implements StudenteInterface {
 	}
 
 	@Override
-	public void remove(Utente element) {
-		
+	public void remove(Studente s) {
+		Session session = HibernateUtil.getSessionFactory().openSession();
+
+		try{
+			session.beginTransaction();
+
+			session.delete(s);
+
+			session.getTransaction().commit();
+		} catch (Exception e) {
+			session.getTransaction().rollback();
+		} finally{
+			session.close();
+		}	
 	}
 }
