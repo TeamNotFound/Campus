@@ -4,25 +4,25 @@ import java.util.ArrayList;
 
 import org.hibernate.Session;
 
-import dao.interfaces.DataAppelloInterfaces;
-import model.DataAppello;
+import dao.interfaces.ProfessoriCorsi;
+import model.Studente;
 import util.HibernateUtil;
 
-public class DataAppelloDao implements DataAppelloInterfaces {
+public class ProfessoriCorsiDao implements ProfessoriCorsi {
 
 	@Override
-	public void inserimento(DataAppello dataAppello) {
+	public void inserimento(ProfessoriCorsi pc) {
 		Session session=HibernateUtil.getSessionFactory().openSession();
 		
 		try {
 			session.beginTransaction();
-		
-			session.save(dataAppello);
+			
+			session.save(pc);
 			
 			session.getTransaction().commit();
 		}catch(Exception e) {
-			System.out.println("Errore inserimento DataAppelloDao");
 			e.printStackTrace();
+			System.out.println("Errore inserimento ProfessoriCorsiDao");
 			session.getTransaction().rollback();
 		}finally {
 			session.close();
@@ -30,46 +30,21 @@ public class DataAppelloDao implements DataAppelloInterfaces {
 	}
 
 	@Override
-	public DataAppello getById(int id) {
-		// TODO Auto-generated method stub
+	public ProfessoriCorsi getById(int id) {
 		Session session=HibernateUtil.getSessionFactory().openSession();
-		DataAppello dataAppello;
-		
+		ProfessoriCorsi pc;
 		
 		try {
 			session.beginTransaction();
 			
-			dataAppello = (DataAppello) session.get(DataAppello.class, id);
+			pc = (ProfessoriCorsi) session.get(ProfessoriCorsi.class,id);
 			
 			session.getTransaction().commit();
 			
-			return dataAppello;
+			return pc;
 		}catch(Exception e) {
 			e.printStackTrace();
-			System.out.println("Errore getById in DataAppelloDao");
-			session.getTransaction().rollback();
-		}finally {
-			session.close();
-		}
-		return null;
-	}
-
-	@Override
-	public ArrayList<DataAppello> getAll() {
-		Session session=HibernateUtil.getSessionFactory().openSession();
-		ArrayList<DataAppello> appelli;
-		
-		try {
-			session.beginTransaction();
-			
-			appelli= (ArrayList<DataAppello>) session.createQuery("from DataApello").list();
-			
-			session.getTransaction().commit();
-			 
-			return appelli;
-		}catch(Exception e) {
-			e.printStackTrace();
-			System.out.println("Errore getAll in DataAppelloDao");
+			System.out.println("Erorre getById in ProfessoriCorsiDao");
 			session.getTransaction().rollback();
 			return null;
 		}finally {
@@ -78,42 +53,65 @@ public class DataAppelloDao implements DataAppelloInterfaces {
 	}
 
 	@Override
-	public void update(DataAppello dataAppello) {
-		
+	public ArrayList<ProfessoriCorsi> getAll() {
 		Session session=HibernateUtil.getSessionFactory().openSession();
-		
+		ArrayList<ProfessoriCorsi> pc;
 		try {
 			session.beginTransaction();
 			
-			session.update(dataAppello);
+			pc = (ArrayList<ProfessoriCorsi>) session.createQuery("form ProfessoriCorsi").list();
 			
 			session.getTransaction().commit();
+			
+			return pc;
 		}catch(Exception e) {
 			e.printStackTrace();
-			System.out.println("Errore update in DataAppelloDao");
+			System.out.println("Errore getAll in ProfessoriCorsiDao");
 			session.getTransaction().rollback();
+			return null;
 		}finally {
 			session.close();
 		}
 	}
 
 	@Override
-	public void remove(DataAppello dataAppello) {
+	public void update(ProfessoriCorsi pc) {
 		Session session=HibernateUtil.getSessionFactory().openSession();
 		
 		try {
 			session.beginTransaction();
 			
-			session.delete(dataAppello);
+			session.update(pc);
 			
 			session.getTransaction().commit();
 		}catch(Exception e) {
 			e.printStackTrace();
-			System.out.println("Errore remove in DataAppelloDao");
+			System.out.println("Errore update in ProfessoriCorsiDao");
 			session.getTransaction().rollback();
 		}finally {
 			session.close();
 		}
+		
+	}
+
+	@Override
+	public void remove(ProfessoriCorsi pc) {
+Session session=HibernateUtil.getSessionFactory().openSession();
+		
+		try {
+			session.beginTransaction();
+			
+			session.delete(pc);
+			
+			session.getTransaction().commit();
+		}catch(Exception e) {
+			e.printStackTrace();
+			System.out.println("Errore update in ProfessoriCorsiDao");
+			session.getTransaction().rollback();
+		}finally {
+			session.close();
+		}
+		
 	}
 
 }
