@@ -10,6 +10,9 @@ public class Professore extends Utente{
 	@Column()
 	private boolean rettore;
 	
+	@Column(name="titoli_di_studio")
+	private String titoliDiStudio;
+	
 	@OneToMany(mappedBy = "professore")
 	private Set<ProfessoriCorsi> professoriCorsi;
 	

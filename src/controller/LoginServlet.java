@@ -56,6 +56,7 @@ public class LoginServlet extends HttpServlet {
 				session.setAttribute("studente", false);
 				
 				Professore p = (Professore) a.getUtente();
+				System.out.println(p.isRettore());
 				if(p.isRettore()) {
 					session.setAttribute("rettore", true);
 				}
