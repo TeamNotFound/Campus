@@ -12,19 +12,36 @@
 <div class="header">
 	<ul>
 		<li class="left-side"><a href="#">Home</a></li>
-		<li class="left-side"><a href="CorsiFacolta">Corsi e Facoltà</a></li>
-		<li class="left-side"><a href="Prenotazione">Prenota Esame</a></li>
-
-	
+		
+		<c:if test="${account!=null}">
+			<c:choose>
+				<c:when test="${studente}">
+					<li class="left-side"><a href="Prenotazione">Prenotazione</a></li>
+					<li class="left-side"><a href="index.jsp">Visusalizza Esami</a></li>
+					<li class="left-side"><a href="index.jsp">Prenotazioni effettuate</a></li>
+				</c:when>
+				<c:otherwise>
+					<li class="left-side"><a href="index.jsp">Appelli</a></li>
+					<li class="left-side"><a href="index.jsp">Inserire risultato esame</a></li>
+					<li class="left-side"><a href="index.jsp">Visualizzare prenotazioni</a></li>
+				<c:if test="${rettore}">
+					<li class="left-side"><a href="CorsiFacolta">Corsi</a></li>
+					<li class="left-side"><a href="CorsiFacolta">Facolta</a></li>
+					<li class="left-side"><a href="index.jsp">Inserire professori</a></li>
+				</c:if>
+				</c:otherwise>
+			</c:choose>
+		</c:if>
+		
 		<c:choose>
-		<c:when test="${user.utente}">
+		<c:when test="${account==null}">
 			<li class="right-side"><a href="Login">Login</a></li>
 			<li class="right-side"><a href="Utente">Registrati</a></li>
 		</c:when>
 		<c:otherwise>
 			<li class="right-side"><a href="#">Log Out</a></li>
 		</c:otherwise>
-		</c:choose>
+		</c:choose>	
 	</ul>
 </div>
 <div class="header-distance">

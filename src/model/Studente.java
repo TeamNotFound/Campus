@@ -14,6 +14,9 @@ public class Studente extends Utente {
 	
 	@OneToMany(mappedBy = "studente")
 	private Set<Prenotazione> prenotazioni;
+	
+	@Column(name="titoli_di_studio")
+	private String titoliDiStudio;
 
 	public Facolta getFacolta() {
 		return facolta;
