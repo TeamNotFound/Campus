@@ -4,64 +4,64 @@ import java.util.ArrayList;
 
 import org.hibernate.Session;
 
-import dao.interfaces.StudenteInterface;
-import model.Studente;
+import dao.interfaces.EsameInterface;
+import model.Esame;
+import model.Facolta;
 import util.HibernateUtil;
 
-public class StudenteDao implements StudenteInterface {
-
-	public void inserimento(Studente s){
+public class EsameDao implements EsameInterface{
+	public void inserimento(Esame e){
 		Session session = HibernateUtil.getSessionFactory().openSession();
 
 		try{
 			session.beginTransaction();
 
-			session.save(s);
+			session.save(e);
 
 			session.getTransaction().commit();
-		} catch (Exception e) {
-			e.printStackTrace();
+		} catch (Exception ex) {
+			ex.printStackTrace();
 			session.getTransaction().rollback();
 		} finally{
 			session.close();
 		}
 	}
-
+	
 	@Override
-	public Studente getById(int id) {
+	public Esame getById(int id){
 		Session session = HibernateUtil.getSessionFactory().openSession();
-		Studente studente;
+		Esame esame;
 		
 		try{
 			session.beginTransaction();
-
-			studente = (Studente) session.get(Studente.class, id);
-
+						
+			esame = (Esame) session.get(Facolta.class, id);
+						
 			session.getTransaction().commit();
 
-			return studente;
+			return esame;
 		} catch (Exception e) {
 			System.out.println("Error in getAll()");
+			e.printStackTrace();
 			return null;
 		} finally {
 			session.close();
 		}
 	}
-
 	@SuppressWarnings("unchecked")
 	@Override
-	public ArrayList<Studente> getAll() {
+	public ArrayList<Esame> getAll() {
 		Session session = HibernateUtil.getSessionFactory().openSession();
-		ArrayList<Studente> studenti;
+		ArrayList<Esame> esami;
 		
 		try{
 			session.beginTransaction();
 
-			studenti = (ArrayList<Studente>) session.createQuery("from Studente").list();
+			esami = (ArrayList<Esame>) session.createQuery("from Esame").list();
 			
 			session.getTransaction().commit();
 
-			return studenti;
+			return esami;
 		} catch (Exception e) {
 			System.out.println("Error in getAll()");
 			return null;
@@ -69,18 +69,17 @@ public class StudenteDao implements StudenteInterface {
 			session.close();
 		}
 	}
-
 	@Override
-	public void update(Studente s) {
+	public void update(Esame e) {
 		Session session = HibernateUtil.getSessionFactory().openSession();
 
 		try{
 			session.beginTransaction();
 
-			session.update(s);
+			session.update(e);
 
 			session.getTransaction().commit();
-		} catch (Exception e) {
+		} catch (Exception ex) {
 			session.getTransaction().rollback();
 		} finally{
 			session.close();
@@ -88,19 +87,7 @@ public class StudenteDao implements StudenteInterface {
 	}
 
 	@Override
-	public void remove(Studente s) {
-		Session session = HibernateUtil.getSessionFactory().openSession();
-
-		try{
-			session.beginTransaction();
-
-			session.delete(s);
-
-			session.getTransaction().commit();
-		} catch (Exception e) {
-			session.getTransaction().rollback();
-		} finally{
-			session.close();
-		}	
+	public void remove(Esame element) {
+		
 	}
 }

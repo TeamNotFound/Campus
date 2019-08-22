@@ -1,7 +1,7 @@
 package dao.interfaces;
 
-import model.Utente;
+import model.Studente;
 
-public interface StudenteInterface extends CRUDInterface<Utente> {
+public interface StudenteInterface extends CRUDInterface<Studente> {
 
 }
