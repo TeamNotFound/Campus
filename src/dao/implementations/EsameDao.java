@@ -87,7 +87,19 @@ public class EsameDao implements EsameInterface{
 	}
 
 	@Override
-	public void remove(Esame element) {
-		
+	public void remove(Esame e) {
+		Session session = HibernateUtil.getSessionFactory().openSession();
+
+		try{
+			session.beginTransaction();
+
+			session.delete(e);
+
+			session.getTransaction().commit();
+		} catch (Exception ex) {
+			session.getTransaction().rollback();
+		} finally{
+			session.close();
+		}		
 	}
 }
