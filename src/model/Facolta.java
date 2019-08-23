@@ -27,6 +27,9 @@ public class Facolta {
 	@OneToMany(mappedBy="facolta", fetch=FetchType.EAGER)
 	private Set<Studente> studenti;
 	
+	@OneToMany(mappedBy = "facolta")
+	private Set<ProfessoriCorsi> cattedre;
+	
 	@ManyToMany(fetch=FetchType.LAZY)
     @JoinTable(
         name = "corsi_facolta", 
