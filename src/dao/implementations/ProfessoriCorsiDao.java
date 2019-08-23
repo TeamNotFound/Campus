@@ -4,11 +4,11 @@ import java.util.ArrayList;
 
 import org.hibernate.Session;
 
-import dao.interfaces.ProfessoriCorsi;
-
+import dao.interfaces.ProfessoriCorsiInterface;
+import model.ProfessoriCorsi;
 import util.HibernateUtil;
 
-public class ProfessoriCorsiDao implements ProfessoriCorsi {
+public class ProfessoriCorsiDao implements ProfessoriCorsiInterface {
 
 	@Override
 	public void inserimento(ProfessoriCorsi pc) {

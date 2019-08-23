@@ -51,14 +51,19 @@ public class LoginServlet extends HttpServlet {
 			
 			if(a.getUtente() instanceof Studente){
 				session.setAttribute("studente", true);
+				session.setAttribute("rettore", false);
 				
 			} else if (a.getUtente() instanceof Professore) {
 				session.setAttribute("studente", false);
 				
 				Professore p = (Professore) a.getUtente();
 				System.out.println(p.isRettore());
+				
 				if(p.isRettore()) {
 					session.setAttribute("rettore", true);
+				} else {
+					session.setAttribute("rettore", false);
+
 				}
 			}
 		}
