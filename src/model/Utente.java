@@ -9,7 +9,8 @@ import javax.persistence.*;
 public abstract class Utente {
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.TABLE)
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "generator")
+	@TableGenerator(name = "generator", table = "hibernate_sequences", initialValue = 2)
 	private int id;
 	
 	@Column

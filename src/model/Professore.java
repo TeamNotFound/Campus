@@ -19,6 +19,14 @@ public class Professore extends Utente{
 	@OneToMany(mappedBy="professore")
 	private Set<DataAppello> appelli;
 	
+	public String getTitoliDiStudio() {
+		return titoliDiStudio;
+	}
+
+	public void setTitoliDiStudio(String titoliDiStudio) {
+		this.titoliDiStudio = titoliDiStudio;
+	}
+
 	public boolean isRettore() {
 		return rettore;
 	}
