@@ -19,7 +19,7 @@ public class ProfessoreDao implements ProfessoreInterface {
 		try{
 			session.beginTransaction();
  
-			professore = (Professore) session.get(Utente.class, id);
+			professore = (Professore) session.get(Professore.class, id);
 
 			Hibernate.initialize(professore.getProfessoriCorsi());
 			
@@ -27,7 +27,7 @@ public class ProfessoreDao implements ProfessoreInterface {
 
 			return professore;
 		} catch (Exception e) {
-			System.out.println("Error in getAll()");
+			e.printStackTrace();
 			return null;
 		} finally {
 			session.close();

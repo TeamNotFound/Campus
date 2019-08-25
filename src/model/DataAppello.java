@@ -133,6 +133,12 @@ public class DataAppello {
 	public DataAppello() {
 		super();
 	}
+
+	@Override
+	public String toString() {
+		return "DataAppello [id=" + id + ", corso=" + corso + ", facolta=" + facolta + ", professore=" + professore
+				+ ", prenotazioni=" + prenotazioni + ", dataAppello=" + dataAppello + "]";
+	}
 	
 	
 }

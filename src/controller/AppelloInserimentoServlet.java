@@ -12,17 +12,20 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import dao.implementations.CorsoDao;
 import dao.implementations.DataAppelloDao;
+import dao.implementations.FacoltaDao;
 import dao.implementations.ProfessoreDao;
 import model.Account;
 import model.DataAppello;
 import model.Professore;
+import model.ProfessoriCorsi;
 import model.Utente;
 
 /**
  * Servlet implementation class AppelloInserimentoServlet
  */
-@WebServlet("/AppelloInserimentoServlet")
+@WebServlet("/AppelloInserimento")
 public class AppelloInserimentoServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -45,7 +48,7 @@ public class AppelloInserimentoServlet extends HttpServlet {
 		
 		request.setAttribute("cattedre", pd.getByIdWithCorsi(u.getId()).getProfessoriCorsi());
 		
-		response.sendRedirect("dataAppelloForm.jsp");
+		request.getRequestDispatcher("dataAppelloForm.jsp").forward(request, response);
 	}
 
 	/**
@@ -54,8 +57,11 @@ public class AppelloInserimentoServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		//instanziazione
-		DataAppello da = new DataAppello();
 		DataAppelloDao dad = new DataAppelloDao();
+		FacoltaDao fDao = new FacoltaDao();
+		CorsoDao cDao = new CorsoDao();
+		
+		DataAppello da = new DataAppello();
 		
 		
 		Professore pf = (Professore) ((Account) request.getSession().getAttribute("account")).getUtente();
@@ -70,6 +76,11 @@ public class AppelloInserimentoServlet extends HttpServlet {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		
+		String[] values = request.getParameter("cattedra").split("-");
+		
+		da.setFacolta(fDao.getById(Integer.parseInt(values[0])));
+		da.setCorso(cDao.getById(Integer.parseInt(values[1])));
 		
 		//setting della data e reindirizzamento
 		if(dataDaInserire != null) {

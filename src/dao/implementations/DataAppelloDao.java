@@ -62,7 +62,7 @@ public class DataAppelloDao implements DataAppelloInterfaces {
 		try {
 			session.beginTransaction();
 			
-			appelli= (ArrayList<DataAppello>) session.createQuery("from DataApello").list();
+			appelli= (ArrayList<DataAppello>) session.createQuery("from DataAppello").list();
 			
 			session.getTransaction().commit();
 			 

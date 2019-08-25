@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+<%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,11 +15,14 @@
 <hr>
 
 <h2>Aggiungi facolta e corso </h2>
-<form action="AppelloInserimentoServlet" method="post">
+
+
+
+<form action="AppelloInserimento" method="post">
 
 	<select name="cattedra">
 	<c:forEach items="${cattedre}" var="c">
-		<option value="${c.facolta.id}-${c.corso.id}">${c.facolta} - ${c.corso}</option>
+		<option value="${c.facolta.id}-${c.corso.id}">${c.facolta.facolta} - ${c.corso.corso}</option>
 	</c:forEach>
 	</select>
 
