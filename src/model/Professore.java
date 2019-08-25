@@ -51,12 +51,14 @@ public class Professore extends Utente{
 		this.appelli = appelli;
 	}
 	
+	
+	
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = super.hashCode();
-		result = prime * result + ((professoriCorsi == null) ? 0 : professoriCorsi.hashCode());
 		result = prime * result + (rettore ? 1231 : 1237);
+		result = prime * result + ((titoliDiStudio == null) ? 0 : titoliDiStudio.hashCode());
 		return result;
 	}
 
@@ -69,12 +71,12 @@ public class Professore extends Utente{
 		if (getClass() != obj.getClass())
 			return false;
 		Professore other = (Professore) obj;
-		if (professoriCorsi == null) {
-			if (other.professoriCorsi != null)
-				return false;
-		} else if (!professoriCorsi.equals(other.professoriCorsi))
-			return false;
 		if (rettore != other.rettore)
+			return false;
+		if (titoliDiStudio == null) {
+			if (other.titoliDiStudio != null)
+				return false;
+		} else if (!titoliDiStudio.equals(other.titoliDiStudio))
 			return false;
 		return true;
 	}

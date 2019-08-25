@@ -8,7 +8,7 @@ import javax.persistence.*;
 @Table(name="professori_corsi")
 public class ProfessoriCorsi {
 	@Embeddable
-	private class Id implements Serializable{
+	private static class Id implements Serializable{
 		private static final long serialVersionUID = 1L;
 		
 		
@@ -17,6 +17,18 @@ public class ProfessoriCorsi {
 		private int corso_id;
 		
 		private int facolta_id;
+		
+		public Id() {
+			super();
+		}
+		
+		public Id(int professore_id, int corso_id, int facolta_id) {
+			super();
+			this.professore_id = professore_id;
+			this.corso_id = corso_id;
+			this.facolta_id = facolta_id;
+		}
+
 
 		public int getProfessore_id() {
 			return professore_id;
@@ -42,11 +54,12 @@ public class ProfessoriCorsi {
 			this.facolta_id = facolta_id;
 		}
 
+		
+		
 		@Override
 		public int hashCode() {
 			final int prime = 31;
 			int result = 1;
-			result = prime * result + getEnclosingInstance().hashCode();
 			result = prime * result + corso_id;
 			result = prime * result + facolta_id;
 			result = prime * result + professore_id;
@@ -62,8 +75,6 @@ public class ProfessoriCorsi {
 			if (getClass() != obj.getClass())
 				return false;
 			Id other = (Id) obj;
-			if (!getEnclosingInstance().equals(other.getEnclosingInstance()))
-				return false;
 			if (corso_id != other.corso_id)
 				return false;
 			if (facolta_id != other.facolta_id)
@@ -71,10 +82,6 @@ public class ProfessoriCorsi {
 			if (professore_id != other.professore_id)
 				return false;
 			return true;
-		}
-
-		private ProfessoriCorsi getEnclosingInstance() {
-			return ProfessoriCorsi.this;
 		}
 
 		@Override

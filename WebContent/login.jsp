@@ -9,6 +9,8 @@
 <title>Insert title here</title>
 </head>
 <body>
+<%@ include file="/templates/header.jspf" %>
+
 <c:choose>
 <c:when test="${username != null}">
 	Welcome! ${username}!
