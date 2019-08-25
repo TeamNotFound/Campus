@@ -1,6 +1,8 @@
 package controller;
 
 import java.io.IOException;
+import java.sql.Date;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -13,21 +15,19 @@ import dao.implementations.StudenteDao;
 import dao.interfaces.FacoltaInterface;
 import dao.interfaces.StudenteInterface;
 import model.Account;
-import model.Facolta;
 import model.Studente;
-import model.Utente;
 
 /**
  * Servlet implementation class InserimentoStudenteServlet
  */
-@WebServlet("/Utente")
-public class InserimentoUtenteServlet extends HttpServlet {
+@WebServlet("/Studente")
+public class InserimentoStudenteServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public InserimentoUtenteServlet() {
+    public InserimentoStudenteServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -37,11 +37,10 @@ public class InserimentoUtenteServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		FacoltaDao dao = new FacoltaDao();
-		
 
 		request.setAttribute("facolta", dao.getAll());
 		
-		request.getRequestDispatcher("userForm.jsp").forward(request, response);
+		request.getRequestDispatcher("studenteForm.jsp").forward(request, response);
 	}
 
 	/**
@@ -51,26 +50,54 @@ public class InserimentoUtenteServlet extends HttpServlet {
 		FacoltaInterface facDao = new FacoltaDao();
 		StudenteInterface stuDao = new StudenteDao();
 		
-		
 		Studente s = new Studente();
-		s.setNome(request.getParameter("nome"));
-		s.setCognome(request.getParameter("cognome"));
-		
-		Facolta f = facDao.getById(Integer.parseInt(request.getParameter("facolta")));
-		s.setFacolta(f);
-		
-		
-
 		Account a = new Account();
 		
-		a.setUsername(request.getParameter("username"));
-		a.setPassword(request.getParameter("password"));
+		if(!request.getParameter("nome").equals("")) {
+			s.setNome(request.getParameter("nome"));
+		}
 		
-		a.setUtente(s);
+		if(!request.getParameter("cognome").equals("")) {
+			s.setCognome(request.getParameter("cognome"));
+		}
+		
+		if(!request.getParameter("nascita-luogo").equals("")) {
+			s.setLuogoNascita(request.getParameter("nome"));
+		}
+		
+		if(!request.getParameter("nascita-data").equals("")) {
+			s.setDataNascita(Date.valueOf(request.getParameter("nascita-data")));
+		}
+		
+		if(!request.getParameter("sesso").equals("")) {
+			if(request.getParameter("sesso").equals("uomo")) {
+				s.setUomo(true);
+			} else {
+				s.setUomo(false);
+			}
+		}
+		
+		if(!request.getParameter("fiscale").equals("")) {
+			s.setCodiceFiscale(request.getParameter("fiscale"));
+		}
+		
+		if(!request.getParameter("facolta").equals("")) {
+			s.setFacolta(facDao.getById(Integer.parseInt(request.getParameter("facolta"))));
+		}
+
+		if(!request.getParameter("username").equals("")) {
+			a.setUsername(request.getParameter("username"));
+		}
+		
+		if(!request.getParameter("password").equals("")) {
+			a.setPassword(request.getParameter("password"));
+		}
+		
+		s.setAccount(a);
 				
 		stuDao.inserimento(s);
 
-		response.sendRedirect("Utente");
+		response.sendRedirect("Studente");
 	}
 
 }
