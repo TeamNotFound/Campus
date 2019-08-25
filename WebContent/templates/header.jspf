@@ -15,7 +15,7 @@
 		
 		<c:if test="${account!=null}">
 			<c:choose>
-				<c:when test="${studente}">
+				<c:when test="${sessionScope.studente}">
 					<li class="left-side"><a href="Prenotazione">Prenotazione</a></li>
 					<li class="left-side"><a href="index.jsp">Visusalizza Esami</a></li>
 					<li class="left-side"><a href="index.jsp">Prenotazioni effettuate</a></li>
@@ -24,18 +24,18 @@
 					<li class="left-side"><a href="dataAppelloForm.jsp">Inserimento appelli</a></li>
 					<li class="left-side"><a href="index.jsp">Inserire risultato esame</a></li>
 					<li class="left-side"><a href="index.jsp">Visualizzare prenotazioni</a></li>
-				<c:if test="${rettore}">
+				<c:if test="${sessionScope.rettore}">
 					<li class="left-side"><a href="CorsiFacolta">Corsi</a></li>
 					<li class="left-side"><a href="CorsiFacolta">Facolta</a></li>
-					<li class="left-side"><a href="index.jsp">Inserire professori</a></li>
-					<li class="left-side"><a href="index.jsp">Assegnazione Cattedra</a></li>
+					<li class="left-side"><a href="/Campus/InserimentoProfessore">Inserire professori</a></li>
+					<li class="left-side"><a href="/Campus/AssegnazioneCattedra">Assegnazione Cattedra</a></li>
 				</c:if>
 				</c:otherwise>
 			</c:choose>
 		</c:if>
 		
 		<c:choose>
-		<c:when test="${account==null}">
+		<c:when test="${sessionScope.account==null}">
 			<li class="right-side"><a href="Login">Login</a></li>
 			<li class="right-side"><a href="Utente">Registrati</a></li>
 		</c:when>

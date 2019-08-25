@@ -83,5 +83,11 @@ public class Professore extends Utente{
 		super();
 		rettore=false;
 	}
+
+	@Override
+	public String toString() {
+		return super.toString() + "Professore [rettore=" + rettore + ", titoliDiStudio=" + titoliDiStudio + "]";
+	}
+	
 	
 }

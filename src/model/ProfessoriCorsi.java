@@ -85,7 +85,7 @@ public class ProfessoriCorsi {
 		
 	}
 	@EmbeddedId
-	private Id id;
+	private Id id = new Id();
 	
 	@ManyToOne
 	@MapsId("professore_id")

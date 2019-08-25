@@ -61,13 +61,14 @@ public class ProfessoreDao implements ProfessoreInterface {
 		try{
 			session.beginTransaction();
  
-			professore = (Professore) session.get(Utente.class, id);
+			professore = (Professore) session.get(Professore.class, id);
 
 			session.getTransaction().commit();
 
 			return professore;
 		} catch (Exception e) {
-			System.out.println("Error in getAll()");
+			System.out.println("Error in getById()");
+			e.printStackTrace();
 			return null;
 		} finally {
 			session.close();
