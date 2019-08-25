@@ -21,7 +21,7 @@
 					<li class="left-side"><a href="index.jsp">Prenotazioni effettuate</a></li>
 				</c:when>
 				<c:otherwise>
-					<li class="left-side"><a href="index.jsp">Appelli</a></li>
+					<li class="left-side"><a href="dataAppelloForm.jsp">Inserimento appelli</a></li>
 					<li class="left-side"><a href="index.jsp">Inserire risultato esame</a></li>
 					<li class="left-side"><a href="index.jsp">Visualizzare prenotazioni</a></li>
 				<c:if test="${rettore}">
