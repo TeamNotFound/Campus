@@ -37,7 +37,7 @@
 		<c:choose>
 		<c:when test="${sessionScope.account==null}">
 			<li class="right-side"><a href="Login">Login</a></li>
-			<li class="right-side"><a href="Utente">Registrati</a></li>
+			<li class="right-side"><a href="Studente">Registrati</a></li>
 		</c:when>
 		<c:otherwise>
 			<li class="right-side"><a href="#">Log Out</a></li>

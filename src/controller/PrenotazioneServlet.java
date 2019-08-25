@@ -21,7 +21,6 @@ import model.Corso;
 import model.DataAppello;
 import model.Prenotazione;
 import model.Studente;
-import model.Utente;
 
 /**
  * Servlet implementation class PrenotazioneServlet
