@@ -10,7 +10,7 @@ public abstract class Utente {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.TABLE, generator = "generator")
-	@TableGenerator(name = "generator", table = "hibernate_sequences", initialValue = 2)
+	@TableGenerator(name = "generator", table = "hibernate_sequences",pkColumnName = "sequence", valueColumnName = "value", initialValue = 2)
 	private int id;
 	
 	@Column
