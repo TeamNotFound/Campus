@@ -31,7 +31,6 @@ public class DataAppello {
 	@Column(name="data_appello")
 	private Date dataAppello;
 	
-	
 	public int getId() {
 		return id;
 	}
@@ -64,11 +63,32 @@ public class DataAppello {
 		this.prenotazioni = prenotazioni;
 	}
 
+	
+	
+	public Date getDataAppello() {
+		return dataAppello;
+	}
+
+	public void setDataAppello(Date dataAppello) {
+		this.dataAppello = dataAppello;
+	}
+	
+	public Professore getProfessore() {
+		return professore;
+	}
+
+	public void setProfessore(Professore professore) {
+		this.professore = professore;
+	}
+
+	
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((corso == null) ? 0 : corso.hashCode());
+		result = prime * result + ((dataAppello == null) ? 0 : dataAppello.hashCode());
 		result = prime * result + ((facolta == null) ? 0 : facolta.hashCode());
 		result = prime * result + id;
 		return result;
@@ -87,6 +107,11 @@ public class DataAppello {
 			if (other.corso != null)
 				return false;
 		} else if (!corso.equals(other.corso))
+			return false;
+		if (dataAppello == null) {
+			if (other.dataAppello != null)
+				return false;
+		} else if (!dataAppello.equals(other.dataAppello))
 			return false;
 		if (facolta == null) {
 			if (other.facolta != null)
@@ -108,6 +133,12 @@ public class DataAppello {
 
 	public DataAppello() {
 		super();
+	}
+
+	@Override
+	public String toString() {
+		return "DataAppello [id=" + id + ", corso=" + corso + ", facolta=" + facolta + ", professore=" + professore
+				+ ", prenotazioni=" + prenotazioni + ", dataAppello=" + dataAppello + "]";
 	}
 	
 	
