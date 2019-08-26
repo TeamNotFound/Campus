@@ -16,7 +16,6 @@ public class DataAppello {
 	@JoinColumn (name="corso_id")
 	private Corso corso;
 	
-	
 	@ManyToOne
 	@JoinColumn (name="facolta_id")
 	private Facolta facolta;
@@ -54,7 +53,7 @@ public class DataAppello {
 	public void setFacolta(Facolta facolta) {
 		this.facolta = facolta;
 	}
-
+	
 	public Set<Prenotazione> getPrenotazioni() {
 		return prenotazioni;
 	}
@@ -137,8 +136,7 @@ public class DataAppello {
 
 	@Override
 	public String toString() {
-		return "DataAppello [id=" + id + ", corso=" + corso + ", facolta=" + facolta + ", professore=" + professore
-				+ ", prenotazioni=" + prenotazioni + ", dataAppello=" + dataAppello + "]";
+		return "DataAppello [id=" + id +", dataAppello=" + dataAppello + "]";
 	}
 	
 	

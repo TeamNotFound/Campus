@@ -18,21 +18,21 @@
 <c:forEach items="${professori}" var="prof">
 	<option value="${prof.id}">${prof.nome} ${prof.cognome}</option>
 </c:forEach>
-</select><br>
+</select><br><br>
 
 <label for="facolta">Facoltà:</label>
 <select id="facolta" name="facolta">
 <c:forEach items="${facolta}" var="fac">
 	<option value="${fac.id}">${fac.facolta}</option>
 </c:forEach>
-</select><br>
+</select><br><br>
 
 <label for="corso">Corso:</label>
 <select id="corso" name="corso">
 <c:forEach items="${corsi}" var="corso">
 	<option value="${corso.id}">${corso.corso}</option>
 </c:forEach>
-</select><br>
+</select><br><br>
 
 <input type="submit"/>
 

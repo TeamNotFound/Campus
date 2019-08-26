@@ -1,8 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-<%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
     
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
+<!DOCTYPE html>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
@@ -10,11 +10,17 @@
 </head>
 <body>
 <%@ include file="/templates/header.jspf" %>
-<h1>${facolta.facolta}</h1>
-<c:forEach items="${facolta.corsi }" var="c">
-<a href="/Campus/Prenotazione/Corso/${c.id }"> ${c.corso} </a> <br>
-
-	
+<table>
+	<tr>
+		<th>Data</th>
+		<th>Prenota</th>
+	</tr>
+<c:forEach items="${date}" var="d">
+	<tr>
+		<td>${d.dataAppello}</td>
+		<td><a href="*">Prenota</a></td>
+	</tr>
 </c:forEach>
+</table>
 </body>
 </html>

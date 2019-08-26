@@ -8,6 +8,7 @@
 <title>Insert title here</title>
 </head>
 <body>
+<%@ include file="/templates/header.jspf" %>
 <form action="Studente" method="post">
 <label for="nome">Nome: </label><br>
 <input id="nome" name="nome" type="text"><br>

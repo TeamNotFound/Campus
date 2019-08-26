@@ -8,6 +8,7 @@
 <title>Insert title here</title>
 </head>
 <body>
+<%@ include file="/templates/header.jspf" %>
 <h1>${facolta.facolta}</h1>
 <table>
 <tr>

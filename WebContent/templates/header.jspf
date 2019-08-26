@@ -16,7 +16,7 @@
 		<c:if test="${account!=null}">
 			<c:choose>
 				<c:when test="${sessionScope.studente}">
-					<li class="left-side"><a href="Prenotazione">Prenotazione</a></li>
+					<li class="left-side"><a href="/Campus/Prenotazione">Prenotazione</a></li>
 					<li class="left-side"><a href="index.jsp">Visusalizza Esami</a></li>
 					<li class="left-side"><a href="index.jsp">Prenotazioni effettuate</a></li>
 				</c:when>
@@ -28,7 +28,7 @@
 					<li class="left-side"><a href="CorsiFacolta">Corsi e Facolta</a></li>
 					<li class="left-side"><a href="/Campus/InserimentoProfessore">Inserire professori</a></li>
 					<li class="left-side"><a href="/Campus/GestioneProfessori">Gestione professori</a></li>
-					<li class="left-side"><a href="/Campus/AssegnazioneCattedra">Assegnazione Cattedra</a></li>
+					<li class="left-side"><a href="/Campus/AssegnazioneCattedra">Gestione Cattedre</a></li>
 				</c:if>
 				</c:otherwise>
 			</c:choose>

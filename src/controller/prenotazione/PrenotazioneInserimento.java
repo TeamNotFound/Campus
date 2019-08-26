@@ -26,7 +26,7 @@ import model.Studente;
 /**
  * Servlet implementation class PrenotazioneInserimento
  */
-@WebServlet("/PrenotazioneInserimento")
+@WebServlet("/Prenotazione")
 public class PrenotazioneInserimento extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -47,9 +47,9 @@ public class PrenotazioneInserimento extends HttpServlet {
 		Account s =(Account) request.getSession().getAttribute("account");
 		Facolta f = fDao.getByIdWithCorsi(((Studente) s.getUtente()).getFacolta().getId());
 		
-		request.setAttribute("corsi", f.getCorsi());
+		request.setAttribute("facolta", f);
 		
-		request.getRequestDispatcher("visualizzaCorsiPrenotazione.jsp").forward(request, response);
+		request.getRequestDispatcher("prenotazioniForm.jsp").forward(request, response);
 	}
 
 	/**

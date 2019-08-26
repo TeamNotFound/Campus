@@ -1,6 +1,7 @@
 package dao.implementations;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import org.hibernate.Session;
 
@@ -111,6 +112,33 @@ public class DataAppelloDao implements DataAppelloInterfaces {
 			e.printStackTrace();
 			System.out.println("Errore remove in DataAppelloDao");
 			session.getTransaction().rollback();
+		}finally {
+			session.close();
+		}
+	}
+
+	@Override
+	public List<DataAppello> getByFacoltaAndCorso(int idFacolta, int idCorso) {
+		Session session=HibernateUtil.getSessionFactory().openSession();
+		ArrayList<DataAppello> appelli;
+		
+		try {
+			session.beginTransaction();
+			
+			appelli= (ArrayList<DataAppello>) session
+					.createQuery("from DataAppello where facolta_id = :facolta and corso_id = :corso")
+					.setParameter("facolta", idFacolta)
+					.setParameter("corso", idCorso)
+					.list();
+			
+			session.getTransaction().commit();
+			 
+			return appelli;
+		}catch(Exception e) {
+			e.printStackTrace();
+			System.out.println("Errore getAll in DataAppelloDao");
+			session.getTransaction().rollback();
+			return null;
 		}finally {
 			session.close();
 		}
