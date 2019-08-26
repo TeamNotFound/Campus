@@ -1,6 +1,8 @@
 package controller.corsiFacolta;
 
 import java.io.IOException;
+import java.util.HashMap;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -9,9 +11,12 @@ import javax.servlet.http.HttpServletResponse;
 
 import dao.implementations.CorsoDao;
 import dao.implementations.FacoltaDao;
+import dao.implementations.ProfessoriCorsiDao;
 import dao.interfaces.CorsoInterface;
 import dao.interfaces.FacoltaInterface;
+import dao.interfaces.ProfessoriCorsiInterface;
 import model.Facolta;
+import model.ProfessoriCorsi;
 
 /**
  * Servlet implementation class FacoltaVisualizzaServlet
@@ -39,8 +44,14 @@ public class FacoltaVisualizzaServlet extends HttpServlet {
 		
 		int id = Integer.parseInt(request.getPathInfo().substring(1));
 		
-		Facolta f = dao.getByIdWithCorsi(id);
-					
+		Facolta f = dao.getByIdWithCorsiAndCattedre(id);
+		
+		HashMap<Integer, String> profCorsi = new HashMap<Integer, String>();
+		for(ProfessoriCorsi pc : f.getCattedre()) {
+			profCorsi.put(pc.getCorso().getId(), pc.getProfessore().getFullName());
+		}
+		
+		request.setAttribute("cattedre", profCorsi);
 		request.setAttribute("facolta", f);
 		request.setAttribute("corsi", cDao.getAll());
 		

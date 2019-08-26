@@ -1,6 +1,10 @@
 package dao.implementations;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
 
 import org.hibernate.Session;
 
@@ -73,6 +77,9 @@ public class ProfessoriCorsiDao implements ProfessoriCorsiInterface {
 			session.close();
 		}
 	}
+	
+
+	
 
 	@Override
 	public void update(ProfessoriCorsi pc) {
@@ -113,5 +120,6 @@ Session session=HibernateUtil.getSessionFactory().openSession();
 		}
 		
 	}
+
 
 }
