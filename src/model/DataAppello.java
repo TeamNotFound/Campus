@@ -27,7 +27,7 @@ public class DataAppello {
 	@OneToMany (mappedBy="dataAppello")
 	private Set <Prenotazione> prenotazioni;
 	
-	@Column (name="dataAppello")
+	@Column(name="data_appello")
 	private Date dataAppello;
 	
 	public int getId() {
@@ -53,7 +53,7 @@ public class DataAppello {
 	public void setFacolta(Facolta facolta) {
 		this.facolta = facolta;
 	}
-
+	
 	public Set<Prenotazione> getPrenotazioni() {
 		return prenotazioni;
 	}
@@ -136,8 +136,7 @@ public class DataAppello {
 
 	@Override
 	public String toString() {
-		return "DataAppello [id=" + id + ", corso=" + corso + ", facolta=" + facolta + ", professore=" + professore
-				+ ", prenotazioni=" + prenotazioni + ", dataAppello=" + dataAppello + "]";
+		return "DataAppello [id=" + id +", dataAppello=" + dataAppello + "]";
 	}
 	
 	

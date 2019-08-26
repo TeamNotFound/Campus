@@ -111,7 +111,7 @@ public class Corso {
 
 	@Override
 	public String toString() {
-		return "Corso [id=" + id + ", prenotazioni="  + ", facolta=" + facolta + "]";
+		return "Corso [id=" + id + ", prenotazioni="  + "]";
 	}
 	
 	
