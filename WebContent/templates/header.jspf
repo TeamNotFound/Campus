@@ -25,9 +25,9 @@
 					<li class="left-side"><a href="index.jsp">Inserire risultato esame</a></li>
 					<li class="left-side"><a href="index.jsp">Visualizzare prenotazioni</a></li>
 				<c:if test="${sessionScope.rettore}">
-					<li class="left-side"><a href="CorsiFacolta">Corsi</a></li>
-					<li class="left-side"><a href="CorsiFacolta">Facolta</a></li>
+					<li class="left-side"><a href="CorsiFacolta">Corsi e Facolta</a></li>
 					<li class="left-side"><a href="/Campus/InserimentoProfessore">Inserire professori</a></li>
+					<li class="left-side"><a href="/Campus/GestioneProfessori">Gestione professori</a></li>
 					<li class="left-side"><a href="/Campus/AssegnazioneCattedra">Assegnazione Cattedra</a></li>
 				</c:if>
 				</c:otherwise>

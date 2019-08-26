@@ -15,8 +15,10 @@ import dao.interfaces.CorsoInterface;
 import dao.interfaces.FacoltaInterface;
 import dao.interfaces.PrenotazioneInterface;
 import dao.interfaces.StudenteInterface;
+import model.Account;
 import model.Facolta;
 import model.Prenotazione;
+import model.Studente;
 
 /**
  * Servlet implementation class PrenotazioneVisualizza
@@ -37,14 +39,15 @@ public class PrenotazioneVisualizza extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		PrenotazioneInterface daop = new PrenotazioneDao ();
+		
 		StudenteInterface daos = new StudenteDao ();
 	
 		
-		int id = Integer.parseInt(request.getPathInfo().substring(1));
+		Account s =(Account) request.getSession().getAttribute("account");
+
+		Studente st = daos.getByIdWithPrenotazioni(s.getUtente().getId());
 		
-		
-		
+		request.setAttribute("prenotazioni", st.getPrenotazioni() );
 		request.getRequestDispatcher("prenotazione.jsp").forward(request, response);
 	}
 
