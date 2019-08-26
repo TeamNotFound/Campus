@@ -1,6 +1,6 @@
 # Campus
 
-Aggiornamento 23/08/2019:
+Aggiornamento 26/08/2019:
 
 * Lavoro sulle entities 99%
 * Lavoro sui CRUD 80%
