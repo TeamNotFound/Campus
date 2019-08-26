@@ -141,6 +141,31 @@ public class FacoltaDao implements FacoltaInterface{
 		}
 	}
 	
+	@Override
+	public Facolta getByIdWithCorsiAndCattedre(int id) {
+		Session session = HibernateUtil.getSessionFactory().openSession();
+		Facolta facolta;
+		
+		try{
+			session.beginTransaction();
+						
+			facolta = (Facolta) session.get(Facolta.class, id);
+			
+			Hibernate.initialize(facolta.getCorsi());
+			Hibernate.initialize(facolta.getCattedre());
+			
+			session.getTransaction().commit();
+
+			return facolta;
+		} catch (Exception e) {
+			System.out.println("Error in getAll()");
+			e.printStackTrace();
+			return null;
+		} finally {
+			session.close();
+		}
+	}
+	
 	// Metodo di update per la facoltà, in hibernate tutti i metodi di update 
 	// saranno analoghi a questo
 
@@ -180,5 +205,7 @@ public class FacoltaDao implements FacoltaInterface{
 			session.close();
 		}			
 	}
+
+	
 	
 }

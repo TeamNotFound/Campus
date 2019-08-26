@@ -37,6 +37,7 @@ public class Facolta {
         inverseJoinColumns = { @JoinColumn(name = "corso_id") }
     )
 	private Set<Corso> corsi;
+	
 
 	public Facolta(int id, String facolta, Set<Studente> studenti) {
 		super();
@@ -63,6 +64,14 @@ public class Facolta {
 
 	public void setFacolta(String facolta) {
 		this.facolta = facolta;
+	}
+
+	public Set<ProfessoriCorsi> getCattedre() {
+		return cattedre;
+	}
+
+	public void setCattedre(Set<ProfessoriCorsi> cattedre) {
+		this.cattedre = cattedre;
 	}
 
 	public Set<Studente> getStudenti() {

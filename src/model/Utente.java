@@ -58,6 +58,9 @@ public abstract class Utente {
 	public String getCognome() {
 		return cognome;
 	}
+	public String getFullName() {
+		return nome +" "+ cognome;
+	}
 	public void setCognome(String cognome) {
 		this.cognome = cognome;
 	}
