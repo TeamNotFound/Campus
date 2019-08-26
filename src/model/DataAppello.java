@@ -1,5 +1,6 @@
 package model;
 
+import java.util.Date;
 import java.util.Set;
 
 import javax.persistence.*;
@@ -15,6 +16,7 @@ public class DataAppello {
 	@JoinColumn (name="corso_id")
 	private Corso corso;
 	
+	
 	@ManyToOne
 	@JoinColumn (name="facolta_id")
 	private Facolta facolta;
@@ -25,6 +27,9 @@ public class DataAppello {
 	
 	@OneToMany (mappedBy="dataAppello")
 	private Set <Prenotazione> prenotazioni;
+	
+	@Column(name="data_appello")
+	private Date dataAppello;
 	
 	
 	public int getId() {

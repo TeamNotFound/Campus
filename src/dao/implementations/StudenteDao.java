@@ -2,6 +2,7 @@ package dao.implementations;
 
 import java.util.ArrayList;
 
+import org.hibernate.Hibernate;
 import org.hibernate.Session;
 
 import dao.interfaces.StudenteInterface;
@@ -36,6 +37,27 @@ public class StudenteDao implements StudenteInterface {
 			session.beginTransaction();
 
 			studente = (Studente) session.get(Studente.class, id);
+
+			session.getTransaction().commit();
+
+			return studente;
+		} catch (Exception e) {
+			System.out.println("Error in getAll()");
+			return null;
+		} finally {
+			session.close();
+		}
+	}
+	
+	public Studente getByIdWithPrenotazioni(int id) {
+		Session session = HibernateUtil.getSessionFactory().openSession();
+		Studente studente;
+		
+		try{
+			session.beginTransaction();
+
+			studente = (Studente) session.get(Studente.class, id);
+			Hibernate.initialize(studente.getPrenotazioni());
 
 			session.getTransaction().commit();
 
