@@ -35,7 +35,7 @@ public class EsameDao implements EsameInterface{
 		try{
 			session.beginTransaction();
 						
-			esame = (Esame) session.get(Facolta.class, id);
+			esame = (Esame) session.get(Esame.class, id);
 						
 			session.getTransaction().commit();
 
