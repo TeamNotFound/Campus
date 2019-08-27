@@ -12,6 +12,7 @@ import dao.implementations.AccountDao;
 import model.Account;
 import model.Professore;
 import model.Studente;
+import util.BCryptUtil;
 
 /**
  * Servlet implementation class LoginServlet
@@ -42,7 +43,9 @@ public class LoginServlet extends HttpServlet {
 		AccountDao dao = new AccountDao();
 		Account a = dao.getByUsername(request.getParameter("username"));
 		
-		if(a != null && a.getPassword().equals(request.getParameter("password"))){
+		if(a != null && 
+				BCryptUtil.checkPs2(request.getParameter("password"), a.getPassword())){
+			
 			System.out.println("Login successfull");
 			
 			HttpSession session = request.getSession(true);

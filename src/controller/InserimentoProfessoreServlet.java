@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import dao.implementations.ProfessoreDao;
 import model.Account;
 import model.Professore;
+import util.BCryptUtil;
 
 /**
  * Servlet implementation class InserimentoProfessoreServlet
@@ -87,7 +88,7 @@ public class InserimentoProfessoreServlet extends HttpServlet {
 			}
 			
 			if(!request.getParameter("password").equals("")) {
-				a.setPassword(request.getParameter("password"));
+				a.setPassword(BCryptUtil.hashPsw(request.getParameter("password")));
 			}
 			
 			p.setAccount(a);
