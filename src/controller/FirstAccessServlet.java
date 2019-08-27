@@ -89,7 +89,7 @@ public class FirstAccessServlet extends HttpServlet {
 		p.setAccount(a);
 		pDao.inserimento(p);
 		
-		response.sendRedirect("/Campus/Home");
+		response.sendRedirect("/Campus/Login");
 	}
 
 }
