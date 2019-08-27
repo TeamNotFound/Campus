@@ -1,11 +1,10 @@
-      </div>
-      <!-- End of Main Content -->
+
 
       <!-- Footer -->
       <footer class="sticky-footer bg-white">
         <div class="container my-auto">
           <div class="copyright text-center my-auto">
-            <span>Copyright &copy; Your Website 2019</span>
+            <span>Powered by Team Not Found &copy; 2019</span>
           </div>
         </div>
       </footer>
@@ -42,21 +41,21 @@
   </div>
 
   <!-- Bootstrap core JavaScript-->
-  <script src="dashboardvendor/jquery/jquery.min.js"></script>
-  <script src="dashboardvendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="templates/dashboard/vendor/jquery/jquery.min.js"></script>
+  <script src="templates/dashboard/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
   <!-- Core plugin JavaScript-->
-  <script src="dashboardvendor/jquery-easing/jquery.easing.min.js"></script>
+  <script src="templates/dashboard/vendor/jquery-easing/jquery.easing.min.js"></script>
 
   <!-- Custom scripts for all pages-->
-  <script src="dashboardjs/sb-admin-2.min.js"></script>
+  <script src="templates/dashboard/js/sb-admin-2.min.js"></script>
 
   <!-- Page level plugins -->
-  <script src="dashboardvendor/chart.js/Chart.min.js"></script>
+  <script src="templates/dashboard/vendor/chart.js/Chart.min.js"></script>
 
   <!-- Page level custom scripts -->
-  <script src="dashboardjs/demo/chart-area-demo.js"></script>
-  <script src="dashboardjs/demo/chart-pie-demo.js"></script>
+  <script src="templates/dashboard/js/demo/chart-area-demo.js"></script>
+  <script src="templates/dashboard/js/demo/chart-pie-demo.js"></script>
 
 </body>
 
