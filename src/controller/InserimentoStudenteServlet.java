@@ -16,6 +16,7 @@ import dao.interfaces.FacoltaInterface;
 import dao.interfaces.StudenteInterface;
 import model.Account;
 import model.Studente;
+import util.BCryptUtil;
 
 /**
  * Servlet implementation class InserimentoStudenteServlet
@@ -90,7 +91,7 @@ public class InserimentoStudenteServlet extends HttpServlet {
 		}
 		
 		if(!request.getParameter("password").equals("")) {
-			a.setPassword(request.getParameter("password"));
+			a.setPassword(BCryptUtil.hashPsw(request.getParameter("password")));
 		}
 		
 		s.setAccount(a);
