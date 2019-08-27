@@ -33,7 +33,9 @@ public class LoginServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.getRequestDispatcher("login.jsp").forward(request, response);
+		HttpSession session=request.getSession();
+		session.invalidate();
+		response.sendRedirect("login.jsp");	
 	}
 
 	/**
@@ -70,7 +72,7 @@ public class LoginServlet extends HttpServlet {
 				}
 			}
 		}
-		response.sendRedirect("Login");
+		response.sendRedirect("/Campus/Home");
 	}
 
 }

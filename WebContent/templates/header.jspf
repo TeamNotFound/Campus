@@ -1,34 +1,130 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>    
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
+
+<!DOCTYPE html>
+<html lang="en">
+
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<link href="<%=request.getContextPath()%>/styles/header.css" 
-		rel="stylesheet" type="text/css">
+
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>Campus Universitario</title>
+
+  <!-- Custom fonts for this template-->
+  <link href="templates/dashboard/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+
+  <!-- Custom styles for this template-->
+  <link href="templates/dashboard/css/sb-admin-2.min.css" rel="stylesheet">
+
 </head>
-<body>
-<div class="header">
-	<ul>
-		<li class="left-side"><a href="#">Home</a></li>
-		
-		<c:if test="${account!=null}">
+
+<body id="page-top">
+
+  <!-- Page Wrapper -->
+  <div id="wrapper">
+
+    <!-- Sidebar -->
+    <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+
+      <!-- Sidebar - Brand -->
+      <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+        <div class="sidebar-brand-text mx-3">CAMPUS<sup> NOT FOUND</sup></div>
+      </a>
+
+      <!-- Divider -->
+      <hr class="sidebar-divider my-0">
+
+      <!-- Nav Item - Dashboard -->
+      <li class="nav-item active">
+        <a class="nav-link" href="index.jsp">
+          <i class="fas fa-fw fa-tachometer-alt"></i>
+          <span>Home</span></a>
+      </li>
+
+      <!-- Divider -->
+      <hr class="sidebar-divider">
+
+      <!-- Heading -->
+      <div class="sidebar-heading">
+        Pagine
+      </div>
+      
+      <!--  INIZIO MENU  -->
+      
+      <c:if test="${account!=null}">
 			<c:choose>
 				<c:when test="${sessionScope.studente}">
-					<li class="left-side"><a href="/Campus/Prenotazione">Prenotazione</a></li>
-					<li class="left-side"><a href="/Campus/Home">Visusalizza Esami</a></li>
-					<li class="left-side"><a href="index.jsp">Prenotazioni effettuate</a></li>
-				</c:when>
-				<c:otherwise>
-					<li class="left-side"><a href="/Campus/AppelloInserimento">Inserimento appelli</a></li>
-					<li class="left-side"><a href="/Campus/Home">Inserire risultato esame</a></li>
-					<li class="left-side"><a href="/Campus/Home">Visualizzare prenotazioni</a></li>
-				<c:if test="${sessionScope.rettore}">
-					<li class="left-side"><a href="/Campus/CorsiFacolta">Corsi e Facolta</a></li>
-					<li class="left-side"><a href="/Campus/InserimentoProfessore">Inserire professori</a></li>
-					<li class="left-side"><a href="/Campus/GestioneProfessori">Gestione professori</a></li>
-					<li class="left-side"><a href="/Campus/AssegnazioneCattedra">Gestione Cattedre</a></li>
+      
+      <li class="nav-item">
+        <a class="nav-link" href="/Campus/Prenotazione">
+          <i class="fas fa-fw fa-table"></i>
+          <span>Prenotazione</span></a>
+      </li>
+      
+      <li class="nav-item">
+        <a class="nav-link" href="#">
+          <i class="fas fa-fw fa-table"></i>
+          <span>Visusalizza Esami</span></a>
+      </li>
+      
+      <li class="nav-item">
+        <a class="nav-link" href="#">
+          <i class="fas fa-fw fa-table"></i>
+          <span>Prenotazioni effettuate</span></a>
+      </li>
+     </c:when>
+	
+	<c:otherwise>
+	
+	<li class="nav-item">
+        <a class="nav-link" href="/Campus/AppelloInserimento">
+          <i class="fas fa-fw fa-table"></i>
+          <span>Inserimento appelli</span></a>
+      </li>
+	
+	<li class="nav-item">
+        <a class="nav-link" href="/Campus/AppelloInserimento">
+          <i class="fas fa-fw fa-table"></i>
+          <span>Inserire risultato esame</span></a>
+      </li>
+      
+      <li class="nav-item">
+        <a class="nav-link" href="/Campus/AppelloInserimento">
+          <i class="fas fa-fw fa-table"></i>
+          <span>Visualizzare prenotazioni</span></a>
+      </li>
+
+	<c:if test="${sessionScope.rettore}">
+	
+		<li class="nav-item">
+        <a class="nav-link" href="CorsiFacolta">
+          <i class="fas fa-fw fa-table"></i>
+          <span>Corsi e Facolta</span></a>
+      </li>
+      
+      <li class="nav-item">
+        <a class="nav-link" href="/Campus/InserimentoProfessore">
+          <i class="fas fa-fw fa-table"></i>
+          <span>Inserire professori</span></a>
+      </li>
+      
+      <li class="nav-item">
+        <a class="nav-link" href="/Campus/GestioneProfessori">
+          <i class="fas fa-fw fa-table"></i>
+          <span>Gestione professori</span></a>
+      </li>
+      
+      <li class="nav-item">
+        <a class="nav-link" href="/Campus/AssegnazioneCattedra">
+          <i class="fas fa-fw fa-table"></i>
+          <span>Gestione Cattedre</span></a>
+      </li>
 				</c:if>
 				</c:otherwise>
 			</c:choose>
@@ -36,16 +132,98 @@
 		
 		<c:choose>
 		<c:when test="${sessionScope.account==null}">
-			<li class="right-side"><a href="Login">Login</a></li>
-			<li class="right-side"><a href="Studente">Registrati</a></li>
+		
+		 <li class="nav-item">
+        <a class="nav-link" href="Login">
+          <i class="fas fa-fw fa-table"></i>
+          <span>Login</span></a>
+      </li>
+      
+       <li class="nav-item">
+        <a class="nav-link" href="Studente">
+          <i class="fas fa-fw fa-table"></i>
+          <span>Registrati</span></a>
+      </li>
+      
 		</c:when>
 		<c:otherwise>
-			<li class="right-side"><a href="#">Log Out</a></li>
+		<li class="nav-item">
+        <a class="nav-link" href="Login">
+          <i class="fas fa-fw fa-table"></i>
+          <span>Logout</span></a>
+      </li>
+      
 		</c:otherwise>
 		</c:choose>	
 	</ul>
-</div>
-<div class="header-distance">
-</div>
-</body>
-</html>
+
+      
+
+
+      <!-- Divider -->
+      <hr class="sidebar-divider d-none d-md-block">
+
+      <!-- Sidebar Toggler (Sidebar) -->
+      <div class="text-center d-none d-md-inline">
+        <button class="rounded-circle border-0" id="sidebarToggle"></button>
+      </div>
+
+    </ul>
+    <!-- End of Sidebar -->
+
+    <!-- Content Wrapper -->
+    <div id="content-wrapper" class="d-flex flex-column">
+
+      <!-- Main Content -->
+      <div id="content">
+
+        <!-- Topbar -->
+        <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+
+          <!-- Sidebar Toggle (Topbar) -->
+          <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
+            <i class="fa fa-bars"></i>
+          </button>
+
+          <!-- Topbar Search -->
+          <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
+            <div class="input-group">
+              <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
+              <div class="input-group-append">
+                <button class="btn btn-primary" type="button">
+                  <i class="fas fa-search fa-sm"></i>
+                </button>
+              </div>
+            </div>
+          </form>
+
+          <!-- Topbar Navbar -->
+          <ul class="navbar-nav ml-auto">
+
+           
+            <div class="topbar-divider d-none d-sm-block"></div>
+
+            <!-- Nav Item - User Information -->
+            <li class="nav-item dropdown no-arrow">
+              <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Nome utente</span>
+                <img class="img-profile rounded-circle" src="https://source.unsplash.com/QAB-WJcbgJk/60x60">
+              </a>
+              <!-- Dropdown - User Information -->
+              <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
+                <a class="dropdown-item" href="#">
+                  <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
+                  Profilo
+                </a>               
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="Login">
+                  <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+                  Logout
+                </a>
+              </div>
+            </li>
+
+          </ul>
+
+        </nav>
+        <!-- End of Topbar -->
