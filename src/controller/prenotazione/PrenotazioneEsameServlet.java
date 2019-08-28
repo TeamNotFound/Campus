@@ -39,50 +39,35 @@ public class PrenotazioneEsameServlet extends HttpServlet {
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		HttpSession session = request.getSession(true);
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {		
+		DataAppelloDao dad = new DataAppelloDao();
+		DataAppello da = new DataAppello();
 		
 		int id_data_appello = Integer.parseInt(request.getPathInfo().substring(1));
 		
-		DataAppello da = new DataAppello();
-		DataAppelloDao dad = new DataAppelloDao();
 		da = dad.getById(id_data_appello);
 		request.setAttribute("dataPrenotata", da);
 		
 		request.getRequestDispatcher("/prenotazioneEsame.jsp").forward(request, response);
-		
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		
-		Account a =(Account) request.getSession().getAttribute("account");
-		int id_studente = ((Studente)a.getUtente()).getId();
-		
-		StudenteDao sd = new StudenteDao();
-		Studente s = sd.getById(id_studente);
-		
 		DataAppelloDao dad = new DataAppelloDao();
-		DataAppello da= dad.getById(Integer.parseInt(request.getParameter("dataPrenotaId")));
+		PrenotazioneDao pd = new PrenotazioneDao();
+
+		Prenotazione p = new Prenotazione();
+
+		Account a =(Account) request.getSession().getAttribute("account");
+		p.setStudente((Studente) a.getUtente());
 		
+		DataAppello da= dad.getById(Integer.parseInt(request.getParameter("dataPrenotaId")));
+		p.setDataAppello(da);
 
 		Date d = Date.from(LocalDate.now().atStartOfDay(ZoneId.systemDefault()).toInstant());
-		
-		Prenotazione p = new Prenotazione();
-		PrenotazioneDao pd = new PrenotazioneDao();
-		
-		//setting pk che devo inserire nell'oggetto prenotazione
-		PrenoPK pk= new PrenoPK();
-		pk.setData_appello_id(da.getId());
-		pk.setStudente_id(s.getId());
-		
-		p.setDataAppello(da);
 		p.setDataPrenotazione(d);
-		p.setStudente(s);
-		p.setPk(pk);
 		
 		pd.inserimento(p);
 		request.getRequestDispatcher("/index.jsp").forward(request, response);
