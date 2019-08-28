@@ -1,54 +1,66 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
-<%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>    
-<!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
+<title>Inserimento Professore</title>
 </head>
-<body>
-
 <%@ include file="/templates/header.jspf" %>
 
-<form action="InserimentoProfessore" method="post"> 
+	<!-- Contenuto pagina centrale -->
+        <div class="container-fluid">
 
-<label for="nome">Nome Professore</label><br>
-<input type="text" id="nome" name="nome"/><br>
+          <!-- Content Row -->
+          <div class="row">
 
-<label for="cognome">Cognome Professore</label><br>
-<input type="text" id="cognome" name="cognome"/><br>
+            <!-- Content Column -->
+            <div class="col-lg-12 mb-4">
+            <!-- Approach -->
+              <div class="card shadow mb-4">
+                <div class="card-header py-3">
+                  <h6 class="m-0 font-weight-bold text-primary">Inserimento Professore</h6>
+                </div>
+                <div class="card-body">
+					
+                <!-- INSERIRE CONTENUTO -->
+					<form action="InserimentoProfessore" method="post">
 
-<label for="nascita-data">Data Nascita</label><br>
-<input type="date" id="nascita-data" name="nascita-data"/><br>
+						<label for="nome">Nome Professore</label><br> <input
+							type="text" id="nome" name="nome" /><br> <label
+							for="cognome">Cognome Professore</label><br> <input
+							type="text" id="cognome" name="cognome" /><br> <label
+							for="nascita-data">Data Nascita</label><br> <input
+							type="date" id="nascita-data" name="nascita-data" /><br> <label
+							for="nascita-luogo">Luogo Nascita</label><br> <input
+							type="text" id="nascita-luogo" name="nascita-luogo" /><br> <label
+							for="fiscale">Codice Fiscale</label><br> <input type="text"
+							id="fiscale" name="fiscale" /><br> <label for="sesso">Sesso:</label><br>
 
-<label for="nascita-luogo">Luogo Nascita</label><br>
-<input type="text" id="nascita-luogo" name="nascita-luogo"/><br>
+						<input type="radio" id="uomo" name="sesso" value="uomo" /> <label
+							for="uomo">Uomo</label><br> <input type="radio" id="sesso"
+							name="sesso" value="donna" /> <label for="donna">Donna</label><br>
 
-<label for="fiscale">Codice Fiscale</label><br>
-<input type="text" id="fiscale" name="fiscale"/><br>
+						<label for="titoli">Titoli di studio</label><br> <input
+							type="text" id="titoli" name="titoli" /><br>
 
-<label for="sesso">Sesso:</label><br>
+						<hr>
 
-<input type="radio" id="uomo" name="sesso" value="uomo"/>
-<label for="uomo">Uomo</label><br>
+						<label for="username">Username</label><br> <input type="text"
+							id="username" name="username" /><br> <label for="password">Password</label><br>
+						<input type="text" id="password" name="password" /><br>
+						<input class="btn btn-success btn-icon-split"
+							type="submit" />
 
-<input type="radio" id="sesso" name="sesso" value="donna"/>
-<label for="donna">Donna</label><br>
+					</form>
 
-<label for="titoli">Titoli di studio</label><br>
-<input type="text" id="titoli" name="titoli"/><br>
+					<!-- CONTENUTO -->
 
-<hr>
+				</div>
+              </div>
+          </div>
 
-<label for="username">Username</label><br>
-<input type="text" id="username" name="username"/><br>
+        </div>
+        <!-- /.container-fluid -->
 
-<label for="password">Password</label><br>
-<input type="text" id="password" name="password"/><br>
-
-<input type="submit"/>
-
-</form>
-</body>
-</html>
+      </div>
+      <!-- Fine Contenuto pagina centrale -->
+      
+      
+<%@ include file="/templates/footer.jspf" %>

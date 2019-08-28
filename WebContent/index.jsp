@@ -1,3 +1,7 @@
+<html>
+<head>
+<title>Homepage Campus</title>
+</head>
 <%@ include file="/templates/header.jspf" %>
 
 	<!-- Contenuto pagina centrale -->
