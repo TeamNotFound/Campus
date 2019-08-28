@@ -46,9 +46,9 @@ public class FacoltaVisualizzaServlet extends HttpServlet {
 		
 		Facolta f = dao.getByIdWithCorsiAndCattedre(id);
 		
-		HashMap<Integer, String> profCorsi = new HashMap<Integer, String>();
+		HashMap<Integer, ProfessoriCorsi> profCorsi = new HashMap<Integer, ProfessoriCorsi>();
 		for(ProfessoriCorsi pc : f.getCattedre()) {
-			profCorsi.put(pc.getCorso().getId(), pc.getProfessore().getFullName());
+			profCorsi.put(pc.getCorso().getId(), pc);
 		}
 		
 		request.setAttribute("cattedre", profCorsi);
