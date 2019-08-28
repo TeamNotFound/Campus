@@ -1,3 +1,7 @@
+<html>
+<head>
+<title>Primo accesso al portale</title>
+</head>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix = "c" %>
 <!DOCTYPE html>
 <html lang="it">
@@ -95,7 +99,7 @@
                   </div>
                 </div>
 
-              <input type="submit"/>
+              <input class="btn btn-success btn-icon-split" type="submit" />
 
               </form>
               

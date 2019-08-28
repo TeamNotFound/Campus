@@ -1,42 +1,56 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
-<%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>    
-<!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
+<title>Assegnazione Professore</title>
 </head>
-<body>
-
 <%@ include file="/templates/header.jspf" %>
 
-<form action="AssegnazioneCattedra" method="post">
+	<!-- Contenuto pagina centrale -->
+        <div class="container-fluid">
 
-<label for="prof">Professore:</label>
-<select id="prof" name="prof">
-<c:forEach items="${professori}" var="prof">
-	<option value="${prof.id}">${prof.nome} ${prof.cognome}</option>
-</c:forEach>
-</select><br><br>
+          <!-- Content Row -->
+          <div class="row">
 
-<label for="facolta">Facoltà:</label>
-<select id="facolta" name="facolta">
-<c:forEach items="${facolta}" var="fac">
-	<option value="${fac.id}">${fac.facolta}</option>
-</c:forEach>
-</select><br><br>
+            <!-- Content Column -->
+            <div class="col-lg-12 mb-4">
+            <!-- Approach -->
+              <div class="card shadow mb-4">
+                <div class="card-header py-3">
+                  <h6 class="m-0 font-weight-bold text-primary">Assegnazione Professore</h6>
+                </div>
+                <div class="card-body">
+					<form action="AssegnazioneCattedra" method="post">
 
-<label for="corso">Corso:</label>
-<select id="corso" name="corso">
-<c:forEach items="${corsi}" var="corso">
-	<option value="${corso.id}">${corso.corso}</option>
-</c:forEach>
-</select><br><br>
+						<label for="prof">Professore:</label> <select id="prof"
+							name="prof">
+							<c:forEach items="${professori}" var="prof">
+								<option value="${prof.id}">${prof.nome}${prof.cognome}</option>
+							</c:forEach>
+						</select><br>
+						<br> <label for="facolta">Facoltà:</label> <select
+							id="facolta" name="facolta">
+							<c:forEach items="${facolta}" var="fac">
+								<option value="${fac.id}">${fac.facolta}</option>
+							</c:forEach>
+						</select><br>
+						<br> <label for="corso">Corso:</label> <select id="corso"
+							name="corso">
+							<c:forEach items="${corsi}" var="corso">
+								<option value="${corso.id}">${corso.corso}</option>
+							</c:forEach>
+						</select><br>
+						<br> <input class="btn btn-success btn-icon-split"
+							type="submit" />
 
-<input type="submit"/>
+					</form>
+				</div>
+              </div>
+          </div>
 
-</form>
+        </div>
+        <!-- /.container-fluid -->
 
-</body>
-</html>
+      </div>
+      <!-- Fine Contenuto pagina centrale -->
+      
+      
+<%@ include file="/templates/footer.jspf" %>
