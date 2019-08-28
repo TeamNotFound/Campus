@@ -65,7 +65,7 @@
                 <div class="form-group row">
                   <div class="col-sm-12 mb-3 mb-sm-0"> <label for="sesso">Sesso:</label><br>
 
-                  <input type="radio" id="uomo" name="sesso" value="uomo"/>
+                  <input type="radio" id="uomo" name="sesso" value="uomo" checked="checked"/>
                   <label for="uomo">Uomo</label>
 
                   <input type="radio" id="sesso" name="sesso" value="donna"/>

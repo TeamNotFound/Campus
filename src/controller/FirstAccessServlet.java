@@ -59,7 +59,7 @@ public class FirstAccessServlet extends HttpServlet {
 		if(!request.getParameter("nascita-data").equals("")) {
 			p.setDataNascita(Date.valueOf(request.getParameter("nascita-data")));
 		}
-		
+		System.out.println(request.getParameter("sesso"));
 		if(!request.getParameter("sesso").equals("")) {
 			if(request.getParameter("sesso").equals("uomo")) {
 				p.setUomo(true);
