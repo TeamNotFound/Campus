@@ -37,6 +37,7 @@ public class Studente extends Utente {
 	public String getTitoliDiStudio() {
 		return titoliDiStudio;
 	}
+	
 
 	public void setTitoliDiStudio(String titoliDiStudio) {
 		this.titoliDiStudio = titoliDiStudio;
