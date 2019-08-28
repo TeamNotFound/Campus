@@ -74,7 +74,7 @@
       </li>
       
       <li class="nav-item">
-        <a class="nav-link" href="#">
+        <a class="nav-link" href="${pageContext.request.contextPath}/PrenotazioneVisualizza">
           <i class="fas fa-fw fa-table"></i>
           <span>Prenotazioni effettuate</span></a>
       </li>

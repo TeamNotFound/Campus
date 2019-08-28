@@ -70,8 +70,8 @@ public class PrenotazioneEsameServlet extends HttpServlet {
 		p.setDataPrenotazione(d);
 		
 		pd.inserimento(p);
-		request.getRequestDispatcher("/index.jsp").forward(request, response);
-		
+
+		response.sendRedirect(request.getContextPath()+"/PrenotazioneVisualizza");
 	}
 
 }

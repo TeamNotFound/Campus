@@ -48,7 +48,7 @@ public class PrenotazioneVisualizza extends HttpServlet {
 		Studente st = daos.getByIdWithPrenotazioni(s.getUtente().getId());
 		
 		request.setAttribute("prenotazioni", st.getPrenotazioni() );
-		request.getRequestDispatcher("prenotazione.jsp").forward(request, response);
+		request.getRequestDispatcher("/prenotazioni.jsp").forward(request, response);
 	}
 
 	
