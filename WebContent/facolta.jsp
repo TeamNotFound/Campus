@@ -15,12 +15,14 @@
 	<th>Corso</th>
 	<th>Professore</th>
 	<th>Rimuovi corso</th>
+	<th>Libera cattedra</th>
 </tr>
 <c:forEach items="${facolta.corsi}" var="cor">
 <tr>
 	<td>${cor.corso }</td>
-	<td>${cattedre.get(cor.id)}</td>
+	<td>${cattedre.get(cor.id).professore.fullName}</td>
 	<td><a href="/Campus/CorsiFacoltaDelete?facolta=${facolta.id}&corso=${cor.id}">Rimuovi</a></td>
+	<td><a href="/Campus/RimozioneCattedra/${cattedre.get(cor.id).corso.id}-${cattedre.get(cor.id).professore.id}-${cattedre.get(cor.id).facolta.id}">Libera cattedra</a></td>
 </tr>
 </c:forEach>
 
