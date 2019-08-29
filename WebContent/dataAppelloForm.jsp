@@ -21,7 +21,7 @@
 					
                 <!-- INSERIRE CONTENUTO -->
 
-					<h4>Aggiungi professore</h4>
+					<h4>Professore</h4>
 					<label>Nome professore: ${account.utente.nome}</label><br> <label>Cognome
 						professore: ${ account.utente.cognome}</label><br>
 					<hr>
