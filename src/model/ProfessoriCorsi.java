@@ -10,18 +10,18 @@ public class ProfessoriCorsi {
 	@Embeddable
 	private static class Id implements Serializable{
 		private static final long serialVersionUID = 1L;
-		
-		
+
+
 		private int professore_id;
-		
+
 		private int corso_id;
-		
+
 		private int facolta_id;
-		
+
 		public Id() {
 			super();
 		}
-		
+
 		public Id(int professore_id, int corso_id, int facolta_id) {
 			super();
 			this.professore_id = professore_id;
@@ -54,8 +54,8 @@ public class ProfessoriCorsi {
 			this.facolta_id = facolta_id;
 		}
 
-		
-		
+
+
 		@Override
 		public int hashCode() {
 			final int prime = 31;
@@ -88,22 +88,22 @@ public class ProfessoriCorsi {
 		public String toString() {
 			return "Id [professore_id=" + professore_id + ", corso_id=" + corso_id + ", facolta_id=" + facolta_id + "]";
 		}
-		
-		
+
+
 	}
 	@EmbeddedId
 	private Id id = new Id();
-	
+
 	@ManyToOne
 	@MapsId("professore_id")
 	@JoinColumn(name = "professore_id")
 	private Professore professore;
-	
+
 	@ManyToOne
 	@MapsId("corso_id")
 	@JoinColumn(name = "corso_id")
 	private Corso corso;
-	
+
 	@ManyToOne
 	@MapsId("facolta_id")
 	@JoinColumn(name = "facolta_id")
@@ -202,6 +202,6 @@ public class ProfessoriCorsi {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	
-	
+
+
 }
