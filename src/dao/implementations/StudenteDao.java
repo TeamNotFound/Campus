@@ -64,6 +64,7 @@ public class StudenteDao implements StudenteInterface {
 			return studente;
 		} catch (Exception e) {
 			System.out.println("Error in getAll()");
+			e.printStackTrace();
 			return null;
 		} finally {
 			session.close();

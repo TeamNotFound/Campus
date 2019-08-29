@@ -10,7 +10,6 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import dao.implementations.CorsoDao;
 import dao.implementations.DataAppelloDao;
@@ -19,7 +18,6 @@ import dao.implementations.ProfessoreDao;
 import model.Account;
 import model.DataAppello;
 import model.Professore;
-import model.ProfessoriCorsi;
 import model.Utente;
 
 /**

@@ -10,93 +10,82 @@ import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.MapsId;
-import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
-
-import model.Prenotazione.Id;
 
 @Entity
 @Table(name="prenotazioni")
 public class Prenotazione {
-	
+
 	@Embeddable
-	class Id implements Serializable{
+	static class Id implements Serializable{
+		private static final long serialVersionUID = 1L;
+
+		private int data_appello_id;
+
+		private int studente_id;
 		
-	private int data_appello_id;
-	
-	private int studente_id;
-	
-	
-	public int getData_appello_id() {
-		return data_appello_id;
-	}
+		public Id(int data_appello_id, int studente_id) {
+			super();
+			this.data_appello_id = data_appello_id;
+			this.studente_id = studente_id;
 
-	public void setData_appello_id(int data_appello_id) {
-		this.data_appello_id = data_appello_id;
-	}
+		}
 
-	public int getStudente_id() {
-		return studente_id;
-	}
+		public Id() {
+		}
 
-	public void setStudente_id(int studente_id) {
-		this.studente_id = studente_id;
-	}
+		public int getData_appello_id() {
+			return data_appello_id;
+		}
 
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + getEnclosingInstance().hashCode();
-		result = prime * result + data_appello_id;
-		result = prime * result + studente_id;
-		return result;
-	}
+		public void setData_appello_id(int data_appello_id) {
+			this.data_appello_id = data_appello_id;
+		}
 
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
+		public int getStudente_id() {
+			return studente_id;
+		}
+
+		public void setStudente_id(int studente_id) {
+			this.studente_id = studente_id;
+		}
+
+		@Override
+		public int hashCode() {
+			final int prime = 31;
+			int result = 1;
+			result = prime * result + data_appello_id;
+			result = prime * result + studente_id;
+			return result;
+		}
+
+		@Override
+		public boolean equals(Object obj) {
+			if (this == obj)
+				return true;
+			if (obj == null)
+				return false;
+			if (getClass() != obj.getClass())
+				return false;
+			Id other = (Id) obj;
+			if (data_appello_id != other.data_appello_id)
+				return false;
+			if (studente_id != other.studente_id)
+				return false;
 			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		Id other = (Id) obj;
-		if (!getEnclosingInstance().equals(other.getEnclosingInstance()))
-			return false;
-		if (data_appello_id != other.data_appello_id)
-			return false;
-		if (studente_id != other.studente_id)
-			return false;
-		return true;
-	}
-
-	private Prenotazione getEnclosingInstance() {
-		return Prenotazione.this;
-	}
-
-	public Id(int data_appello_id, int studente_id) {
-		super();
-		this.data_appello_id = data_appello_id;
-		this.studente_id = studente_id;
-
-	}
-
-	public Id() {
-		super();
-	}
+		}
 	}
 	@EmbeddedId
 	private Id id = new Id();
-	
+
 	@Column(name="data_prenotazione")
 	private Date dataPrenotazione;
-	
+
 	@ManyToOne
 	@MapsId("studente_id")
 	@JoinColumn(name = "studente_id")
 	private Studente studente;
-	
+
 	@ManyToOne
 	@MapsId("data_appello_id")
 	@JoinColumn(name = "data_appello_id")
@@ -194,8 +183,6 @@ public class Prenotazione {
 	public Prenotazione() {
 		super();
 	}
+}
 
-	
-	}
-	
-	
+
