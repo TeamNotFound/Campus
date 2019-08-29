@@ -21,9 +21,9 @@ public class Prenotazione {
 	
 	@Embeddable
 	class Id implements Serializable{
-	@Column(name="data_appello_id")
+		
 	private int data_appello_id;
-	@Column(name="studente_id")
+	
 	private int studente_id;
 	
 	
@@ -87,7 +87,7 @@ public class Prenotazione {
 	}
 	}
 	@EmbeddedId
-	private Id id;
+	private Id id = new Id();
 	
 	@Column(name="data_prenotazione")
 	private Date dataPrenotazione;
