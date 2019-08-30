@@ -67,9 +67,23 @@ public class PrenotazioneDao implements PrenotazioneInterface{
 
 	@Override
 	public void remove(Prenotazione element) {
-		// TODO Auto-generated method stub
+		Session session = HibernateUtil.getSessionFactory().openSession();
 		
+		try{
+			session.beginTransaction();
+						
+			session.delete(element);
+						
+			session.getTransaction().commit();
+
+		} catch (Exception e) {
+			System.out.println("Error in getAll()");
+			e.printStackTrace();
+		} finally {
+			session.close();
+		}
 	}
+	
 	public Prenotazione getById(int id) {
 		Session session = HibernateUtil.getSessionFactory().openSession();
 		Prenotazione prenotazione;
@@ -89,6 +103,23 @@ public class PrenotazioneDao implements PrenotazioneInterface{
 		} finally {
 			session.close();
 		}
+	}
+
+	public Prenotazione getByComposedId(int id_studente, int id_data) {
+		Session session = HibernateUtil.getSessionFactory().openSession();
+		
+		session.beginTransaction();
+		
+		Prenotazione p = (Prenotazione) session.createQuery("from Prenotazione where studente_id = :studente "
+																+ "and data_appello_id = :data")
+								.setParameter("studente", id_studente)
+								.setParameter("data", id_data)
+								.list().get(0);
+		
+		session.getTransaction().commit();
+		session.close();
+		
+		return p;
 	}
 
 //	public List<Prenotazione> getByStudenteId(int studenteId) {
