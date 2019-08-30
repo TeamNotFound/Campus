@@ -7,21 +7,17 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import dao.implementations.ProfessoreDao;
-import model.Account;
-import model.Professore;
-
 /**
- * Servlet implementation class SelezionaCattedraEsamiServlet
+ * Servlet implementation class SelezionaDataAppelloEsamiServlet
  */
-@WebServlet("/Esami/Cattedre")
-public class SelezionaCattedraEsamiServlet extends HttpServlet {
+@WebServlet("/Esami/Cattedra/*")
+public class SelezionaDataAppelloEsamiServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public SelezionaCattedraEsamiServlet() {
+    public SelezionaDataAppelloEsamiServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -30,17 +26,8 @@ public class SelezionaCattedraEsamiServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		ProfessoreDao daoProf = new ProfessoreDao();
 		
-		Account a=(Account)request.getSession().getAttribute("account");
-		Professore p = (Professore) a.getUtente();
-		
-		p = daoProf.getByIdWithCorsi(p.getId());
-		
-		request.setAttribute("cattedre", p.getProfessoriCorsi());
-		
-		request.getRequestDispatcher("/selezioneCattedreEsami.jsp").forward(request, response);
-		
+		request.getRequestDispatcher("/selezioneDataAppelloEsami.jsp").forward(request, response);
 	}
 
 	/**

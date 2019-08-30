@@ -131,6 +131,6 @@ public class ProfessoreDao implements ProfessoreInterface {
 			session.close();
 		}		
 	}
-	}
+}
 
 
