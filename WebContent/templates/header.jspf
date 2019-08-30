@@ -16,7 +16,7 @@
   <title>Campus Universitario</title>
 
   <!-- Custom fonts for this template-->
-  <link href="${pageContext.request.contextPath}/templates/dashboard/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+  <link href=""${pageContext.request.contextPath}/templates/dashboard/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
   <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
 
   <!-- Custom styles for this template-->
@@ -43,7 +43,7 @@
 
       <!-- Nav Item - Dashboard -->
       <li class="nav-item active">
-        <a class="nav-link" href="index.jsp">
+        <a class="nav-link" href="${pageContext.request.contextPath}/Home">
           <i class="fas fa-fw fa-tachometer-alt"></i>
           <span>Home</span></a>
       </li>
@@ -63,13 +63,13 @@
 				<c:when test="${sessionScope.studente}">
       
       <li class="nav-item">
-        <a class="nav-link" href="/Campus/Prenotazione">
+        <a class="nav-link" href="${pageContext.request.contextPath}/Prenotazione">
           <i class="fas fa-fw fa-table"></i>
           <span>Prenotazione</span></a>
       </li>
       
       <li class="nav-item">
-        <a class="nav-link" href="#">
+        <a class="nav-link" href="${pageContext.request.contextPath}/#">
           <i class="fas fa-fw fa-table"></i>
           <span>Visusalizza Esami</span></a>
       </li>
@@ -84,45 +84,41 @@
 	<c:otherwise>
 	
 	<li class="nav-item">
-        <a class="nav-link" href="/Campus/AppelloInserimento">
+        <a class="nav-link" href="${pageContext.request.contextPath}/AppelloInserimento">
           <i class="fas fa-fw fa-table"></i>
           <span>Inserimento appelli</span></a>
       </li>
 	
 	<li class="nav-item">
-        <a class="nav-link" href="/Campus/AppelloInserimento">
+        <a class="nav-link" href="${pageContext.request.contextPath}/#">
           <i class="fas fa-fw fa-table"></i>
-          <span>Inserire risultato esame</span></a>
+          <span>Convalidare esame</span></a>
       </li>
       
-      <li class="nav-item">
-        <a class="nav-link" href="/Campus/AppelloInserimento">
-          <i class="fas fa-fw fa-table"></i>
-          <span>Visualizzare prenotazioni</span></a>
-      </li>
+    
 
 	<c:if test="${sessionScope.rettore}">
 	
 		<li class="nav-item">
-        <a class="nav-link" href="CorsiFacolta">
+        <a class="nav-link" href="${pageContext.request.contextPath}/CorsiFacolta">
           <i class="fas fa-fw fa-table"></i>
           <span>Corsi e Facolta</span></a>
       </li>
       
       <li class="nav-item">
-        <a class="nav-link" href="/Campus/InserimentoProfessore">
+        <a class="nav-link" href="${pageContext.request.contextPath}/InserimentoProfessore">
           <i class="fas fa-fw fa-table"></i>
           <span>Inserire professori</span></a>
       </li>
       
       <li class="nav-item">
-        <a class="nav-link" href="/Campus/GestioneProfessori">
+        <a class="nav-link" href="${pageContext.request.contextPath}/GestioneProfessori">
           <i class="fas fa-fw fa-table"></i>
           <span>Gestione professori</span></a>
       </li>
       
       <li class="nav-item">
-        <a class="nav-link" href="/Campus/AssegnazioneCattedra">
+        <a class="nav-link" href="${pageContext.request.contextPath}/AssegnazioneCattedra">
           <i class="fas fa-fw fa-table"></i>
           <span>Gestione Cattedre</span></a>
       </li>
@@ -135,13 +131,13 @@
 		<c:when test="${sessionScope.account==null}">
 		
 		 <li class="nav-item">
-        <a class="nav-link" href="Login">
+        <a class="nav-link" href="${pageContext.request.contextPath}/Login">
           <i class="fas fa-fw fa-table"></i>
           <span>Login</span></a>
       </li>
       
        <li class="nav-item">
-        <a class="nav-link" href="Studente">
+        <a class="nav-link" href="${pageContext.request.contextPath}/Studente">
           <i class="fas fa-fw fa-table"></i>
           <span>Registrati</span></a>
       </li>
@@ -149,7 +145,7 @@
 		</c:when>
 		<c:otherwise>
 		<li class="nav-item">
-        <a class="nav-link" href="Logout">
+        <a class="nav-link" href="${pageContext.request.contextPath}/Logout">
           <i class="fas fa-fw fa-table"></i>
           <span>Logout</span></a>
       </li>
@@ -197,7 +193,7 @@
             <!-- Nav Item - User Information -->
             <li class="nav-item dropdown no-arrow">
               <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Nome utente</span>
+                <span class="mr-2 d-none d-lg-inline text-gray-600 small"> ${account.username}</span>
                 <img class="img-profile rounded-circle" src="https://source.unsplash.com/QAB-WJcbgJk/60x60">
               </a>
               <!-- Dropdown - User Information -->
@@ -207,7 +203,7 @@
                   Profilo
                 </a>               
                 <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="Logout">
+                <a class="dropdown-item" href="${pageContext.request.contextPath}/Logout">
                   <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
                   Logout
                 </a>
