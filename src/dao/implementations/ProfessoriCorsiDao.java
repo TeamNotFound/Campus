@@ -6,6 +6,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
+import org.hibernate.Hibernate;
 import org.hibernate.Session;
 
 import dao.interfaces.ProfessoriCorsiInterface;
@@ -130,6 +131,30 @@ Session session=HibernateUtil.getSessionFactory().openSession();
 			
 			pc = (ProfessoriCorsi) session.createQuery("from ProfessoriCorsi pc where pc.corso.id = :corsoId and pc.facolta.id = :facoltaId and pc.professore.id = :profId")
 					.setParameter("corsoId", id_corso).setParameter("facoltaId", id_facolta).setParameter("profId", id_professore).list().get(0);
+			
+			session.getTransaction().commit();
+			
+			return pc;
+		}catch(Exception e) {
+			e.printStackTrace();
+			System.out.println("Erorre getByComposedId in ProfessoriCorsiDao");
+			session.getTransaction().rollback();
+			return null;
+		}finally {
+			session.close();
+		}
+	}
+
+	public ProfessoriCorsi getByComposedIdWithDate(int id_professore, int id_facolta, int id_corso) {
+		Session session=HibernateUtil.getSessionFactory().openSession();
+		ProfessoriCorsi pc;
+		
+		try {
+			session.beginTransaction();
+			
+			pc = (ProfessoriCorsi) session.createQuery("from ProfessoriCorsi pc where pc.corso.id = :corsoId and pc.facolta.id = :facoltaId and pc.professore.id = :profId")
+					.setParameter("corsoId", id_corso).setParameter("facoltaId", id_facolta).setParameter("profId", id_professore).list().get(0);
+			
 			
 			session.getTransaction().commit();
 			
