@@ -48,9 +48,9 @@
 						<input type="text" name="username"><br>
 						
 						<label name="password">Password: </label><br>
-						<input type="text" name="password"><br>
+						<input type="password" name="password"><br><br>
 					
-						<input class="btn btn-success btn-icon-split" type="submit" />
+						<input class="btn btn-success btn-icon-split" type="submit" value="Accedi"/>
 					</form>
 					
 					</c:otherwise>

@@ -145,7 +145,7 @@
 		</c:when>
 		<c:otherwise>
 		<li class="nav-item">
-        <a class="nav-link" href="${pageContext.request.contextPath}/Login">
+        <a class="nav-link" href="${pageContext.request.contextPath}/Logout">
           <i class="fas fa-fw fa-table"></i>
           <span>Logout</span></a>
       </li>
@@ -183,6 +183,7 @@
             </div>
           </form>
 
+		  <c:if test="${account != null }">
           <!-- Topbar Navbar -->
           <ul class="navbar-nav ml-auto">
 
@@ -202,7 +203,7 @@
                   Profilo
                 </a>               
                 <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="${pageContext.request.contextPath}/Login">
+                <a class="dropdown-item" href="${pageContext.request.contextPath}/Logout">
                   <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
                   Logout
                 </a>
@@ -210,6 +211,7 @@
             </li>
 
           </ul>
+          </c:if>
 
         </nav>
         <!-- End of Topbar -->
