@@ -36,9 +36,8 @@
 						<input type="hidden" name="corsoId" value=${cattedra.corso.id }>
 						<input type="hidden" name="facoltaId"
 							value=${cattedra.facolta.id }> <input type="hidden"
-							name="profId" value=${cattedra.professore.id }> <input
-							type="submit" value="Invia">
-						<input class="btn btn-success btn-icon-split" type="submit" />
+							name="profId" value=${cattedra.professore.id }> 
+						<input class="btn btn-success btn-icon-split" type="submit"  value="Invia"/>
 					</form>
 
 					<!-- CONTENUTO -->
