@@ -56,6 +56,7 @@ public class DataAppelloDao implements DataAppelloInterfaces {
 		return null;
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public ArrayList<DataAppello> getAll() {
 		Session session=HibernateUtil.getSessionFactory().openSession();
@@ -118,6 +119,7 @@ public class DataAppelloDao implements DataAppelloInterfaces {
 		}
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public List<DataAppello> getByFacoltaAndCorso(int idFacolta, int idCorso) {
 		Session session=HibernateUtil.getSessionFactory().openSession();
@@ -145,6 +147,7 @@ public class DataAppelloDao implements DataAppelloInterfaces {
 		}
 	}
 
+	@SuppressWarnings("unchecked")
 	public List<DataAppello> getByProfessoreFacoltaAndCorso(int idProfessore, int idFacolta, int idCorso) {
 		Session session=HibernateUtil.getSessionFactory().openSession();
 		ArrayList<DataAppello> appelli;

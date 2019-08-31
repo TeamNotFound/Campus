@@ -11,10 +11,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import dao.implementations.CorsoDao;
 import dao.implementations.FacoltaDao;
-import dao.implementations.ProfessoriCorsiDao;
 import dao.interfaces.CorsoInterface;
 import dao.interfaces.FacoltaInterface;
-import dao.interfaces.ProfessoriCorsiInterface;
 import model.Facolta;
 import model.ProfessoriCorsi;
 

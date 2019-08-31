@@ -1,4 +1,4 @@
-package controller;
+package controller.professore;
 
 import java.io.IOException;
 import java.sql.Date;

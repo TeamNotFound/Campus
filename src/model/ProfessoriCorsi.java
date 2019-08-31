@@ -8,7 +8,7 @@ import javax.persistence.*;
 @Table(name="professori_corsi")
 public class ProfessoriCorsi {
 	@Embeddable
-	private static class Id implements Serializable{
+	protected static class Id implements Serializable{
 		private static final long serialVersionUID = 1L;
 
 

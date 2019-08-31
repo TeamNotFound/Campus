@@ -1,13 +1,10 @@
 package dao.implementations;
 
 import java.util.ArrayList;
-import java.util.List;
-
 import org.hibernate.Hibernate;
 import org.hibernate.Session;
 
 import dao.interfaces.PrenotazioneInterface;
-import model.Facolta;
 import model.Prenotazione;
 import util.HibernateUtil;
 
@@ -84,6 +81,7 @@ public class PrenotazioneDao implements PrenotazioneInterface{
 		}
 	}
 	
+	@Override
 	public Prenotazione getById(int id) {
 		Session session = HibernateUtil.getSessionFactory().openSession();
 		Prenotazione prenotazione;

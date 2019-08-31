@@ -6,7 +6,6 @@ import org.hibernate.Session;
 
 import dao.interfaces.EsameInterface;
 import model.Esame;
-import model.Facolta;
 import util.HibernateUtil;
 
 public class EsameDao implements EsameInterface{

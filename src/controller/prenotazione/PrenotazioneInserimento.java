@@ -2,9 +2,7 @@ package controller.prenotazione;
 
 import java.io.IOException;
 import java.util.Date;
-import java.text.SimpleDateFormat;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.time.ZoneId;
 
 import javax.servlet.ServletException;
@@ -16,7 +14,6 @@ import javax.servlet.http.HttpServletResponse;
 import dao.implementations.DataAppelloDao;
 import dao.implementations.FacoltaDao;
 import dao.implementations.PrenotazioneDao;
-import dao.implementations.StudenteDao;
 import dao.interfaces.FacoltaInterface;
 import model.Account;
 import model.Facolta;
@@ -58,7 +55,6 @@ public class PrenotazioneInserimento extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		PrenotazioneDao dao = new PrenotazioneDao();
 		DataAppelloDao daoa = new DataAppelloDao();
-		StudenteDao daos= new StudenteDao();
 		
 		Prenotazione p = new Prenotazione();
 		Date d = Date.from(LocalDate.now().atStartOfDay(ZoneId.systemDefault()).toInstant());
@@ -66,9 +62,8 @@ public class PrenotazioneInserimento extends HttpServlet {
 		p.setDataAppello(daoa.getById(Integer.parseInt(request.getParameter("data_appello_id"))));
 		p.setDataPrenotazione(d);
 
-		Account s =(Account) request.getSession().getAttribute("account");
-
-		p.setStudente((Studente) s.getUtente());
+		Account a =(Account) request.getSession().getAttribute("account");
+		p.setStudente((Studente) a.getUtente());
 		
 		dao.inserimento(p);
 		
