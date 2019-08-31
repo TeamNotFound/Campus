@@ -24,6 +24,7 @@
 						<tr>
 							<th>Professore</th>
 							<th>Rimuovi</th>
+							<th>Promuovi</th>
 						</tr>
 
 						<c:forEach items="${professori}" var="p">
@@ -34,6 +35,12 @@
 										<a href="/Campus/Professore/Rimuovi/${p.id}">Rimuovi</a>
 
 									</c:if></td>
+								<td><c:if test="${!p.rettore}">
+
+										<a href="/Campus/Professore/Promuovi/${p.id}">Promuovi</a>
+
+									</c:if></td>
+								
 							</tr>
 						</c:forEach>
 					</table>

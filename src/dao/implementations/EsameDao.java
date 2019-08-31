@@ -26,6 +26,28 @@ public class EsameDao implements EsameInterface{
 		}
 	}
 	
+	@SuppressWarnings("unchecked")
+	public ArrayList<Esame> getByIdStudente(int idStudente){
+		Session session = HibernateUtil.getSessionFactory().openSession();
+		ArrayList<Esame> esami = new ArrayList<Esame>();
+		
+		try{
+			session.beginTransaction();
+						
+			esami = (ArrayList<Esame>) session.createQuery("from Esame where studente_id= :idStudente").setParameter("idStudente", idStudente).list();
+						
+			session.getTransaction().commit();
+
+			return esami;
+		} catch (Exception e) {
+			System.out.println("Error in getAll()");
+			e.printStackTrace();
+			return null;
+		} finally {
+			session.close();
+		}
+	}
+	
 	@Override
 	public Esame getById(int id){
 		Session session = HibernateUtil.getSessionFactory().openSession();
