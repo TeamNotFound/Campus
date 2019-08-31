@@ -42,7 +42,7 @@ public class ConvalidaEsamiServlet extends HttpServlet {
 		DataAppello data = dataDao.getByIdWithPrenotazioni(id);
 		
 		request.setAttribute("prenotazioni", data.getPrenotazioni());
-		request.getRequestDispatcher("/convalidaEsami.jsp").forward(request, response);
+		request.getRequestDispatcher("/views/esame/convalidaEsami.jsp").forward(request, response);
 	}
 
 	/**

@@ -1,17 +1,12 @@
 <html>
 <head>
-<title>Homepage Campus</title>
+<title>Assegnazione Professore</title>
 </head>
-<%@ include file="/templates/header.jspf" %>
+<%@ include file="/views/templates/header.jspf" %>
 
 	<!-- Contenuto pagina centrale -->
         <div class="container-fluid">
 
-          <!-- Page Heading -->
-          <div class="d-sm-flex align-items-center justify-content-between mb-4">
-            <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
-          </div>
-         
           <!-- Content Row -->
           <div class="row">
 
@@ -20,11 +15,19 @@
             <!-- Approach -->
               <div class="card shadow mb-4">
                 <div class="card-header py-3">
-                  <h6 class="m-0 font-weight-bold text-primary">Benvenuti nel campus</h6>
+                  <h6 class="m-0 font-weight-bold text-primary">Assegnazione Professore</h6>
                 </div>
                 <div class="card-body">
-                  <p>In questa pagina ci sarà il messaggio di benvenuto</p>
-                </div>
+					
+                <!-- INSERIRE CONTENUTO -->
+					<h1>${facolta.facolta}</h1>
+					<c:forEach items="${facolta.corsi }" var="c">
+						<a href="/Campus/Prenotazione/Corso/${c.id }"> ${c.corso} </a>
+						<br>
+					</c:forEach>
+					<!-- CONTENUTO -->
+
+				</div>
               </div>
           </div>
 
@@ -35,4 +38,4 @@
       <!-- Fine Contenuto pagina centrale -->
       
       
-<%@ include file="/templates/footer.jspf" %>
+<%@ include file="/views/templates/footer.jspf" %>

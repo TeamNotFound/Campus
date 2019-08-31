@@ -34,7 +34,7 @@ public class InserimentoProfessoreServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		if((boolean) request.getSession().getAttribute("rettore")) {
-			request.getRequestDispatcher("profForm.jsp").forward(request, response);
+			request.getRequestDispatcher("/views/professore/profForm.jsp").forward(request, response);
 			
 		} else {
 			response.sendRedirect("Login");

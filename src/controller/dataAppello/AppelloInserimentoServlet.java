@@ -46,7 +46,7 @@ public class AppelloInserimentoServlet extends HttpServlet {
 		
 		request.setAttribute("cattedre", pd.getByIdWithCorsi(u.getId()).getProfessoriCorsi());
 		
-		request.getRequestDispatcher("dataAppelloForm.jsp").forward(request, response);
+		request.getRequestDispatcher("/views/dataAppello/dataAppelloForm.jsp").forward(request, response);
 	}
 
 	/**

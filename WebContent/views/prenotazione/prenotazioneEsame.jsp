@@ -2,7 +2,7 @@
 <head>
 <title>Prenotazione Esame</title>
 </head>
-<%@ include file="/templates/header.jspf" %>
+<%@ include file="/views/templates/header.jspf" %>
 
 	<!-- Contenuto pagina centrale -->
         <div class="container-fluid">
@@ -55,4 +55,4 @@
       <!-- Fine Contenuto pagina centrale -->
       
       
-<%@ include file="/templates/footer.jspf" %>
+<%@ include file="/views/templates/footer.jspf" %>

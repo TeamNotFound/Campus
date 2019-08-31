@@ -39,7 +39,7 @@ public class CorsiFacoltaInserimentoServlet extends HttpServlet {
     	request.setAttribute("facolta", fDao.getAll());
     	request.setAttribute("corsi", cDao.getAll());
     	
-    	request.getRequestDispatcher("corsoFacoltaForm.jsp").forward(request, response);
+    	request.getRequestDispatcher("/views/corsiFacolta/corsoFacoltaForm.jsp").forward(request, response);
 	}
 
 	// Recupero sia la facolta che il corso tramite id con liste inizializzate (così da poter usare i metodi

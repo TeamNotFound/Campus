@@ -42,7 +42,7 @@ public class AssegnazioneCattedraServlet extends HttpServlet {
 			request.setAttribute("facolta", fDao.getAll());
 			request.setAttribute("corsi", cDao.getAll());
 			
-			request.getRequestDispatcher("cattedraForm.jsp").forward(request, response);
+			request.getRequestDispatcher("/views/cattedra/cattedraForm.jsp").forward(request, response);
 		} else {
 			response.sendRedirect("Login");
 		}

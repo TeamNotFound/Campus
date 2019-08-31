@@ -46,7 +46,7 @@ public class PrenotazioneInserimento extends HttpServlet {
 		
 		request.setAttribute("facolta", f);
 		
-		request.getRequestDispatcher("prenotazioniForm.jsp").forward(request, response);
+		request.getRequestDispatcher("/views/prenotazione/prenotazioniForm.jsp").forward(request, response);
 	}
 
 	/**
