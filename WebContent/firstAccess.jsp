@@ -1,10 +1,9 @@
-<html>
-<head>
-<title>Primo accesso al portale</title>
-</head>
-<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix = "c" %>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+<%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>  
+
 <!DOCTYPE html>
-<html lang="it">
+<html lang="en">
 
 <head>
 
@@ -14,7 +13,7 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>Registrazione</title>
+  <title>Primo Accesso al Portale</title>
 
   <!-- Custom fonts for this template-->
   <link href="templates/dashboard/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
