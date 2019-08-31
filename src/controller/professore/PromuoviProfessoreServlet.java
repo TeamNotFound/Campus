@@ -45,7 +45,7 @@ public class PromuoviProfessoreServlet extends HttpServlet {
 		pd.update(profDaProm);
 		
 		//rimandiamo al login per verificare i cambiamenti
-		request.getRequestDispatcher("/Logout").forward(request, response);
+		response.sendRedirect(request.getContextPath()+"/Logout");
 		
 	}
 
