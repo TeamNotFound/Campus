@@ -1,12 +1,7 @@
 package dao.implementations;
 
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
 
-import org.hibernate.Hibernate;
 import org.hibernate.Session;
 
 import dao.interfaces.ProfessoriCorsiInterface;
@@ -57,6 +52,7 @@ public class ProfessoriCorsiDao implements ProfessoriCorsiInterface {
 		}
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public ArrayList<ProfessoriCorsi> getAll() {
 		Session session=HibernateUtil.getSessionFactory().openSession();

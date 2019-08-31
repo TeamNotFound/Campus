@@ -7,11 +7,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import dao.implementations.FacoltaDao;
 import dao.implementations.PrenotazioneDao;
-import dao.interfaces.FacoltaInterface;
 import dao.interfaces.PrenotazioneInterface;
-import model.Facolta;
 import model.Prenotazione;
 
 /**

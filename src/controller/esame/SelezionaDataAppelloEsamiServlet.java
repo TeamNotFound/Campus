@@ -10,9 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import dao.implementations.DataAppelloDao;
-import dao.implementations.ProfessoriCorsiDao;
 import model.DataAppello;
-import model.ProfessoriCorsi;
 
 /**
  * Servlet implementation class SelezionaDataAppelloEsamiServlet

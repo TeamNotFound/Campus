@@ -7,7 +7,6 @@ import org.hibernate.Session;
 
 import dao.interfaces.ProfessoreInterface;
 import model.Professore;
-import model.Utente;
 import util.HibernateUtil;
 
 public class ProfessoreDao implements ProfessoreInterface {
@@ -34,6 +33,7 @@ public class ProfessoreDao implements ProfessoreInterface {
 		}
 	}
 
+	@Override
 	public void inserimento(Professore p) {
 		Session session = HibernateUtil.getSessionFactory().openSession();
 
@@ -77,6 +77,7 @@ public class ProfessoreDao implements ProfessoreInterface {
 
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public ArrayList<Professore> getAll() {
 		Session session = HibernateUtil.getSessionFactory().openSession();

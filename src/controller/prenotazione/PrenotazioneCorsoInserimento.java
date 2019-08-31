@@ -10,9 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import dao.implementations.DataAppelloDao;
-import dao.implementations.ProfessoriCorsiDao;
 import dao.interfaces.DataAppelloInterfaces;
-import dao.interfaces.ProfessoriCorsiInterface;
 import model.Account;
 import model.DataAppello;
 import model.Studente;

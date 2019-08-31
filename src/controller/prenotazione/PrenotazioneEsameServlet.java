@@ -10,14 +10,11 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import dao.implementations.DataAppelloDao;
 import dao.implementations.PrenotazioneDao;
-import dao.implementations.StudenteDao;
 import model.Account;
 import model.DataAppello;
-import model.PrenoPK;
 import model.Prenotazione;
 import model.Studente;
 
