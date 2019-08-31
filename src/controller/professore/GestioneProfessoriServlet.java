@@ -30,7 +30,7 @@ public class GestioneProfessoriServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	    ProfessoreDao daop=new ProfessoreDao();
 	    request.setAttribute("professori",daop.getAll());
-		request.getRequestDispatcher("gestioneProfessori.jsp").forward(request, response);
+		request.getRequestDispatcher("/views/professore/gestioneProfessori.jsp").forward(request, response);
 	}
 
 	/**

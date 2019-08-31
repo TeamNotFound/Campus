@@ -45,7 +45,7 @@ public class PrenotazioneEsameServlet extends HttpServlet {
 		da = dad.getById(id_data_appello);
 		request.setAttribute("dataPrenotata", da);
 		
-		request.getRequestDispatcher("/prenotazioneEsame.jsp").forward(request, response);
+		request.getRequestDispatcher("/views/prenotazione/prenotazioneEsame.jsp").forward(request, response);
 	}
 
 	/**

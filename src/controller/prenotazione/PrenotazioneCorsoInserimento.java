@@ -45,7 +45,7 @@ public class PrenotazioneCorsoInserimento extends HttpServlet {
 		
 		request.setAttribute("date", date);
 		
-		request.getRequestDispatcher("/corsoPrenotazioni.jsp").forward(request, response);
+		request.getRequestDispatcher("/views/prenotazione/corsoPrenotazioni.jsp").forward(request, response);
 		
 	}
 

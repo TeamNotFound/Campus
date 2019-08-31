@@ -39,7 +39,7 @@ public class SelezionaCattedraEsamiServlet extends HttpServlet {
 		
 		request.setAttribute("cattedre", p.getProfessoriCorsi());
 		
-		request.getRequestDispatcher("/selezioneCattedreEsami.jsp").forward(request, response);
+		request.getRequestDispatcher("/views/esame/selezioneCattedreEsami.jsp").forward(request, response);
 		
 	}
 

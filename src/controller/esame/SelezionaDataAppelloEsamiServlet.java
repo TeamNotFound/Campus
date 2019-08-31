@@ -43,7 +43,7 @@ public class SelezionaDataAppelloEsamiServlet extends HttpServlet {
 		
 		request.setAttribute("date", date);
 		
-		request.getRequestDispatcher("/selezioneDataAppelloEsami.jsp").forward(request, response);
+		request.getRequestDispatcher("/views/esame/selezioneDataAppelloEsami.jsp").forward(request, response);
 	}
 
 	/**
