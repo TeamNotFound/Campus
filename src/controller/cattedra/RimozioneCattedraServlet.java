@@ -44,7 +44,7 @@ public class RimozioneCattedraServlet extends HttpServlet {
 		cattedra = pcd.getByComposedId(id_corso, id_professore, id_facolta);
 		request.setAttribute("cattedra", cattedra);
 		
-		request.getRequestDispatcher("/rimozioneCattedra.jsp").forward(request, response);
+		request.getRequestDispatcher("/views/cattedra/rimozioneCattedra.jsp").forward(request, response);
 	}
 
 	/**

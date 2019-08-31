@@ -2,7 +2,7 @@
 <head>
 <title>Prenotazione Esame</title>
 </head>
-<%@ include file="/templates/header.jspf" %>
+<%@ include file="/views/templates/header.jspf" %>
 <body>
 <table>
 <tr>
@@ -22,4 +22,4 @@
 </tr>
 </c:forEach>
 </table>
-<%@ include file="/templates/footer.jspf" %>
+<%@ include file="/views/templates/footer.jspf" %>

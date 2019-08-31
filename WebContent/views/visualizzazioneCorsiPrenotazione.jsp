@@ -1,8 +1,8 @@
 <html>
 <head>
-<title>Assegnazione Professore</title>
+<title>Corsi disponibili</title>
 </head>
-<%@ include file="/templates/header.jspf" %>
+<%@ include file="/views/templates/header.jspf" %>
 
 	<!-- Contenuto pagina centrale -->
         <div class="container-fluid">
@@ -15,16 +15,15 @@
             <!-- Approach -->
               <div class="card shadow mb-4">
                 <div class="card-header py-3">
-                  <h6 class="m-0 font-weight-bold text-primary">Assegnazione Professore</h6>
+                  <h6 class="m-0 font-weight-bold text-primary">Corsi disponibili</h6>
                 </div>
                 <div class="card-body">
 					
                 <!-- INSERIRE CONTENUTO -->
-					<h1>${facolta.facolta}</h1>
-					<c:forEach items="${facolta.corsi }" var="c">
-						<a href="/Campus/Prenotazione/Corso/${c.id }"> ${c.corso} </a>
-						<br>
+					<c:forEach items="corsi" var="c">
+						<a href="/Campus/PrenotazioneCorso/${c.id}">${c.corso}</a>
 					</c:forEach>
+
 					<!-- CONTENUTO -->
 
 				</div>
@@ -38,4 +37,4 @@
       <!-- Fine Contenuto pagina centrale -->
       
       
-<%@ include file="/templates/footer.jspf" %>
+<%@ include file="/views/templates/footer.jspf" %>

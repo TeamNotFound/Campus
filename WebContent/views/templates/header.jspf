@@ -16,12 +16,12 @@
   <title>Campus Universitario</title>
 
   <!-- Custom fonts for this template-->
-  <link href=""${pageContext.request.contextPath}/templates/dashboard/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+  <link href="${pageContext.request.contextPath}/views/templates/dashboard/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
   <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
 
   <!-- Custom styles for this template-->
-  <link href="${pageContext.request.contextPath}/templates/dashboard/css/custom.css" rel="stylesheet"> 
-  <link href="${pageContext.request.contextPath}/templates/dashboard/css/sb-admin-2.min.css" rel="stylesheet">
+  <link href="${pageContext.request.contextPath}/views/templates/dashboard/css/custom.css" rel="stylesheet"> 
+  <link href="${pageContext.request.contextPath}/views/templates/dashboard/css/sb-admin-2.min.css" rel="stylesheet">
 
 </head>
 
@@ -34,7 +34,7 @@
     <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
       <!-- Sidebar - Brand -->
-      <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.jsp">
+      <a class="sidebar-brand d-flex align-items-center justify-content-center" href="${pageContext.request.contextPath}/Home">
         <div class="sidebar-brand-text mx-3">CAMPUS<sup> NOT FOUND</sup></div>
       </a>
 

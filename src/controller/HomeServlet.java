@@ -33,7 +33,7 @@ public class HomeServlet extends HttpServlet {
 		if(pDao.getAll().isEmpty()) {
 			response.sendRedirect("FirstAccess");
 		} else {
-			request.getRequestDispatcher("index.jsp").forward(request, response);
+			request.getRequestDispatcher("/views/index.jsp").forward(request, response);
 		}
 	}
 

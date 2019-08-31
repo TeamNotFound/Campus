@@ -1,8 +1,8 @@
 <html>
 <head>
-<title>Prenotazione al Corso</title>
+<title>Gestione Professori</title>
 </head>
-<%@ include file="/templates/header.jspf" %>
+<%@ include file="/views/templates/header.jspf" %>
 
 	<!-- Contenuto pagina centrale -->
         <div class="container-fluid">
@@ -15,24 +15,29 @@
             <!-- Approach -->
               <div class="card shadow mb-4">
                 <div class="card-header py-3">
-                  <h6 class="m-0 font-weight-bold text-primary">Prenotazione al Corso</h6>
+                  <h6 class="m-0 font-weight-bold text-primary">Gestione Professori</h6>
                 </div>
                 <div class="card-body">
 					
                 <!-- INSERIRE CONTENUTO -->
-                <table>
+					<table>
 						<tr>
-							<th>Data</th>
-							<th>Prenota</th>
+							<th>Professore</th>
+							<th>Rimuovi</th>
 						</tr>
-						<c:forEach items="${date}" var="d">
+
+						<c:forEach items="${professori}" var="p">
 							<tr>
-								<td>${d.dataAppello}</td>
-								<td><a
-									href="/Campus/Prenotazione/PrenotazioneEsame/${d.id}">Prenota</a></td>
+								<td>${p.nome}${p.cognome}</td>
+								<td><c:if test="${!p.rettore}">
+
+										<a href="/Campus/Professore/Rimuovi/${p.id}">Rimuovi</a>
+
+									</c:if></td>
 							</tr>
 						</c:forEach>
 					</table>
+
 					<!-- CONTENUTO -->
 
 				</div>
@@ -46,4 +51,4 @@
       <!-- Fine Contenuto pagina centrale -->
       
       
-<%@ include file="/templates/footer.jspf" %>
+<%@ include file="/views/templates/footer.jspf" %>

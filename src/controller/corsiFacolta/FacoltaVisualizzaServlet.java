@@ -53,7 +53,7 @@ public class FacoltaVisualizzaServlet extends HttpServlet {
 		request.setAttribute("facolta", f);
 		request.setAttribute("corsi", cDao.getAll());
 		
-		request.getRequestDispatcher("/facolta.jsp").forward(request, response);
+		request.getRequestDispatcher("/views/corsiFacolta/facolta.jsp").forward(request, response);
 	}
 
 	/**
