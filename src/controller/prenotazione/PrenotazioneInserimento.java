@@ -1,7 +1,9 @@
 package controller.prenotazione;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.time.LocalDate;
 import java.time.ZoneId;
 
@@ -14,8 +16,11 @@ import javax.servlet.http.HttpServletResponse;
 import dao.implementations.DataAppelloDao;
 import dao.implementations.FacoltaDao;
 import dao.implementations.PrenotazioneDao;
+import dao.implementations.StudenteDao;
 import dao.interfaces.FacoltaInterface;
 import model.Account;
+import model.Corso;
+import model.Esame;
 import model.Facolta;
 import model.Prenotazione;
 import model.Studente;
@@ -40,9 +45,19 @@ public class PrenotazioneInserimento extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		FacoltaInterface fDao = new FacoltaDao();
+		StudenteDao studenteDao = new StudenteDao();
 		
-		Account s =(Account) request.getSession().getAttribute("account");
-		Facolta f = fDao.getByIdWithCorsi(((Studente) s.getUtente()).getFacolta().getId());
+		Account account =(Account) request.getSession().getAttribute("account");
+		Studente studente = (Studente) account.getUtente();
+		studente = studenteDao.getByIdWithPrenotazioniEsami(studente.getId());
+		
+		Facolta f = fDao.getByIdWithCorsi(studente.getFacolta().getId());
+		
+		List<Corso> corsiDaRimuovere = getCorsiDaRimuovere(studente);
+		
+		for(Corso corso : corsiDaRimuovere) {
+			f.getCorsi().remove(corso);
+		}
 		
 		request.setAttribute("facolta", f);
 		
@@ -70,4 +85,17 @@ public class PrenotazioneInserimento extends HttpServlet {
 		response.sendRedirect("PrenotazioniEffettuate");
 	}
 
+	private List<Corso> getCorsiDaRimuovere(Studente studente){
+		List<Corso> corsiDaRimuovere = new ArrayList<Corso>();
+		
+		for(Esame esame : studente.getEsami()) {
+			corsiDaRimuovere.add(esame.getCorso());
+		}
+		
+		for(Prenotazione prenotazione : studente.getPrenotazioni()) {
+			corsiDaRimuovere.add(prenotazione.getDataAppello().getCorso());
+		}
+		
+		return corsiDaRimuovere;
+	}
 }
