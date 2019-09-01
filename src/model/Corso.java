@@ -25,7 +25,7 @@ public class Corso {
 	private String corso;
 	
 	@OneToMany(mappedBy = "corso")
-	private Set<ProfessoriCorsi> cattedre;
+	private Set<Cattedra> cattedre;
 	
 	@ManyToMany(fetch=FetchType.LAZY)
     @JoinTable(
@@ -49,11 +49,11 @@ public class Corso {
 		this.id = id;
 	}
 	
-	public Set<ProfessoriCorsi> getCattedre() {
+	public Set<Cattedra> getCattedre() {
 		return cattedre;
 	}
 
-	public void setCattedre(Set<ProfessoriCorsi> cattedre) {
+	public void setCattedre(Set<Cattedra> cattedre) {
 		this.cattedre = cattedre;
 	}
 

@@ -4,14 +4,14 @@ import java.util.ArrayList;
 
 import org.hibernate.Session;
 
-import dao.interfaces.ProfessoriCorsiInterface;
-import model.ProfessoriCorsi;
+import dao.interfaces.CattedraInterface;
+import model.Cattedra;
 import util.HibernateUtil;
 
-public class ProfessoriCorsiDao implements ProfessoriCorsiInterface {
+public class CattedraDao implements CattedraInterface {
 
 	@Override
-	public void inserimento(ProfessoriCorsi pc) {
+	public void inserimento(Cattedra pc) {
 		Session session=HibernateUtil.getSessionFactory().openSession();
 		
 		try {
@@ -22,7 +22,7 @@ public class ProfessoriCorsiDao implements ProfessoriCorsiInterface {
 			session.getTransaction().commit();
 		}catch(Exception e) {
 			e.printStackTrace();
-			System.out.println("Errore inserimento ProfessoriCorsiDao");
+			System.out.println("Errore inserimento CattedraDao");
 			session.getTransaction().rollback();
 		}finally {
 			session.close();
@@ -30,14 +30,14 @@ public class ProfessoriCorsiDao implements ProfessoriCorsiInterface {
 	}
 
 	@Override
-	public ProfessoriCorsi getById(int id) {
+	public Cattedra getById(int id) {
 		Session session=HibernateUtil.getSessionFactory().openSession();
-		ProfessoriCorsi pc;
+		Cattedra pc;
 		
 		try {
 			session.beginTransaction();
 			
-			pc = (ProfessoriCorsi) session.get(ProfessoriCorsi.class,id);
+			pc = (Cattedra) session.get(Cattedra.class, id);
 			
 			session.getTransaction().commit();
 			
@@ -54,13 +54,13 @@ public class ProfessoriCorsiDao implements ProfessoriCorsiInterface {
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public ArrayList<ProfessoriCorsi> getAll() {
+	public ArrayList<Cattedra> getAll() {
 		Session session=HibernateUtil.getSessionFactory().openSession();
-		ArrayList<ProfessoriCorsi> pc;
+		ArrayList<Cattedra> pc;
 		try {
 			session.beginTransaction();
 			
-			pc = (ArrayList<ProfessoriCorsi>) session.createQuery("form ProfessoriCorsi").list();
+			pc = (ArrayList<Cattedra>) session.createQuery("form Cattedra").list();
 			
 			session.getTransaction().commit();
 			
@@ -79,7 +79,7 @@ public class ProfessoriCorsiDao implements ProfessoriCorsiInterface {
 	
 
 	@Override
-	public void update(ProfessoriCorsi pc) {
+	public void update(Cattedra pc) {
 		Session session=HibernateUtil.getSessionFactory().openSession();
 		
 		try {
@@ -90,7 +90,7 @@ public class ProfessoriCorsiDao implements ProfessoriCorsiInterface {
 			session.getTransaction().commit();
 		}catch(Exception e) {
 			e.printStackTrace();
-			System.out.println("Errore update in ProfessoriCorsiDao");
+			System.out.println("Errore update in CattedraDao");
 			session.getTransaction().rollback();
 		}finally {
 			session.close();
@@ -99,7 +99,7 @@ public class ProfessoriCorsiDao implements ProfessoriCorsiInterface {
 	}
 
 	@Override
-	public void remove(ProfessoriCorsi pc) {
+	public void remove(Cattedra pc) {
 Session session=HibernateUtil.getSessionFactory().openSession();
 		
 		try {
@@ -118,14 +118,14 @@ Session session=HibernateUtil.getSessionFactory().openSession();
 		
 	}
 	
-	public ProfessoriCorsi getByComposedId(int id_corso,int id_professore, int id_facolta) {
+	public Cattedra getByComposedId(int id_corso,int id_professore, int id_facolta) {
 		Session session=HibernateUtil.getSessionFactory().openSession();
-		ProfessoriCorsi pc;
+		Cattedra pc;
 		
 		try {
 			session.beginTransaction();
 			
-			pc = (ProfessoriCorsi) session.createQuery("from ProfessoriCorsi pc where pc.corso.id = :corsoId and pc.facolta.id = :facoltaId and pc.professore.id = :profId")
+			pc = (Cattedra) session.createQuery("from Cattedra pc where pc.corso.id = :corsoId and pc.facolta.id = :facoltaId and pc.professore.id = :profId")
 					.setParameter("corsoId", id_corso).setParameter("facoltaId", id_facolta).setParameter("profId", id_professore).list().get(0);
 			
 			session.getTransaction().commit();
@@ -141,14 +141,14 @@ Session session=HibernateUtil.getSessionFactory().openSession();
 		}
 	}
 
-	public ProfessoriCorsi getByComposedIdWithDate(int id_professore, int id_facolta, int id_corso) {
+	public Cattedra getByComposedIdWithDate(int id_professore, int id_facolta, int id_corso) {
 		Session session=HibernateUtil.getSessionFactory().openSession();
-		ProfessoriCorsi pc;
+		Cattedra pc;
 		
 		try {
 			session.beginTransaction();
 			
-			pc = (ProfessoriCorsi) session.createQuery("from ProfessoriCorsi pc where pc.corso.id = :corsoId and pc.facolta.id = :facoltaId and pc.professore.id = :profId")
+			pc = (Cattedra) session.createQuery("from Cattedra pc where pc.corso.id = :corsoId and pc.facolta.id = :facoltaId and pc.professore.id = :profId")
 					.setParameter("corsoId", id_corso).setParameter("facoltaId", id_facolta).setParameter("profId", id_professore).list().get(0);
 			
 			

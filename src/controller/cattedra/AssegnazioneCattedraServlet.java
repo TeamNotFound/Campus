@@ -10,8 +10,8 @@ import javax.servlet.http.HttpServletResponse;
 import dao.implementations.CorsoDao;
 import dao.implementations.FacoltaDao;
 import dao.implementations.ProfessoreDao;
-import dao.implementations.ProfessoriCorsiDao;
-import model.ProfessoriCorsi;
+import dao.implementations.CattedraDao;
+import model.Cattedra;
 
 /**
  * Servlet implementation class AssegnazioneCattedraServlet
@@ -57,21 +57,21 @@ public class AssegnazioneCattedraServlet extends HttpServlet {
 			FacoltaDao fDao = new FacoltaDao();
 			CorsoDao cDao = new CorsoDao();
 			
-			ProfessoriCorsiDao pcDao = new ProfessoriCorsiDao();
+			CattedraDao pcDao = new CattedraDao();
 			
-			ProfessoriCorsi pc = new ProfessoriCorsi();
+			Cattedra cattedra = new Cattedra();
 			
-			pc.setProfessore(pDao.getById(Integer.parseInt(request.getParameter("prof"))));
-			pc.setFacolta(fDao.getByIdWithCorsi(Integer.parseInt(request.getParameter("facolta"))));
-			pc.setCorso(cDao.getById(Integer.parseInt(request.getParameter("corso"))));
+			cattedra.setProfessore(pDao.getById(Integer.parseInt(request.getParameter("prof"))));
+			cattedra.setFacolta(fDao.getByIdWithCorsi(Integer.parseInt(request.getParameter("facolta"))));
+			cattedra.setCorso(cDao.getById(Integer.parseInt(request.getParameter("corso"))));
 			
-			System.out.println("Professore: "+pc.getProfessore().getId());
-			System.out.println("Facolta: "+pc.getFacolta().getId());
-			System.out.println("Corso: "+pc.getCorso().getId());
+			System.out.println("Professore: "+cattedra.getProfessore().getId());
+			System.out.println("Facolta: "+cattedra.getFacolta().getId());
+			System.out.println("Corso: "+cattedra.getCorso().getId());
 
 			
-			if(pc.getFacolta().getCorsi().contains(pc.getCorso())) {
-				pcDao.inserimento(pc);
+			if(cattedra.getFacolta().getCorsi().contains(cattedra.getCorso())) {
+				pcDao.inserimento(cattedra);
 			}
 			
 			response.sendRedirect("AssegnazioneCattedra");

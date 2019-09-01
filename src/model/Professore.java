@@ -14,7 +14,7 @@ public class Professore extends Utente{
 	private String titoliDiStudio;
 	
 	@OneToMany(mappedBy = "professore")
-	private Set<ProfessoriCorsi> professoriCorsi;
+	private Set<Cattedra> cattedra;
 	
 	@OneToMany(mappedBy="professore")
 	private Set<DataAppello> appelli;
@@ -35,12 +35,12 @@ public class Professore extends Utente{
 		this.rettore = rettore;
 	}
 
-	public Set<ProfessoriCorsi> getProfessoriCorsi() {
-		return professoriCorsi;
+	public Set<Cattedra> getProfessoriCorsi() {
+		return cattedra;
 	}
 
-	public void setProfessoriCorsi(Set<ProfessoriCorsi> professoriCorsi) {
-		this.professoriCorsi = professoriCorsi;
+	public void setProfessoriCorsi(Set<Cattedra> cattedra) {
+		this.cattedra = cattedra;
 	}
 
 	public Set<DataAppello> getAppelli() {

@@ -23,7 +23,7 @@
 		<mapping class="model.Account"/>
 		<mapping class="model.Corso"/>
 		<mapping class="model.Studente"/>
-		<mapping class="model.ProfessoriCorsi"/>
+		<mapping class="model.Cattedra"/>
 		<mapping class="model.Professore"/>
 		<mapping class="model.DataAppello"/>
 		<mapping class="model.Esame"/>

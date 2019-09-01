@@ -14,7 +14,7 @@ import dao.implementations.FacoltaDao;
 import dao.interfaces.CorsoInterface;
 import dao.interfaces.FacoltaInterface;
 import model.Facolta;
-import model.ProfessoriCorsi;
+import model.Cattedra;
 
 /**
  * Servlet implementation class FacoltaVisualizzaServlet
@@ -44,12 +44,12 @@ public class FacoltaVisualizzaServlet extends HttpServlet {
 		
 		Facolta f = dao.getByIdWithCorsiAndCattedre(id);
 		
-		HashMap<Integer, ProfessoriCorsi> profCorsi = new HashMap<Integer, ProfessoriCorsi>();
-		for(ProfessoriCorsi pc : f.getCattedre()) {
-			profCorsi.put(pc.getCorso().getId(), pc);
+		HashMap<Integer, Cattedra> cattedre = new HashMap<Integer, Cattedra>();
+		for(Cattedra pc : f.getCattedre()) {
+			cattedre.put(pc.getCorso().getId(), pc);
 		}
 		
-		request.setAttribute("cattedre", profCorsi);
+		request.setAttribute("cattedre", cattedre);
 		request.setAttribute("facolta", f);
 		request.setAttribute("corsi", cDao.getAll());
 		
