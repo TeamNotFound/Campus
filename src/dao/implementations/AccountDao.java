@@ -73,8 +73,13 @@ public class AccountDao implements AccountInterface {
 
 	@Override
 	public void update(Account element) {
-		// TODO Auto-generated method stub
+		Session session = HibernateUtil.getSessionFactory().openSession();
+		session.beginTransaction();
 		
+		session.update(element);
+		
+		session.getTransaction().commit();
+		session.close();
 	}
 
 	@Override
