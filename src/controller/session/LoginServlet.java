@@ -69,8 +69,11 @@ public class LoginServlet extends HttpServlet {
 
 				}
 			}
+			
+			response.sendRedirect("/Campus/Home");
+		} else {
+			doGet(request, response);
 		}
-		response.sendRedirect("/Campus/Home");
 	}
 
 }

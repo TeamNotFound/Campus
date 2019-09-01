@@ -12,11 +12,14 @@ public class Studente extends Utente {
 	@JoinColumn(name = "facolta_id")
 	private Facolta facolta;
 	
+	@Column(name="titoli_di_studio")
+	private String titoliDiStudio;
+	
 	@OneToMany(mappedBy = "studente")
 	private Set<Prenotazione> prenotazioni;
 	
-	@Column(name="titoli_di_studio")
-	private String titoliDiStudio;
+	@OneToMany(mappedBy = "studente")
+	private Set<Esame> esami;
 
 	public Facolta getFacolta() {
 		return facolta;
@@ -32,6 +35,14 @@ public class Studente extends Utente {
 
 	public void setPrenotazioni(Set<Prenotazione> prenotazioni) {
 		this.prenotazioni = prenotazioni;
+	}
+
+	public Set<Esame> getEsami() {
+		return esami;
+	}
+
+	public void setEsami(Set<Esame> esami) {
+		this.esami = esami;
 	}
 
 	public String getTitoliDiStudio() {

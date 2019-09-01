@@ -44,7 +44,7 @@
 						</select><br> <label for="username">Username: </label><br> <input
 							id="username" name="username" type="text"><br> <label
 							for="password">Password: </label><br> <input id="password"
-							name="password" type="text"><br>
+							name="password" type="password"><br>
 
 						<input class="btn btn-success btn-icon-split" type="submit" />
 					</form>

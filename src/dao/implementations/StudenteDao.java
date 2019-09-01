@@ -70,6 +70,51 @@ public class StudenteDao implements StudenteInterface {
 			session.close();
 		}
 	}
+	
+	public Studente getByIdWithEsami(int id) {
+		Session session = HibernateUtil.getSessionFactory().openSession();
+		Studente studente;
+		
+		try{
+			session.beginTransaction();
+
+			studente = (Studente) session.get(Studente.class, id);
+			Hibernate.initialize(studente.getEsami());
+
+			session.getTransaction().commit();
+
+			return studente;
+		} catch (Exception e) {
+			System.out.println("Error in getAll()");
+			e.printStackTrace();
+			return null;
+		} finally {
+			session.close();
+		}
+	}
+	
+	public Studente getByIdWithPrenotazioniEsami(int id) {
+		Session session = HibernateUtil.getSessionFactory().openSession();
+		Studente studente;
+		
+		try{
+			session.beginTransaction();
+
+			studente = (Studente) session.get(Studente.class, id);
+			Hibernate.initialize(studente.getPrenotazioni());
+			Hibernate.initialize(studente.getEsami());
+			
+			session.getTransaction().commit();
+
+			return studente;
+		} catch (Exception e) {
+			System.out.println("Error in getAll()");
+			e.printStackTrace();
+			return null;
+		} finally {
+			session.close();
+		}
+	}
 
 	@SuppressWarnings("unchecked")
 	@Override

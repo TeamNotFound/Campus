@@ -41,7 +41,7 @@ public class InserimentoStudenteServlet extends HttpServlet {
 
 		request.setAttribute("facolta", dao.getAll());
 		
-		request.getRequestDispatcher("studenteForm.jsp").forward(request, response);
+		request.getRequestDispatcher("/views/studenteForm.jsp").forward(request, response);
 	}
 
 	/**
@@ -98,7 +98,7 @@ public class InserimentoStudenteServlet extends HttpServlet {
 				
 		stuDao.inserimento(s);
 
-		response.sendRedirect("Studente");
+		response.sendRedirect("Login");
 	}
 
 }
