@@ -6,7 +6,7 @@ import javax.persistence.*;
 
 @Entity
 @Table(name="professori_corsi")
-public class ProfessoriCorsi {
+public class Cattedra {
 	@Embeddable
 	protected static class Id implements Serializable{
 		private static final long serialVersionUID = 1L;
@@ -160,7 +160,7 @@ public class ProfessoriCorsi {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		ProfessoriCorsi other = (ProfessoriCorsi) obj;
+		Cattedra other = (Cattedra) obj;
 		if (corso == null) {
 			if (other.corso != null)
 				return false;
@@ -190,7 +190,7 @@ public class ProfessoriCorsi {
 				+ "]";
 	}
 
-	public ProfessoriCorsi(Id id, Professore professore, Corso corso, Facolta facolta) {
+	public Cattedra(Id id, Professore professore, Corso corso, Facolta facolta) {
 		super();
 		this.id = id;
 		this.professore = professore;
@@ -198,7 +198,7 @@ public class ProfessoriCorsi {
 		this.facolta = facolta;
 	}
 
-	public ProfessoriCorsi() {
+	public Cattedra() {
 		super();
 		// TODO Auto-generated constructor stub
 	}

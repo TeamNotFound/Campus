@@ -8,8 +8,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import dao.implementations.ProfessoriCorsiDao;
-import model.ProfessoriCorsi;
+import dao.implementations.CattedraDao;
+import model.Cattedra;
 
 /**
  * Servlet implementation class RimozioneCattedraServlet
@@ -30,8 +30,8 @@ public class RimozioneCattedraServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		ProfessoriCorsiDao pcd = new ProfessoriCorsiDao();
-		ProfessoriCorsi cattedra = new ProfessoriCorsi();
+		CattedraDao pcd = new CattedraDao();
+		Cattedra cattedra = new Cattedra();
 		
 		
 		//prendo i dati passati per path e li splitto in tre diversi id
@@ -52,8 +52,8 @@ public class RimozioneCattedraServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		ProfessoriCorsiDao pcd = new ProfessoriCorsiDao();
-		ProfessoriCorsi cattedra = new ProfessoriCorsi();
+		CattedraDao pcd = new CattedraDao();
+		Cattedra cattedra = new Cattedra();
 	
 		cattedra = pcd.getByComposedId(Integer.parseInt(request.getParameter("corsoId")), Integer.parseInt(request.getParameter("profId")), Integer.parseInt(request.getParameter("facoltaId")));
 	
