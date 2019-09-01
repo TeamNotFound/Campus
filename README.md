@@ -1,9 +1,34 @@
-# Campus
+[![N|Solid](https://i.imgur.com/TYs9xKp.png)](https://nodesource.com/products/nsolid)
 
-Aggiornamento 26/08/2019:
+[![Build Status](https://travis-ci.org/joemccann/dillinger.svg?branch=master)](https://travis-ci.org/joemccann/dillinger)
 
-* Lavoro sulle entities 99%
-* Lavoro sui CRUD 80%
-* Lavoro sui Servlet 70%
-* Lavoro sulle jsp 40%
-* Risolti problemi compatibilit√† tra sistema
+Il primo accesso al nostro portale "Campus Not Found" avviene con **la registrazione del rettore.**
+
+Una volta compilati tutti i campi del form, la registrazione sar‡ avvenuta con successo e verr‡ fatto un redirect alla pagina dove il rettore potr‡ fare il login con username e password scelti in fase di registrazione.
+
+Effettuato il login, **il rettore avr‡ il controllo completo su tutto.**
+
+# Features del rettore:
+
+ - Aggiungere/Rimuovere le facolt‡
+ - Aggiungere/Rimuovere i corsi
+  - Associare i corsi alle relative facolt‡
+  - Aggiungere/Rimuovere professori
+  - Assegnare la cattedra ad un professore
+  - Liberare la cattedra
+
+Una volta che il rettore avr‡ **aggiunto il professore, quest'ultimo potr‡ - a sua volta - loggarsi con le proprie credenziali.**
+
+# Features del professore:
+
+ - Creare date di appello
+ - Convalidare Esami
+
+**Lo studente, infine, una volta iscritto al portale potr‡ gestire le prenotazioni** e controllare gli esami.
+
+# Features dello studente:
+
+ - Visualizzare le date di appello dei corsi inerenti alla sua facolt‡
+ - Prenotarsi alle suddette date di appello
+ - Visualizzare le prenotazioni effettuate
+ - Visualizzare gli esami
