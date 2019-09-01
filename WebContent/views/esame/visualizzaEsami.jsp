@@ -9,15 +9,17 @@
 <h3>${account.utente.nome}</h3>
 <h3>${account.utente.cognome}</h3>
 <hr>
+<table>
 <tr>
 	<th>Esame</th>
 	<th>Voto</th>
-</tr><br>
+</tr>
 <c:forEach items="${esami}" var="e">
 	<tr>
 		<td>${e.corso.corso}</td>
 		<td>${e.votoEsame }</td>
 	</tr>
 </c:forEach>
+</table>
 </body>
 </html>
