@@ -1,7 +1,6 @@
 package controller.esame;
 
 import java.io.IOException;
-import java.util.ArrayList;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -9,9 +8,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import dao.implementations.EsameDao;
+import dao.implementations.StudenteDao;
 import model.Account;
-import model.Esame;
 import model.Studente;
 
 /**
@@ -33,13 +31,13 @@ public class VisualizzaEsamiServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		EsameDao ed = new EsameDao();
+		StudenteDao studenteDao = new StudenteDao();
 		
 		Account a = (Account) request.getSession().getAttribute("account");
 		Studente s = (Studente) a.getUtente();
-		ArrayList<Esame> esami = ed.getByIdStudente(s.getId());
+		s = studenteDao.getByIdWithEsami(s.getId());
 		
-		request.setAttribute("esami", esami);
+		request.setAttribute("esami", s.getEsami());
 		
 		request.getRequestDispatcher("/views/esame/visualizzaEsami.jsp").forward(request, response);
 	}

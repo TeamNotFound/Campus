@@ -84,10 +84,10 @@ public class AppelloInserimentoServlet extends HttpServlet {
 		if(dataDaInserire != null) {
 			da.setDataAppello(dataDaInserire);
 			dad.inserimento(da);
-			response.sendRedirect("index.jsp");
+			response.sendRedirect(request.getContextPath()+"/Home");
 		}else
 		{
-			response.sendRedirect("dataAppelloForm.jsp");
+			doGet(request, response);
 		}
 	}
 
