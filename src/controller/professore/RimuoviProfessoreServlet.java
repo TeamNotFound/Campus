@@ -31,7 +31,7 @@ public class RimuoviProfessoreServlet extends HttpServlet {
 		ProfessoreDao daop = new ProfessoreDao();
 		int id = Integer.parseInt(request.getPathInfo().substring(1));
 		daop.remove(daop.getById(id));
-		response.sendRedirect("/Campus/GestioneProfessori");
+		response.sendRedirect(request.getContextPath()+"/GestioneProfessori");
 	}
 
 	/**

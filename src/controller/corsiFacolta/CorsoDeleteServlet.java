@@ -40,7 +40,7 @@ public class CorsoDeleteServlet extends HttpServlet {
 					
 		dao.remove(c);
 		
-		response.sendRedirect("/Campus/CorsiFacolta");
+		response.sendRedirect(request.getContextPath()+"/CorsiFacolta");
 	}
 
 	/**
