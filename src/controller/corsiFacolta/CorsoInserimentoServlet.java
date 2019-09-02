@@ -8,6 +8,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import dao.implementations.CorsoDao;
+import dao.implementations.FacoltaDao;
+import dao.interfaces.CorsoInterface;
+import dao.interfaces.FacoltaInterface;
 import model.Corso;
 
 /**
@@ -28,7 +31,11 @@ public class CorsoInserimentoServlet extends HttpServlet {
     
     
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		response.sendRedirect("CorsiFacolta");
+		CorsoInterface cDao = new CorsoDao();
+		
+    	request.setAttribute("corsi", cDao.getAll());
+    	
+    	request.getRequestDispatcher("/views/corsi/corsoForm.jsp").forward(request, response);
 	}
 
 	/**
@@ -42,7 +49,7 @@ public class CorsoInserimentoServlet extends HttpServlet {
 		
 		dao.inserimento(c);
 		
-		response.sendRedirect("CorsiFacolta");
+		response.sendRedirect("Corso");
 	}
 
 }

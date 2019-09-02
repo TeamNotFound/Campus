@@ -34,33 +34,6 @@
 		</div>
 		<!-- End Content Column -->
 
-
-		<!-- Content Column -->
-		<div class="col-lg-12 mb-4">
-			<!-- Approach -->
-			<div class="card shadow mb-4">
-				<div class="card-header py-3">
-					<h6 class="m-0 font-weight-bold text-primary">Inserimento
-						Corsi</h6>
-				</div>
-				<div class="card-body">
-
-					<!-- INSERIRE CONTENUTO -->
-					<form action="Corso" method="post">
-						<label name="corso">Corso: </label><br> <input name="corso"
-							type="text" /><br>
-							<input class="btn btn-success btn-icon-split"
-							type="submit" />
-					</form>
-					<!-- CONTENUTO -->
-
-				</div>
-			</div>
-		</div>
-		<!-- End Content Column -->
-
-
-
 		<!-- Content Column -->
 		<div class="col-lg-12 mb-4">
 			<!-- Approach -->
@@ -97,7 +70,7 @@
 			<!-- Approach -->
 			<div class="card shadow mb-4">
 				<div class="card-header py-3">
-					<h6 class="m-0 font-weight-bold text-primary">Rimozione Corsi o Facoltà</h6>
+					<h6 class="m-0 font-weight-bold text-primary">Rimozione Facoltà</h6>
 				</div>
 				<div class="card-body">
 
@@ -118,19 +91,7 @@
 					
 					<br>
 
-					<table>
-						<tr>
-							<th>Corsi</th>
-							<th>Elimina</th>
-						</tr>
-						<c:forEach items="${corsi}" var="cor">
-							<tr>
-								<td>${cor.corso}</td>
-								<td><a href="Corso/delete/${cor.id}">Rimuovi</a></td>
-							</tr>
-						</c:forEach>
-					</table>
-
+					
 
 					<!-- CONTENUTO -->
 
