@@ -34,8 +34,8 @@ public class CorsiFacoltaInserimentoServlet extends HttpServlet {
     
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		FacoltaInterface fDao = new FacoltaDao();
-    	CorsoInterface cDao = new CorsoDao();
-    	
+		CorsoInterface cDao = new CorsoDao();
+		
     	request.setAttribute("facolta", fDao.getAll());
     	request.setAttribute("corsi", cDao.getAll());
     	
