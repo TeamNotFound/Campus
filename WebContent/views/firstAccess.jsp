@@ -42,7 +42,7 @@
 				<form class="user" action="FirstAccess" method="post"> 
                 <div class="form-group row">
                   <div class="col-sm-6 mb-3 mb-sm-0">
-                    <input type="text" class="form-control form-control-user" name="nome" id="nome" placeholder="Nome Professore">
+                    <input type="text" class="form-control form-control-user" name="nome" id="nome" placeholder="Nome">
                   </div>
                   <div class="col-sm-6">
                     <input type="text" class="form-control form-control-user" name="cognome" id="cognome" placeholder="Cognome">
@@ -81,7 +81,7 @@
 
                 <div class="form-group row">
                   <div class="col-sm-12 mb-3 mb-sm-0">
-                    <input type="text" class="form-control form-control-user" id="titoli" name="titoli" placeholder="Titoli di studio">
+                    <input type="text" class="form-control form-control-user" id="titoli" name="titoli" placeholder="Titolo di studio">
                   </div>
                   
                 </div>
@@ -98,7 +98,7 @@
                   </div>
                 </div>
 
-              <input class="btn btn-success btn-icon-split" type="submit" />
+              <input class="btn btn-success btn-icon-split" type="submit" value="Registrati"/>
 
               </form>
               
