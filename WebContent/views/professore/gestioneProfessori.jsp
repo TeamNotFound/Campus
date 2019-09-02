@@ -32,12 +32,12 @@
 								<td>${p.nome}${p.cognome}</td>
 								<td><c:if test="${!p.rettore}">
 
-										<a href="/Campus/Professore/Rimuovi/${p.id}">Rimuovi</a>
+										<a href="${pageContext.request.contextPath}/Professore/Rimuovi/${p.id}">Rimuovi</a>
 
 									</c:if></td>
 								<td><c:if test="${!p.rettore}">
 
-										<a href="/Campus/Professore/Promuovi/${p.id}">Promuovi</a>
+										<a href="${pageContext.request.contextPath}/Professore/Promuovi/${p.id}">Promuovi</a>
 
 									</c:if></td>
 								
