@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import dao.implementations.PrenotazioneDao;
-import dao.interfaces.PrenotazioneInterface;
+import dao.interfaces.CrudGenerico;
 import model.Prenotazione;
 
 /**
@@ -30,12 +30,12 @@ public class PrenotazioneDelete extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		PrenotazioneInterface daop = new PrenotazioneDao();
+		CrudGenerico daop = new PrenotazioneDao();
 		
 		
 		int id = Integer.parseInt(request.getPathInfo().substring(1));
 		
-		Prenotazione p = daop.getById(id);
+		Prenotazione p = (Prenotazione) daop.getById(id);
 					
 		daop.remove(p);
 		

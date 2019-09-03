@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import dao.implementations.CorsoDao;
-import dao.interfaces.CorsoInterface;
+import dao.interfaces.CrudGenerico;
 import model.Corso;
 
 /**
@@ -32,11 +32,11 @@ public class CorsoDeleteServlet extends HttpServlet {
     // Da notare che l'asterisco può andare solo alla fine dell'indirizzo perchè i servlet son limitati
     
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		CorsoInterface dao = new CorsoDao();
+		CrudGenerico dao = new CorsoDao();
 		
 		int id = Integer.parseInt(request.getPathInfo().substring(1));
 		
-		Corso c = dao.getById(id);
+		Corso c = (Corso) dao.getById(id);
 					
 		dao.remove(c);
 		

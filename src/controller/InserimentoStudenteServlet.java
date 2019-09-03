@@ -12,9 +12,9 @@ import javax.servlet.http.HttpServletResponse;
 import dao.implementations.FacoltaDao;
 
 import dao.implementations.StudenteDao;
-import dao.interfaces.FacoltaInterface;
-import dao.interfaces.StudenteInterface;
+import dao.interfaces.CrudGenerico;
 import model.Account;
+import model.Facolta;
 import model.Studente;
 import util.BCryptUtil;
 
@@ -48,8 +48,8 @@ public class InserimentoStudenteServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		FacoltaInterface facDao = new FacoltaDao();
-		StudenteInterface stuDao = new StudenteDao();
+		CrudGenerico facDao = new FacoltaDao();
+		CrudGenerico stuDao = new StudenteDao();
 		
 		Studente s = new Studente();
 		Account a = new Account();
@@ -83,7 +83,7 @@ public class InserimentoStudenteServlet extends HttpServlet {
 		}
 		
 		if(!request.getParameter("facolta").equals("")) {
-			s.setFacolta(facDao.getById(Integer.parseInt(request.getParameter("facolta"))));
+		 s.setFacolta((Facolta) facDao.getById(Integer.parseInt(request.getParameter("facolta"))));
 		}
 
 		if(!request.getParameter("username").equals("")) {

@@ -87,6 +87,7 @@ public class FirstAccessServlet extends HttpServlet {
 		p.setRettore(true);
 		
 		p.setAccount(a);
+		System.out.println("Sto per inserire");
 		pDao.inserimento(p);
 		
 		response.sendRedirect("/Campus/Login");

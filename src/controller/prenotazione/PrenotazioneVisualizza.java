@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import dao.implementations.StudenteDao;
-import dao.interfaces.StudenteInterface;
+import dao.interfaces.CrudGenerico;
 import model.Account;
 import model.Studente;
 
@@ -32,12 +32,12 @@ public class PrenotazioneVisualizza extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		StudenteInterface daos = new StudenteDao ();
+		CrudGenerico daos = new StudenteDao ();
 	
 		
 		Account s =(Account) request.getSession().getAttribute("account");
 
-		Studente st = daos.getByIdWithPrenotazioni(s.getUtente().getId());
+		Studente st = ((StudenteDao) daos).getByIdWithPrenotazioni(s.getUtente().getId());
 				
 		request.setAttribute("prenotazioni", st.getPrenotazioni() );
 		request.getRequestDispatcher("/views/prenotazione/prenotazioni.jsp").forward(request, response);

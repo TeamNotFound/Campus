@@ -5,12 +5,17 @@ import java.util.*;
 import org.hibernate.Hibernate;
 import org.hibernate.Session;
 
-import dao.interfaces.ProfessoreInterface;
+import dao.interfaces.CRUDInterface;
+import dao.interfaces.CrudGenerico;
+import model.Account;
 import model.Professore;
 import util.HibernateUtil;
 
-public class ProfessoreDao implements ProfessoreInterface {
+public class ProfessoreDao extends CrudGenerico<Professore, Integer> implements CRUDInterface<Professore , Integer>{
 	
+	public ProfessoreDao () {
+		this.classeT=Professore.class;
+	}
 	public Professore getByIdWithCorsi(int id) {
 		Session session = HibernateUtil.getSessionFactory().openSession();
 		Professore professore;
@@ -33,105 +38,6 @@ public class ProfessoreDao implements ProfessoreInterface {
 		}
 	}
 
-	@Override
-	public void inserimento(Professore p) {
-		Session session = HibernateUtil.getSessionFactory().openSession();
-
-		try{
-			session.beginTransaction();
-
-			session.save(p);
-
-			session.getTransaction().commit();
-		} catch (Exception e) {
-			e.printStackTrace();
-			session.getTransaction().rollback();
-		} finally{
-			session.close();
-		}
-	
-
-	}
-
-	@Override
-	public Professore getById(int id) {
-		Session session = HibernateUtil.getSessionFactory().openSession();
-		Professore professore;
-		
-		try{
-			session.beginTransaction();
- 
-			professore = (Professore) session.get(Professore.class, id);
-
-			session.getTransaction().commit();
-
-			return professore;
-		} catch (Exception e) {
-			System.out.println("Error in getById()");
-			e.printStackTrace();
-			return null;
-		} finally {
-			session.close();
-		}
-	
-
-	}
-
-	@SuppressWarnings("unchecked")
-	@Override
-	public ArrayList<Professore> getAll() {
-		Session session = HibernateUtil.getSessionFactory().openSession();
-		ArrayList<Professore> professori;
-		
-		try{
-			session.beginTransaction();
-
-			professori = (ArrayList<Professore>) session.createQuery("from Professore").list();
-			
-			session.getTransaction().commit();
-
-			return professori;
-		} catch (Exception e) {
-			System.out.println("Error in getAll()");
-			return null;
-		} finally {
-			session.close();
-		}
-	}
-
-	@Override
-	public void update(Professore p) {
-		Session session = HibernateUtil.getSessionFactory().openSession();
-
-		try{
-			session.beginTransaction();
-
-			session.update(p);
-
-			session.getTransaction().commit();
-		} catch (Exception e) {
-			session.getTransaction().rollback();
-		} finally{
-			session.close();
-		}		
-	}
-
-	@Override
-	public void remove(Professore p) {
-		Session session = HibernateUtil.getSessionFactory().openSession();
-
-		try{
-			session.beginTransaction();
-
-			session.delete(p);
-
-			session.getTransaction().commit();
-		} catch (Exception e) {
-			session.getTransaction().rollback();
-		} finally{
-			session.close();
-		}		
-	}
 }
 
 

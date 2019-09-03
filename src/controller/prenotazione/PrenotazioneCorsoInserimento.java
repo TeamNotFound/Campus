@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import dao.implementations.DataAppelloDao;
-import dao.interfaces.DataAppelloInterfaces;
+import dao.interfaces.CrudGenerico;
 import model.Account;
 import model.DataAppello;
 import model.Studente;
@@ -34,14 +34,14 @@ public class PrenotazioneCorsoInserimento extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		DataAppelloInterfaces daDao = new DataAppelloDao();
+		CrudGenerico daDao = new DataAppelloDao();
 		
 		int idCorso = Integer.parseInt(request.getPathInfo().substring(1));
 		
 		Account a =(Account) request.getSession().getAttribute("account");
 		int idFacolta = ((Studente) a.getUtente()).getFacolta().getId();
 		
-		List<DataAppello> date = daDao.getByFacoltaAndCorso(idFacolta, idCorso);
+		List<DataAppello> date = ((DataAppelloDao) daDao).getByFacoltaAndCorso(idFacolta, idCorso);
 		
 		request.setAttribute("date", date);
 		

@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import dao.implementations.FacoltaDao;
-import dao.interfaces.FacoltaInterface;
+import dao.interfaces.CrudGenerico;
 import model.Facolta;
 
 /**
@@ -32,11 +32,11 @@ public class FacoltaDeleteServlet extends HttpServlet {
     // Da notare che l'asterisco può andare solo alla fine dell'indirizzo perchè i servlet son limitati
     
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		FacoltaInterface dao = new FacoltaDao();
+		CrudGenerico dao = new FacoltaDao();
 				
 		int id = Integer.parseInt(request.getPathInfo().substring(1));
 		
-		Facolta f = dao.getById(id);
+		Facolta f = (Facolta) dao.getById(id);
 					
 		dao.remove(f);
 		

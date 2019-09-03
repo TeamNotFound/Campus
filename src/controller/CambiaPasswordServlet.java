@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import dao.implementations.AccountDao;
-import dao.interfaces.AccountInterface;
+import dao.interfaces.CrudGenerico;
 import model.Account;
 import util.BCryptUtil;
 
@@ -38,7 +38,7 @@ public class CambiaPasswordServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		AccountInterface accountDao = new AccountDao();
+	CrudGenerico accountDao = new AccountDao();
 		
 		Account account = (Account) request.getSession().getAttribute("account");
 		

@@ -6,121 +6,19 @@ import java.util.List;
 import org.hibernate.Hibernate;
 import org.hibernate.Session;
 
-import dao.interfaces.DataAppelloInterfaces;
+import dao.interfaces.CRUDInterface;
+import dao.interfaces.CrudGenerico;
+import model.Account;
 import model.DataAppello;
 import util.HibernateUtil;
 
-public class DataAppelloDao implements DataAppelloInterfaces {
+public class DataAppelloDao extends CrudGenerico<DataAppello, Integer> implements CRUDInterface<DataAppello , Integer>{
 
-	@Override
-	public void inserimento(DataAppello dataAppello) {
-		Session session=HibernateUtil.getSessionFactory().openSession();
-		
-		try {
-			session.beginTransaction();
-		
-			session.save(dataAppello);
-			
-			session.getTransaction().commit();
-		}catch(Exception e) {
-			System.out.println("Errore inserimento DataAppelloDao");
-			e.printStackTrace();
-			session.getTransaction().rollback();
-		}finally {
-			session.close();
-		}
+	public DataAppelloDao () {
+		this.classeT=DataAppello.class;
 	}
-
-	@Override
-	public DataAppello getById(int id) {
-		// TODO Auto-generated method stub
-		Session session=HibernateUtil.getSessionFactory().openSession();
-		DataAppello dataAppello;
-		
-		
-		try {
-			session.beginTransaction();
-			
-			dataAppello = (DataAppello) session.get(DataAppello.class, id);
-			
-			session.getTransaction().commit();
-			
-			return dataAppello;
-		}catch(Exception e) {
-			e.printStackTrace();
-			System.out.println("Errore getById in DataAppelloDao");
-			session.getTransaction().rollback();
-		}finally {
-			session.close();
-		}
-		return null;
-	}
-
 	@SuppressWarnings("unchecked")
-	@Override
-	public ArrayList<DataAppello> getAll() {
-		Session session=HibernateUtil.getSessionFactory().openSession();
-		ArrayList<DataAppello> appelli;
-		
-		try {
-			session.beginTransaction();
-			
-			appelli= (ArrayList<DataAppello>) session.createQuery("from DataAppello").list();
-			
-			session.getTransaction().commit();
-			 
-			return appelli;
-		}catch(Exception e) {
-			e.printStackTrace();
-			System.out.println("Errore getAll in DataAppelloDao");
-			session.getTransaction().rollback();
-			return null;
-		}finally {
-			session.close();
-		}
-	}
 
-	@Override
-	public void update(DataAppello dataAppello) {
-		
-		Session session=HibernateUtil.getSessionFactory().openSession();
-		
-		try {
-			session.beginTransaction();
-			
-			session.update(dataAppello);
-			
-			session.getTransaction().commit();
-		}catch(Exception e) {
-			e.printStackTrace();
-			System.out.println("Errore update in DataAppelloDao");
-			session.getTransaction().rollback();
-		}finally {
-			session.close();
-		}
-	}
-
-	@Override
-	public void remove(DataAppello dataAppello) {
-		Session session=HibernateUtil.getSessionFactory().openSession();
-		
-		try {
-			session.beginTransaction();
-			
-			session.delete(dataAppello);
-			
-			session.getTransaction().commit();
-		}catch(Exception e) {
-			e.printStackTrace();
-			System.out.println("Errore remove in DataAppelloDao");
-			session.getTransaction().rollback();
-		}finally {
-			session.close();
-		}
-	}
-
-	@SuppressWarnings("unchecked")
-	@Override
 	public List<DataAppello> getByFacoltaAndCorso(int idFacolta, int idCorso) {
 		Session session=HibernateUtil.getSessionFactory().openSession();
 		ArrayList<DataAppello> appelli;
