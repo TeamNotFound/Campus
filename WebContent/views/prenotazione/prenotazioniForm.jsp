@@ -22,7 +22,7 @@
                 <!-- INSERIRE CONTENUTO -->
 					<h1>${facolta.facolta}</h1>
 					<c:forEach items="${facolta.corsi }" var="c">
-						<a href="/Campus/Prenotazione/Corso/${c.id }"> ${c.corso} </a>
+						<a href="${pageContext.request.contextPath}/Prenotazione/Corso/${c.id }"> ${c.corso} </a>
 						<br>
 					</c:forEach>
 					<!-- CONTENUTO -->

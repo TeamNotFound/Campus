@@ -23,3 +23,4 @@
 </table>
 </body>
 </html>
+<%@ include file="/views/templates/footer.jspf" %>

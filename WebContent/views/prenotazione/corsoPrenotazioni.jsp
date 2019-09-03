@@ -29,7 +29,7 @@
 							<tr>
 								<td>${d.dataAppello}</td>
 								<td><a
-									href="/Campus/Prenotazione/PrenotazioneEsame/${d.id}">Prenota</a></td>
+									href="${pageContext.request.contextPath}/Prenotazione/PrenotazioneEsame/${d.id}">Prenota</a></td>
 							</tr>
 						</c:forEach>
 					</table>

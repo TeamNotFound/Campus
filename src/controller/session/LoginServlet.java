@@ -70,7 +70,7 @@ public class LoginServlet extends HttpServlet {
 				}
 			}
 			
-			response.sendRedirect("/Campus/Home");
+			response.sendRedirect(request.getContextPath()+"/Home");
 		} else {
 			doGet(request, response);
 		}

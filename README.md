@@ -39,7 +39,7 @@ Il sito è stato caricato sulla piattaforma Heroku ed è ora disponibile a tutti
 [Clicca quì](https://floating-mountain-59143.herokuapp.com/) per accedere al sito e provare in prima persona tutte le funzionalità che vi abbiamo messo a disposizione!
 
 Nel caso voleste provare le funzionalità del rettore, le sue credenziali sono:
-USERNAME: admin
-PASSWORD: abcdef
+ - USERNAME: admin
+ - PASSWORD: abcdef
 
 Ma attenzione, che se la password dovesse cambiare o un altro professore fosse promosso a rettore saremmo costretti a "droppare" il database e a ripopolare il sito da zero!

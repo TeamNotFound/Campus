@@ -59,7 +59,7 @@ public class RimozioneCattedraServlet extends HttpServlet {
 	
 		pcd.remove(cattedra);
 		
-		response.sendRedirect("/Campus/Facolta/"+request.getParameter("facoltaId"));
+		response.sendRedirect(request.getContextPath()+"/Facolta/"+request.getParameter("facoltaId"));
 	}
 
 }

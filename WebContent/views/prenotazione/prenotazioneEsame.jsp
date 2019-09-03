@@ -35,7 +35,7 @@
 
 					<h6>Prenotati</h6>
 					<form
-						action="/Campus/Prenotazione/PrenotazioneEsame/${ dataPrenotata.id}"
+						action="${pageContext.request.contextPath}/Prenotazione/PrenotazioneEsame/${ dataPrenotata.id}"
 						method="post">
 						<input type="hidden" name="dataPrenotaId"
 							value=${dataPrenotata.id }>

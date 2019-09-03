@@ -31,7 +31,7 @@
 					<hr>
 					<h4>Rimuovi</h4>
 					<form
-						action="/Campus/RimozioneCattedra/${cattedra.corso.id}-${cattedra.professore.id }-${cattedra.facolta.id }"
+						action="${pageContext.request.contextPath}/RimozioneCattedra/${cattedra.corso.id}-${cattedra.professore.id }-${cattedra.facolta.id }"
 						method="post">
 						<input type="hidden" name="corsoId" value=${cattedra.corso.id }>
 						<input type="hidden" name="facoltaId"

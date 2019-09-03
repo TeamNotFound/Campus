@@ -33,14 +33,14 @@
 								<td>${cor.corso }</td>
 								<td>${cattedre.get(cor.id).professore.fullName}</td>
 								<td><a
-									href="/Campus/CorsiFacoltaDelete?facolta=${facolta.id}&corso=${cor.id}">Rimuovi</a></td>
+									href="${pageContext.request.contextPath}/CorsiFacoltaDelete?facolta=${facolta.id}&corso=${cor.id}">Rimuovi</a></td>
 								<td><a
-									href="/Campus/RimozioneCattedra/${cattedre.get(cor.id).corso.id}-${cattedre.get(cor.id).professore.id}-${cattedre.get(cor.id).facolta.id}">Libera
+									href="${pageContext.request.contextPath}/RimozioneCattedra/${cattedre.get(cor.id).corso.id}-${cattedre.get(cor.id).professore.id}-${cattedre.get(cor.id).facolta.id}">Libera
 										cattedra</a></td>
 							</tr>
 						</c:forEach>
 
-						<form action="/Campus/CorsiFacolta" method="post">
+						<form action="${pageContext.request.contextPath}/CorsiFacolta" method="post">
 
 							<input type="hidden" name="facolta" value="${facolta.id}">
 

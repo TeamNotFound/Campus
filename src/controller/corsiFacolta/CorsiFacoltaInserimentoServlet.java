@@ -32,9 +32,9 @@ public class CorsiFacoltaInserimentoServlet extends HttpServlet {
 	// Recupero tutte le facolta (con i corsi a loro annessi) e i corsi per mostrare le diverse form
     
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		CrudGenerico fDao = new FacoltaDao();
-    	CrudGenerico cDao = new CorsoDao();
-    	
+		  CrudGenerico fDao = new FacoltaDao();
+    	CrudGenerico cDao = new CorsoDao();	
+
     	request.setAttribute("facolta", fDao.getAll());
     	request.setAttribute("corsi", cDao.getAll());
     	

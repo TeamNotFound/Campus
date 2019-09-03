@@ -95,15 +95,20 @@
           <span>Convalidare esame</span></a>
       </li>
       
-    
 
 	<c:if test="${sessionScope.rettore}">
 	
 		<li class="nav-item">
-        <a class="nav-link" href="${pageContext.request.contextPath}/CorsiFacolta">
+        <a class="nav-link" href="${pageContext.request.contextPath}/Facolta">
           <i class="fas fa-fw fa-table"></i>
-          <span>Corsi e Facolta</span></a>
+          <span>Inserire\Rimuovere Facolta</span></a>
       </li>
+      
+     <li class="nav-item">
+        <a class="nav-link" href="${pageContext.request.contextPath}/Corso">
+          <i class="fas fa-fw fa-table"></i>
+          <span>Inserire\Rimuovere Corso</span></a>
+      </li>     
       
       <li class="nav-item">
         <a class="nav-link" href="${pageContext.request.contextPath}/InserimentoProfessore">
