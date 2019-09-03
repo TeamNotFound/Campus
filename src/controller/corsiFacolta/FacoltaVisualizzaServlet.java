@@ -11,8 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import dao.implementations.CorsoDao;
 import dao.implementations.FacoltaDao;
-import dao.interfaces.CorsoInterface;
-import dao.interfaces.FacoltaInterface;
+import dao.interfaces.CrudGenerico;
 import model.Facolta;
 import model.Cattedra;
 
@@ -37,12 +36,12 @@ public class FacoltaVisualizzaServlet extends HttpServlet {
     // Carico inoltre tutti i corsi così da popolare la form che associera i corsi alla Facolta
     
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		FacoltaInterface dao = new FacoltaDao();
-		CorsoInterface cDao = new CorsoDao();
+	CrudGenerico dao = new FacoltaDao();
+		CrudGenerico cDao = new CorsoDao();
 		
 		int id = Integer.parseInt(request.getPathInfo().substring(1));
 		
-		Facolta f = dao.getByIdWithCorsiAndCattedre(id);
+		Facolta f = ((FacoltaDao) dao).getByIdWithCorsiAndCattedre(id);
 		
 		HashMap<Integer, Cattedra> cattedre = new HashMap<Integer, Cattedra>();
 		for(Cattedra pc : f.getCattedre()) {

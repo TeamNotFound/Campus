@@ -9,8 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import dao.implementations.CorsoDao;
 import dao.implementations.FacoltaDao;
-import dao.interfaces.CorsoInterface;
-import dao.interfaces.FacoltaInterface;
+import dao.interfaces.CrudGenerico;
 import model.Corso;
 import model.Facolta;
 
@@ -32,11 +31,11 @@ public class CorsiFacoltaDeleteServlet extends HttpServlet {
 	// Elimino l'associazione corso-facolta tramite il metodo update (In modo analogo alla sua creazione)
     
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		FacoltaInterface fDao = new FacoltaDao();
-		CorsoInterface cDao = new CorsoDao();
+		CrudGenerico fDao = new FacoltaDao();
+		CrudGenerico cDao = new CorsoDao();
 
-		Facolta f = fDao.getByIdWithCorsi(Integer.parseInt(request.getParameter("facolta")));
-		Corso c = cDao.getByIdWithFacolta(Integer.parseInt(request.getParameter("corso")));
+		Facolta f = ((FacoltaDao) fDao).getByIdWithCorsi(Integer.parseInt(request.getParameter("facolta")));
+		Corso c = ((CorsoDao) cDao).getByIdWithFacolta(Integer.parseInt(request.getParameter("corso")));
 					
 		f.removeCorso(c);
 		c.removeFacolta(f);

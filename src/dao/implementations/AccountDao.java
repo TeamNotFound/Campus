@@ -5,39 +5,18 @@ import java.util.ArrayList;
 import org.hibernate.Query;
 import org.hibernate.Session;
 
-import dao.interfaces.AccountInterface;
+import dao.interfaces.CRUDInterface;
+import dao.interfaces.CrudGenerico;
 import model.Account;
 import util.HibernateUtil;
 
-public class AccountDao implements AccountInterface {
-
-	@Override
-	public void inserimento(Account a) {
-		
+public class AccountDao extends CrudGenerico<Account, Integer> implements CRUDInterface<Account , Integer> {
+	
+	public AccountDao () {
+		this.classeT=Account.class;
 	}
 
-	@Override
-	public Account getById(int id) {
-		Session session = HibernateUtil.getSessionFactory().openSession();
-		Account account;
-
-		try{
-			session.beginTransaction();
-
-			account = (Account) session.get(Account.class, id);
-			
-			session.getTransaction().commit();
-			
-			return account;
-		} catch (Exception e) {
-			System.out.println("Error in getAll()");
-			e.printStackTrace();
-			return null;
-		} finally {
-			session.close();
-		}
-
-	}
+	
 	
 	public Account getByUsername(String username) {
 		Session session = HibernateUtil.getSessionFactory().openSession();
@@ -64,28 +43,5 @@ public class AccountDao implements AccountInterface {
 		}
 
 	}
-
-	@Override
-	public ArrayList<Account> getAll() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public void update(Account element) {
-		Session session = HibernateUtil.getSessionFactory().openSession();
-		session.beginTransaction();
-		
-		session.update(element);
-		
-		session.getTransaction().commit();
-		session.close();
-	}
-
-	@Override
-	public void remove(Account element) {
-		// TODO Auto-generated method stub
-		
-	}
-
+	
 }

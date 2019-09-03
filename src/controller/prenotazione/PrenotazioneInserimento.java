@@ -17,7 +17,7 @@ import dao.implementations.DataAppelloDao;
 import dao.implementations.FacoltaDao;
 import dao.implementations.PrenotazioneDao;
 import dao.implementations.StudenteDao;
-import dao.interfaces.FacoltaInterface;
+import dao.interfaces.CRUDInterface;
 import model.Account;
 import model.Corso;
 import model.Esame;
@@ -44,14 +44,14 @@ public class PrenotazioneInserimento extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		FacoltaInterface fDao = new FacoltaDao();
+		CRUDInterface fDao = new FacoltaDao();
 		StudenteDao studenteDao = new StudenteDao();
 		
 		Account account =(Account) request.getSession().getAttribute("account");
 		Studente studente = (Studente) account.getUtente();
 		studente = studenteDao.getByIdWithPrenotazioniEsami(studente.getId());
 		
-		Facolta f = fDao.getByIdWithCorsi(studente.getFacolta().getId());
+		Facolta f = ((FacoltaDao) fDao).getByIdWithCorsi(studente.getFacolta().getId());
 		
 		List<Corso> corsiDaRimuovere = getCorsiDaRimuovere(studente);
 		

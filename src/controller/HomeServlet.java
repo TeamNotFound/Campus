@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import dao.implementations.ProfessoreDao;
-import dao.interfaces.ProfessoreInterface;
+import dao.interfaces.CrudGenerico;
 
 /**
  * Servlet implementation class HomeServlet
@@ -29,7 +29,7 @@ public class HomeServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		ProfessoreInterface pDao = new ProfessoreDao();
+		CrudGenerico pDao = new ProfessoreDao();
 		if(pDao.getAll().isEmpty()) {
 			response.sendRedirect("FirstAccess");
 		} else {

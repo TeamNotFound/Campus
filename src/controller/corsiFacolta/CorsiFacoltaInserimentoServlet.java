@@ -9,8 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import dao.implementations.CorsoDao;
 import dao.implementations.FacoltaDao;
-import dao.interfaces.CorsoInterface;
-import dao.interfaces.FacoltaInterface;
+import dao.interfaces.CrudGenerico;
 import model.Corso;
 import model.Facolta;
 
@@ -33,9 +32,9 @@ public class CorsiFacoltaInserimentoServlet extends HttpServlet {
 	// Recupero tutte le facolta (con i corsi a loro annessi) e i corsi per mostrare le diverse form
     
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		FacoltaInterface fDao = new FacoltaDao();
-		CorsoInterface cDao = new CorsoDao();
-		
+		  CrudGenerico fDao = new FacoltaDao();
+    	CrudGenerico cDao = new CorsoDao();	
+
     	request.setAttribute("facolta", fDao.getAll());
     	request.setAttribute("corsi", cDao.getAll());
     	
@@ -47,11 +46,11 @@ public class CorsiFacoltaInserimentoServlet extends HttpServlet {
 	
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		FacoltaInterface fDao = new FacoltaDao();
-    	CorsoInterface cDao = new CorsoDao();
+		CrudGenerico fDao = new FacoltaDao();
+		CrudGenerico cDao = new CorsoDao();
     	    	
-    	Facolta f = fDao.getByIdWithCorsi(Integer.parseInt(request.getParameter("facolta")));
-    	Corso c = cDao.getByIdWithFacolta(Integer.parseInt(request.getParameter("corso")));
+    	Facolta f = ((FacoltaDao) fDao).getByIdWithCorsi(Integer.parseInt(request.getParameter("facolta")));
+    	Corso c = ((CorsoDao) cDao).getByIdWithFacolta(Integer.parseInt(request.getParameter("corso")));
     	
     	f.addCorso(c);
     	c.addFacolta(f);
